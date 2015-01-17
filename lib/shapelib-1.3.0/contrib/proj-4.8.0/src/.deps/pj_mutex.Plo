@@ -1,0 +1,486 @@
+pj_mutex.lo: pj_mutex.c proj_api.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\math.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\crtdefs.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_mac.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_secapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\vadefs.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\sdks/_mingw_directx.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\sdks/_mingw_ddk.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\stdlib.h \
+ c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include-fixed\limits.h \
+ c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include-fixed\syslimits.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\limits.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\sec_api\stdlib_s.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\malloc.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\windows.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\sdkddkver.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\excpt.h \
+ c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\stdarg.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\stdarg.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_stdarg.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\windef.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\minwindef.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\winapifamily.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\specstrings.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\sal.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\winnt.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_unicode.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\ctype.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\apiset.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\psdk_inc\intrin-impl.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\basetsd.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\guiddef.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\string.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\sec_api\string_s.h \
+ c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\x86intrin.h \
+ c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\ia32intrin.h \
+ c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\mmintrin.h \
+ c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\xmmintrin.h \
+ c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\mm_malloc.h \
+ c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\emmintrin.h \
+ c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\immintrin.h \
+ c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\fxsrintrin.h \
+ c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\adxintrin.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\pshpack4.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\poppack.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\pshpack4.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\pshpack2.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\poppack.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\pshpack2.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\pshpack8.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\pshpack8.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\ktmtypes.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\winbase.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\apisetcconv.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\minwinbase.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\bemapiset.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\debugapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\errhandlingapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\fibersapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\fileapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\handleapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\heapapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\ioapiset.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\interlockedapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\jobapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\libloaderapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\memoryapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\namedpipeapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\namespaceapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\processenv.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\processthreadsapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\processtopologyapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\profileapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\realtimeapiset.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\securityappcontainer.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\securitybaseapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\synchapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\sysinfoapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\systemtopologyapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\threadpoolapiset.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\threadpoollegacyapiset.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\utilapiset.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\wow64apiset.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\winerror.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\fltwinerror.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\timezoneapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\wingdi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\pshpack1.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\winuser.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\tvout.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\winnls.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\datetimeapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\stringapiset.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\wincon.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\winver.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\winreg.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\reason.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\winnetwk.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\wnnc.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\virtdisk.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\cderr.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\dde.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\ddeml.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\dlgs.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\lzexpand.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\mmsystem.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\nb30.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\rpc.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\rpcdce.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\rpcdcep.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\rpcnsi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\rpcnterr.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\rpcasync.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\shellapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\winperf.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\winsock.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\_timeval.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\_bsd_types.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\inaddr.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\psdk_inc\_socket_types.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\psdk_inc\_fd_types.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\psdk_inc\_ip_types.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\psdk_inc\_ip_mreq1.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\psdk_inc\_wsadata.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\psdk_inc\_xmitfile.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\psdk_inc\_wsa_errnos.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\wincrypt.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\bcrypt.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\ncrypt.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\winefs.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\winscard.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\wtypes.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\rpcndr.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\rpcnsip.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\rpcsal.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\ole2.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\objbase.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\combaseapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\wtypesbase.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\unknwnbase.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\objidlbase.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\cguid.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\objidl.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\unknwn.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\urlmon.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\oleidl.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\servprov.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\msxml.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\oaidl.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\propidl.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\oleauto.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\winioctl.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\winsmcrd.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\winspool.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\prsht.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\commdlg.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\stralign.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\sec_api\stralign_s.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\winsvc.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\mcx.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\imm.h
+
+proj_api.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\math.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\crtdefs.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_mac.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_secapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\vadefs.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\sdks/_mingw_directx.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\sdks/_mingw_ddk.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\stdlib.h:
+
+c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include-fixed\limits.h:
+
+c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include-fixed\syslimits.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\limits.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\sec_api\stdlib_s.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\malloc.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\windows.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\sdkddkver.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\excpt.h:
+
+c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\stdarg.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\stdarg.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_stdarg.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\windef.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\minwindef.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\winapifamily.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\specstrings.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\sal.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\winnt.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_unicode.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\ctype.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\apiset.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\psdk_inc\intrin-impl.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\basetsd.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\guiddef.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\string.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\sec_api\string_s.h:
+
+c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\x86intrin.h:
+
+c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\ia32intrin.h:
+
+c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\mmintrin.h:
+
+c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\xmmintrin.h:
+
+c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\mm_malloc.h:
+
+c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\emmintrin.h:
+
+c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\immintrin.h:
+
+c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\fxsrintrin.h:
+
+c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\adxintrin.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\pshpack4.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\poppack.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\pshpack4.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\pshpack2.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\poppack.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\pshpack2.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\pshpack8.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\pshpack8.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\ktmtypes.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\winbase.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\apisetcconv.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\minwinbase.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\bemapiset.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\debugapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\errhandlingapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\fibersapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\fileapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\handleapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\heapapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\ioapiset.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\interlockedapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\jobapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\libloaderapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\memoryapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\namedpipeapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\namespaceapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\processenv.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\processthreadsapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\processtopologyapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\profileapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\realtimeapiset.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\securityappcontainer.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\securitybaseapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\synchapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\sysinfoapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\systemtopologyapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\threadpoolapiset.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\threadpoollegacyapiset.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\utilapiset.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\wow64apiset.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\winerror.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\fltwinerror.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\timezoneapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\wingdi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\pshpack1.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\winuser.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\tvout.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\winnls.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\datetimeapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\stringapiset.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\wincon.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\winver.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\winreg.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\reason.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\winnetwk.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\wnnc.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\virtdisk.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\cderr.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\dde.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\ddeml.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\dlgs.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\lzexpand.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\mmsystem.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\nb30.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\rpc.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\rpcdce.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\rpcdcep.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\rpcnsi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\rpcnterr.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\rpcasync.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\shellapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\winperf.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\winsock.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\_timeval.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\_bsd_types.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\inaddr.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\psdk_inc\_socket_types.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\psdk_inc\_fd_types.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\psdk_inc\_ip_types.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\psdk_inc\_ip_mreq1.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\psdk_inc\_wsadata.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\psdk_inc\_xmitfile.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\psdk_inc\_wsa_errnos.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\wincrypt.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\bcrypt.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\ncrypt.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\winefs.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\winscard.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\wtypes.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\rpcndr.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\rpcnsip.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\rpcsal.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\ole2.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\objbase.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\combaseapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\wtypesbase.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\unknwnbase.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\objidlbase.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\cguid.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\objidl.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\unknwn.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\urlmon.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\oleidl.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\servprov.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\msxml.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\oaidl.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\propidl.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\oleauto.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\winioctl.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\winsmcrd.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\winspool.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\prsht.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\commdlg.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\stralign.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\sec_api\stralign_s.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\winsvc.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\mcx.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\imm.h:

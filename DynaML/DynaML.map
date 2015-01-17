@@ -1,0 +1,19 @@
+include "MeasNetwork.h";
+include "Station.h";
+include "DnaMeasurement.h";
+include "GPSBaseline.h";
+include "YCluster.h";
+include "Directions.h";
+include <armadillo>;
+
+#DnaXmlFormat ::MeasNetwork ::MeasNetwork;
+DnaStation ::Station&;
+GPSBaseline ::GPSBaseline_Struct&;
+Clusterpoint ::ClusterPoint_Struct&;
+DnaMeasurement ::DnaMeasurement*;
+Directions ::Directions_Struct&;
+
+PointCovariance ::arma::mat33;
+GPSCovariance ::arma::mat33;
+StationCoord ::StationCoord_Struct;
+

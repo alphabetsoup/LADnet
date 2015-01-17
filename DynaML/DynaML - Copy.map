@@ -1,0 +1,47 @@
+include "MeasNetwork.h";
+include "Station.h";
+include "DnaMeasurement.h";
+include "GPSBaseline.h";
+include "YCluster.h";
+include "Directions.h";
+
+#DnaXmlFormat ::MeasNetwork ::MeasNetwork;
+DnaStation ::Station&;
+GPSBaseline ::GPSBaseline&;
+Clusterpoint ::YCluster&;
+DnaMeasurement ::DnaMeasurement&;
+Directions ::Directions&;
+
+#base element parsers
+
+StdDev double;
+TargHeight double;
+Value double;
+Vscale double;
+X double;
+XAxis double;
+Y double;
+YAxis double;
+Z double;
+m11 double;
+m12 double;
+m13 double;
+m21 double;
+m22 double;
+m23 double;
+m31 double;
+m32 double;
+m33 double;
+#MeasuredDate xml_schema::date_time;
+SigmaXX double;
+SigmaXY double;
+SigmaXZ double;
+SigmaYY double;
+SigmaYZ double;
+SigmaZZ double;
+Pscale double;
+InstHeight double;
+Lscale double;
+Height double;
+Hscale double;
+#Ignore bool;

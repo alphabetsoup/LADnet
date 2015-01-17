@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug64|Win32">
+      <Configuration>Debug64</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug64|x64">
+      <Configuration>Debug64</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release64|Win32">
+      <Configuration>Release64</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release64|x64">
+      <Configuration>Release64</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\ComputedObservable.cpp" />
+    <ClCompile Include="..\..\..\src\Directions.cpp" />
+    <ClCompile Include="..\..\..\src\DirectionsComputedObservable.cpp" />
+    <ClCompile Include="..\..\..\src\DirectionsResidual.cpp" />
+    <ClCompile Include="..\..\..\src\DnaMeasurement.cpp" />
+    <ClCompile Include="..\..\..\src\DynaML-pimpl.cxx" />
+    <ClCompile Include="..\..\..\src\DynaML-pskel.cxx" />
+    <ClCompile Include="..\..\..\src\edge.cpp" />
+    <ClCompile Include="..\..\..\src\FPoint.cpp" />
+    <ClCompile Include="..\..\..\src\FPointComputedObservable.cpp" />
+    <ClCompile Include="..\..\..\src\FPointResidual.cpp" />
+    <ClCompile Include="..\..\..\src\GPSBaseline.cpp" />
+    <ClCompile Include="..\..\..\src\GPSComputedObservable.cpp" />
+    <ClCompile Include="..\..\..\src\GPSResidual.cpp" />
+    <ClCompile Include="..\..\..\src\L1GLPKIPDualSolver.cpp" />
+    <ClCompile Include="..\..\..\src\L1GLPKIPSolver.cpp" />
+    <ClCompile Include="..\..\..\src\L1GLPKSimplexDualSolver.cpp" />
+    <ClCompile Include="..\..\..\src\L1GLPKSimplexSolver.cpp" />
+    <ClCompile Include="..\..\..\src\L1Solver.cpp" />
+    <ClCompile Include="..\..\..\src\L2ArmaSolver.cpp" />
+    <ClCompile Include="..\..\..\src\main.cpp" />
+    <ClCompile Include="..\..\..\src\MeasCycle.cpp" />
+    <ClCompile Include="..\..\..\src\MeasNetwork.cpp" />
+    <ClCompile Include="..\..\..\src\MeasSegment.cpp" />
+    <ClCompile Include="..\..\..\src\ParameterGroup.cpp" />
+    <ClCompile Include="..\..\..\src\Residual.cpp" />
+    <ClCompile Include="..\..\..\src\SearchQueue.cpp" />
+    <ClCompile Include="..\..\..\src\smallmath.cpp" />
+    <ClCompile Include="..\..\..\src\Station.cpp" />
+    <ClCompile Include="..\..\..\src\timer.cpp" />
+    <ClCompile Include="..\..\..\src\YCluster.cpp" />
+    <ClCompile Include="..\..\..\src\YClusterComputedObservable.cpp" />
+    <ClCompile Include="..\..\..\src\YClusterResidual.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\ComputedObservable.h" />
+    <ClInclude Include="..\..\..\include\Directions.h" />
+    <ClInclude Include="..\..\..\include\DirectionsComputedObservable.h" />
+    <ClInclude Include="..\..\..\include\DirectionsResidual.h" />
+    <ClInclude Include="..\..\..\include\DnaMeasurement.h" />
+    <ClInclude Include="..\..\..\include\DynaML-pimpl.hxx" />
+    <ClInclude Include="..\..\..\include\DynaML-pskel.hxx" />
+    <ClInclude Include="..\..\..\include\edge.h" />
+    <ClInclude Include="..\..\..\include\FPoint.h" />
+    <ClInclude Include="..\..\..\include\FPointComputedObservable.h" />
+    <ClInclude Include="..\..\..\include\FPointResidual.h" />
+    <ClInclude Include="..\..\..\include\global.h" />
+    <ClInclude Include="..\..\..\include\GPSBaseline.h" />
+    <ClInclude Include="..\..\..\include\GPSComputedObservable.h" />
+    <ClInclude Include="..\..\..\include\GPSResidual.h" />
+    <ClInclude Include="..\..\..\include\GRS80Ellipsoid.hpp" />
+    <ClInclude Include="..\..\..\include\L1GLPKIPDualSolver.h" />
+    <ClInclude Include="..\..\..\include\L1GLPKIPSolver.h" />
+    <ClInclude Include="..\..\..\include\L1GLPKSimplexDualSolver.h" />
+    <ClInclude Include="..\..\..\include\L1GLPKSimplexSolver.h" />
+    <ClInclude Include="..\..\..\include\L1Solver.h" />
+    <ClInclude Include="..\..\..\include\L2ArmaSolver.h" />
+    <ClInclude Include="..\..\..\include\MeasCycle.h" />
+    <ClInclude Include="..\..\..\include\MeasNetwork.h" />
+    <ClInclude Include="..\..\..\include\MeasSegment.h" />
+    <ClInclude Include="..\..\..\include\optionparser.h" />
+    <ClInclude Include="..\..\..\include\ParameterGroup.h" />
+    <ClInclude Include="..\..\..\include\Residual.h" />
+    <ClInclude Include="..\..\..\include\SearchQueue.h" />
+    <ClInclude Include="..\..\..\include\smallmath.h" />
+    <ClInclude Include="..\..\..\include\Station.h" />
+    <ClInclude Include="..\..\..\include\timer.h" />
+    <ClInclude Include="..\..\..\include\XMLStructs.h" />
+    <ClInclude Include="..\..\..\include\YCluster.h" />
+    <ClInclude Include="..\..\..\include\YClusterComputedObservable.h" />
+    <ClInclude Include="..\..\..\include\YClusterResidual.h" />
+    <ClInclude Include="..\..\..\lib\shapelib-1.3.0\shapefil.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{AA3A53D6-12A1-4C9F-9CEB-56116AD5F8F7}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>LADnet_win</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release64|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Environment.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Environment.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Environment.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Environment.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Environment.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Environment.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Environment.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release64|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Environment.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Program Files %28x86%29\CodeSynthesis XSD 4.0\include;$(SrcRoot)\lib\shapelib-1.3.0;$(SrcRoot)\include\lapack;$(SrcRoot)\include\blas;$(ARMADILLO_ROOT)\include;$(SrcRoot)\lib\glpk-4.55\src;$(SrcRoot)\lib\pugixml\src;$(SolutionDir)..\..\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\CodeSynthesis XSD 4.0\lib\vc-10.0;$(SrcRoot)\lib\armadillo\examples\lib_win32;$(SrcRoot)\lib\OpenBLAS-v0.2.13-Win32\lib;$(SrcRoot)\lib\pugixml\scripts\vs2010\x32;$(SrcRoot)\VS10\LADnet_win\Debug;$(SrcRoot)\VS10\LADnet_win\LADnet_win\Debug;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Program Files %28x86%29\CodeSynthesis XSD 4.0\include;$(SrcRoot)\lib\shapelib-1.3.0;$(SrcRoot)\include\lapack;$(SrcRoot)\include\blas;$(ARMADILLO_ROOT)\include;$(SrcRoot)\lib\glpk-4.55\src;$(SrcRoot)\lib\pugixml\src;$(SolutionDir)..\..\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\CodeSynthesis XSD 4.0\lib\vc-10.0;$(SrcRoot)\lib\OpenBLAS-v0.2.13-Win32\lib;$(SrcRoot)\lib\lapack32;$(SrcRoot)\lib\pugixml\scripts\vs2010\x32;$(SrcRoot)\VS10\LADnet_win\Debug;$(SrcRoot)\VS10\LADnet_win\LADnet_win\Debug;$(SrcRoot)\lib\blas;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Program Files %28x86%29\CodeSynthesis XSD 4.0\include;$(SrcRoot)\lib\shapelib-1.3.0;$(SrcRoot)\include\lapack;$(SrcRoot)\include\blas;$(ARMADILLO_ROOT)\include;$(SrcRoot)\lib\glpk-4.55\src;$(SrcRoot)\lib\pugixml\src;$(SolutionDir)..\..\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\CodeSynthesis XSD 4.0\lib\vc-10.0;$(SrcRoot)\lib\OpenBLAS-v0.2.13-Win32\lib;$(SrcRoot)\lib\lapack32;$(SrcRoot)\lib\pugixml\scripts\vs2010\x32;$(SrcRoot)\VS10\LADnet_win\Debug;$(SrcRoot)\VS10\LADnet_win\LADnet_win\Debug;$(SrcRoot)\lib\blas;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Program Files %28x86%29\CodeSynthesis XSD 4.0\include;$(SrcRoot)\lib\shapelib-1.3.0;$(SrcRoot)\lib\armadillo-4.200.0\include;$(SrcRoot)\lib\glpk-4.55\src;$(SrcRoot)\lib\pugixml\src;$(SolutionDir)..\..\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\CodeSynthesis XSD 4.0\lib64\vc-10.0;$(SrcRoot)lib\OpenBLAS-v0.2.13-Win64-int32\lib\;$(SrcRoot)\lib\pugixml\scripts\vs2010\x64;$(SrcRoot)\lib\armadillo-4.200.0\examples\lib_win64;$(SrcRoot)\VS10\LADnet_win\x64\Debug64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Program Files %28x86%29\CodeSynthesis XSD 4.0\include;$(SrcRoot)\lib\shapelib-1.3.0;$(SrcRoot)\include\lapack;$(SrcRoot)\include\blas;$(ARMADILLO_ROOT)\include;$(SrcRoot)\lib\glpk-4.55\src;$(SrcRoot)\lib\pugixml\src;$(SrcRoot)\include;$(IncludePath);$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\CodeSynthesis XSD 4.0\lib\vc-10.0;$(SrcRoot)\lib\OpenBLAS-v0.2.13-Win32\lib;$(SrcRoot)\lib\pugixml\scripts\vs2010\x32;$(SrcRoot)\VS10\LADnet_win\Release;$(SrcRoot)\VS10\LADnet_win\LADnet_win\Release;$(SrcRoot)\lib\armadillo\examples\lib_win32;$(LibraryPath);$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Program Files %28x86%29\CodeSynthesis XSD 4.0\include;$(SrcRoot)\lib\shapelib-1.3.0;$(SrcRoot)\include\lapack;$(SrcRoot)\include\blas;$(ARMADILLO_ROOT)\include;$(SrcRoot)\lib\glpk-4.55\src;$(SrcRoot)\lib\pugixml\src;$(SrcRoot)\include;$(IncludePath);$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\CodeSynthesis XSD 4.0\lib\vc-10.0;$(SrcRoot)\lib\OpenBLAS-v0.2.13-Win32\lib;$(SrcRoot)\lib\pugixml\scripts\vs2010\x32;$(SrcRoot)\VS10\LADnet_win\Release;$(SrcRoot)\VS10\LADnet_win\LADnet_win\Release;$(SrcRoot)\lib\blas;$(LibraryPath);$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Program Files %28x86%29\CodeSynthesis XSD 4.0\include;$(SrcRoot)\lib\shapelib-1.3.0;$(SrcRoot)\include\lapack;$(SrcRoot)\include\blas;$(ARMADILLO_ROOT)\include;$(SrcRoot)\lib\glpk-4.55\src;$(SrcRoot)\lib\pugixml\src;$(SrcRoot)\include;$(IncludePath);$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\CodeSynthesis XSD 4.0\lib\vc-10.0;$(SrcRoot)\lib\OpenBLAS-v0.2.13-Win32\lib;$(SrcRoot)\lib\lapack32;$(SrcRoot)\lib\pugixml\scripts\vs2010\x32;$(SrcRoot)\VS10\LADnet_win\Release;$(SrcRoot)\VS10\LADnet_win\LADnet_win\Release;$(SrcRoot)\lib\blas;$(LibraryPath);$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Program Files %28x86%29\CodeSynthesis XSD 4.0\include;$(SrcRoot)\lib\shapelib-1.3.0;$(SrcRoot)\include\lapack;$(SrcRoot)\include\blas;$(SrcRoot)\lib\armadillo-4.200.0\include;$(SrcRoot)\lib\glpk-4.55\src;$(SrcRoot)\lib\pugixml\src;$(SrcRoot)\include;$(IncludePath);$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include</IncludePath>
+    <LibraryPath>$(SrcRoot)\lib\lapack_release_x64;C:\Program Files %28x86%29\CodeSynthesis XSD 4.0\lib64\vc-10.0;$(SrcRoot)lib\OpenBLAS-v0.2.13-Win64-int64\lib\;$(SrcRoot)\lib\pugixml\scripts\vs2010\x64;$(SrcRoot)VS10\LADnet_win\x64\Release64\;$(LibraryPath);$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>xerces-c_3.lib;blas_win32_MT.lib;lapack_win32_MT.lib;pugixmld.lib;Shapelib.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);glpk_4_55.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>xerces-c_3.lib;libopenblas.dll.a;pugixmld.lib;Shapelib.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);glpk_4_55.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>xerces-c_3.lib;libopenblas.dll.a;pugixmld.lib;Shapelib.lib;uuid.lib;odbc32.lib;odbccp32.lib;glpk_vs10.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>ARMA_64BIT_WORD;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>xerces-c_3.lib;blas_win64_MT.lib;lapack_win64_MT.lib;pugixmld.lib;Shapelib.lib;uuid.lib;odbc32.lib;odbccp32.lib;glpk_4_55.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>xerces-c_3.lib;glpk_4_55.lib;blas_win32_MT.lib;lapack_win32_MT.lib;pugixml.lib;Shapelib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>xerces-c_3.lib;glpk_vs10.lib;libopenblas.dll.a;pugixml.lib;Shapelib.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>xerces-c_3.lib;glpk_vs10.lib;libopenblas.dll.a;pugixml.lib;Shapelib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>ARMA_64BIT_WORD;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>xerces-c_3.lib;glpk_4_55.lib;blas_win64_MT.lib;lapack_win64_MT.lib;pugixml.lib;Shapelib.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

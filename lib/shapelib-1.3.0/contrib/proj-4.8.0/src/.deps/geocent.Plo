@@ -1,0 +1,26 @@
+geocent.lo: geocent.c c:\tdm-gcc-64\x86_64-w64-mingw32\include\math.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\crtdefs.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_mac.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_secapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\vadefs.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\sdks/_mingw_directx.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\sdks/_mingw_ddk.h geocent.h
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\math.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\crtdefs.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_mac.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_secapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\vadefs.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\sdks/_mingw_directx.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\sdks/_mingw_ddk.h:
+
+geocent.h:

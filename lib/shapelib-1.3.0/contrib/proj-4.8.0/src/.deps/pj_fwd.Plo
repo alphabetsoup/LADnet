@@ -1,0 +1,74 @@
+pj_fwd.lo: pj_fwd.c projects.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\math.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\crtdefs.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_mac.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_secapi.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\vadefs.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\sdks/_mingw_directx.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\sdks/_mingw_ddk.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\stdio.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_print_push.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_off_t.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\swprintf.inl \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\sec_api\stdio_s.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_print_pop.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\stdlib.h \
+ c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include-fixed\limits.h \
+ c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include-fixed\syslimits.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\limits.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\sec_api\stdlib_s.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\malloc.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\string.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\sec_api\string_s.h proj_api.h \
+ c:\tdm-gcc-64\x86_64-w64-mingw32\include\errno.h
+
+projects.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\math.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\crtdefs.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_mac.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_secapi.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\vadefs.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\sdks/_mingw_directx.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\sdks/_mingw_ddk.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\stdio.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_print_push.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_off_t.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\swprintf.inl:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\sec_api\stdio_s.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\_mingw_print_pop.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\stdlib.h:
+
+c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include-fixed\limits.h:
+
+c:\tdm-gcc-64\lib\gcc\x86_64-w64-mingw32\4.8.1\include-fixed\syslimits.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\limits.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\sec_api\stdlib_s.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\malloc.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\string.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\sec_api\string_s.h:
+
+proj_api.h:
+
+c:\tdm-gcc-64\x86_64-w64-mingw32\include\errno.h:

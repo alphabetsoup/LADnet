@@ -1,0 +1,504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug64|Win32">
+      <Configuration>Debug64</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug64|x64">
+      <Configuration>Debug64</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release64|Win32">
+      <Configuration>Release64</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release64|x64">
+      <Configuration>Release64</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\amd\amd_1.c" />
+    <ClCompile Include="..\..\src\amd\amd_2.c" />
+    <ClCompile Include="..\..\src\amd\amd_aat.c" />
+    <ClCompile Include="..\..\src\amd\amd_control.c" />
+    <ClCompile Include="..\..\src\amd\amd_defaults.c" />
+    <ClCompile Include="..\..\src\amd\amd_dump.c" />
+    <ClCompile Include="..\..\src\amd\amd_info.c" />
+    <ClCompile Include="..\..\src\amd\amd_order.c" />
+    <ClCompile Include="..\..\src\amd\amd_postorder.c" />
+    <ClCompile Include="..\..\src\amd\amd_post_tree.c" />
+    <ClCompile Include="..\..\src\amd\amd_preprocess.c" />
+    <ClCompile Include="..\..\src\amd\amd_valid.c" />
+    <ClCompile Include="..\..\src\avl.c" />
+    <ClCompile Include="..\..\src\bfd.c" />
+    <ClCompile Include="..\..\src\bflib\btf.c" />
+    <ClCompile Include="..\..\src\bflib\btfint.c" />
+    <ClCompile Include="..\..\src\bflib\fhv.c" />
+    <ClCompile Include="..\..\src\bflib\fhvint.c" />
+    <ClCompile Include="..\..\src\bflib\ifu.c" />
+    <ClCompile Include="..\..\src\bflib\luf.c" />
+    <ClCompile Include="..\..\src\bflib\lufint.c" />
+    <ClCompile Include="..\..\src\bflib\scf.c" />
+    <ClCompile Include="..\..\src\bflib\scfint.c" />
+    <ClCompile Include="..\..\src\bflib\sgf.c" />
+    <ClCompile Include="..\..\src\bflib\sva.c" />
+    <ClCompile Include="..\..\src\bfx.c" />
+    <ClCompile Include="..\..\src\cglib\cfg.c" />
+    <ClCompile Include="..\..\src\cglib\cfg1.c" />
+    <ClCompile Include="..\..\src\colamd\colamd.c" />
+    <ClCompile Include="..\..\src\env\alloc.c" />
+    <ClCompile Include="..\..\src\env\dlsup.c" />
+    <ClCompile Include="..\..\src\env\env.c" />
+    <ClCompile Include="..\..\src\env\error.c" />
+    <ClCompile Include="..\..\src\env\stdout.c" />
+    <ClCompile Include="..\..\src\env\stream.c" />
+    <ClCompile Include="..\..\src\env\time.c" />
+    <ClCompile Include="..\..\src\env\tls.c" />
+    <ClCompile Include="..\..\src\glpapi01.c" />
+    <ClCompile Include="..\..\src\glpapi02.c" />
+    <ClCompile Include="..\..\src\glpapi03.c" />
+    <ClCompile Include="..\..\src\glpapi04.c" />
+    <ClCompile Include="..\..\src\glpapi05.c" />
+    <ClCompile Include="..\..\src\glpapi06.c" />
+    <ClCompile Include="..\..\src\glpapi07.c" />
+    <ClCompile Include="..\..\src\glpapi08.c" />
+    <ClCompile Include="..\..\src\glpapi09.c" />
+    <ClCompile Include="..\..\src\glpapi10.c" />
+    <ClCompile Include="..\..\src\glpapi11.c" />
+    <ClCompile Include="..\..\src\glpapi12.c" />
+    <ClCompile Include="..\..\src\glpapi13.c" />
+    <ClCompile Include="..\..\src\glpapi14.c" />
+    <ClCompile Include="..\..\src\glpapi15.c" />
+    <ClCompile Include="..\..\src\glpapi16.c" />
+    <ClCompile Include="..\..\src\glpapi17.c" />
+    <ClCompile Include="..\..\src\glpapi18.c" />
+    <ClCompile Include="..\..\src\glpapi19.c" />
+    <ClCompile Include="..\..\src\glpapi20.c" />
+    <ClCompile Include="..\..\src\glpapi21.c" />
+    <ClCompile Include="..\..\src\glpcpx.c" />
+    <ClCompile Include="..\..\src\glpdmx.c" />
+    <ClCompile Include="..\..\src\glpgmp.c" />
+    <ClCompile Include="..\..\src\glphbm.c" />
+    <ClCompile Include="..\..\src\glpini01.c" />
+    <ClCompile Include="..\..\src\glpini02.c" />
+    <ClCompile Include="..\..\src\glpios01.c" />
+    <ClCompile Include="..\..\src\glpios02.c" />
+    <ClCompile Include="..\..\src\glpios03.c" />
+    <ClCompile Include="..\..\src\glpios04.c" />
+    <ClCompile Include="..\..\src\glpios05.c" />
+    <ClCompile Include="..\..\src\glpios06.c" />
+    <ClCompile Include="..\..\src\glpios07.c" />
+    <ClCompile Include="..\..\src\glpios08.c" />
+    <ClCompile Include="..\..\src\glpios09.c" />
+    <ClCompile Include="..\..\src\glpios10.c" />
+    <ClCompile Include="..\..\src\glpios11.c" />
+    <ClCompile Include="..\..\src\glpios12.c" />
+    <ClCompile Include="..\..\src\glpipm.c" />
+    <ClCompile Include="..\..\src\glpmat.c" />
+    <ClCompile Include="..\..\src\glpmpl01.c" />
+    <ClCompile Include="..\..\src\glpmpl02.c" />
+    <ClCompile Include="..\..\src\glpmpl03.c" />
+    <ClCompile Include="..\..\src\glpmpl04.c" />
+    <ClCompile Include="..\..\src\glpmpl05.c" />
+    <ClCompile Include="..\..\src\glpmpl06.c" />
+    <ClCompile Include="..\..\src\glpmps.c" />
+    <ClCompile Include="..\..\src\glpnet03.c" />
+    <ClCompile Include="..\..\src\glpnet04.c" />
+    <ClCompile Include="..\..\src\glpnet05.c" />
+    <ClCompile Include="..\..\src\glpnpp01.c" />
+    <ClCompile Include="..\..\src\glpnpp02.c" />
+    <ClCompile Include="..\..\src\glpnpp03.c" />
+    <ClCompile Include="..\..\src\glpnpp04.c" />
+    <ClCompile Include="..\..\src\glpnpp05.c" />
+    <ClCompile Include="..\..\src\glpnpp06.c" />
+    <ClCompile Include="..\..\src\glprgr.c" />
+    <ClCompile Include="..\..\src\glpscl.c" />
+    <ClCompile Include="..\..\src\glpsdf.c" />
+    <ClCompile Include="..\..\src\glpspm.c" />
+    <ClCompile Include="..\..\src\glpspx01.c" />
+    <ClCompile Include="..\..\src\glpspx02.c" />
+    <ClCompile Include="..\..\src\glpsql.c" />
+    <ClCompile Include="..\..\src\glpssx01.c" />
+    <ClCompile Include="..\..\src\glpssx02.c" />
+    <ClCompile Include="..\..\src\glptsp.c" />
+    <ClCompile Include="..\..\src\lux.c" />
+    <ClCompile Include="..\..\src\minisat\minisat.c" />
+    <ClCompile Include="..\..\src\misc\bignum.c" />
+    <ClCompile Include="..\..\src\misc\dmp.c" />
+    <ClCompile Include="..\..\src\misc\ffalg.c" />
+    <ClCompile Include="..\..\src\misc\fp2rat.c" />
+    <ClCompile Include="..\..\src\misc\gcd.c" />
+    <ClCompile Include="..\..\src\misc\jd.c" />
+    <ClCompile Include="..\..\src\misc\keller.c" />
+    <ClCompile Include="..\..\src\misc\mc13d.c" />
+    <ClCompile Include="..\..\src\misc\mc21a.c" />
+    <ClCompile Include="..\..\src\misc\okalg.c" />
+    <ClCompile Include="..\..\src\misc\qmd.c" />
+    <ClCompile Include="..\..\src\misc\relax4.c" />
+    <ClCompile Include="..\..\src\misc\rng.c" />
+    <ClCompile Include="..\..\src\misc\rng1.c" />
+    <ClCompile Include="..\..\src\misc\round2n.c" />
+    <ClCompile Include="..\..\src\misc\str2int.c" />
+    <ClCompile Include="..\..\src\misc\str2num.c" />
+    <ClCompile Include="..\..\src\misc\strspx.c" />
+    <ClCompile Include="..\..\src\misc\strtrim.c" />
+    <ClCompile Include="..\..\src\misc\triang.c" />
+    <ClCompile Include="..\..\src\misc\wclique.c" />
+    <ClCompile Include="..\..\src\misc\wclique1.c" />
+    <ClCompile Include="..\..\src\proxy\main.c" />
+    <ClCompile Include="..\..\src\proxy\proxy.c" />
+    <ClCompile Include="..\..\src\proxy\proxy1.c" />
+    <ClCompile Include="..\..\src\zlib\adler32.c" />
+    <ClCompile Include="..\..\src\zlib\compress.c" />
+    <ClCompile Include="..\..\src\zlib\crc32.c" />
+    <ClCompile Include="..\..\src\zlib\deflate.c" />
+    <ClCompile Include="..\..\src\zlib\gzclose.c" />
+    <ClCompile Include="..\..\src\zlib\gzlib.c" />
+    <ClCompile Include="..\..\src\zlib\gzread.c" />
+    <ClCompile Include="..\..\src\zlib\gzwrite.c" />
+    <ClCompile Include="..\..\src\zlib\inffast.c" />
+    <ClCompile Include="..\..\src\zlib\inflate.c" />
+    <ClCompile Include="..\..\src\zlib\inftrees.c" />
+    <ClCompile Include="..\..\src\zlib\trees.c" />
+    <ClCompile Include="..\..\src\zlib\uncompr.c" />
+    <ClCompile Include="..\..\src\zlib\zio.c" />
+    <ClCompile Include="..\..\src\zlib\zutil.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\amd\amd.h" />
+    <ClInclude Include="..\..\src\amd\amd_internal.h" />
+    <ClInclude Include="..\..\src\avl.h" />
+    <ClInclude Include="..\..\src\bfd.h" />
+    <ClInclude Include="..\..\src\bflib\btf.h" />
+    <ClInclude Include="..\..\src\bflib\btfint.h" />
+    <ClInclude Include="..\..\src\bflib\fhv.h" />
+    <ClInclude Include="..\..\src\bflib\fhvint.h" />
+    <ClInclude Include="..\..\src\bflib\ifu.h" />
+    <ClInclude Include="..\..\src\bflib\luf.h" />
+    <ClInclude Include="..\..\src\bflib\lufint.h" />
+    <ClInclude Include="..\..\src\bflib\scf.h" />
+    <ClInclude Include="..\..\src\bflib\scfint.h" />
+    <ClInclude Include="..\..\src\bflib\sgf.h" />
+    <ClInclude Include="..\..\src\bflib\sva.h" />
+    <ClInclude Include="..\..\src\bfx.h" />
+    <ClInclude Include="..\..\src\cglib\cfg.h" />
+    <ClInclude Include="..\..\src\colamd\colamd.h" />
+    <ClInclude Include="..\..\src\draft.h" />
+    <ClInclude Include="..\..\src\env\env.h" />
+    <ClInclude Include="..\..\src\env\stdc.h" />
+    <ClInclude Include="..\..\src\glpgmp.h" />
+    <ClInclude Include="..\..\src\glphbm.h" />
+    <ClInclude Include="..\..\src\glpios.h" />
+    <ClInclude Include="..\..\src\glpipm.h" />
+    <ClInclude Include="..\..\src\glpk.h" />
+    <ClInclude Include="..\..\src\glpmat.h" />
+    <ClInclude Include="..\..\src\glpmpl.h" />
+    <ClInclude Include="..\..\src\glpnpp.h" />
+    <ClInclude Include="..\..\src\glprgr.h" />
+    <ClInclude Include="..\..\src\glpsdf.h" />
+    <ClInclude Include="..\..\src\glpspm.h" />
+    <ClInclude Include="..\..\src\glpspx.h" />
+    <ClInclude Include="..\..\src\glpsql.h" />
+    <ClInclude Include="..\..\src\glpssx.h" />
+    <ClInclude Include="..\..\src\glptsp.h" />
+    <ClInclude Include="..\..\src\lux.h" />
+    <ClInclude Include="..\..\src\minisat\minisat.h" />
+    <ClInclude Include="..\..\src\misc\bignum.h" />
+    <ClInclude Include="..\..\src\misc\dmp.h" />
+    <ClInclude Include="..\..\src\misc\ffalg.h" />
+    <ClInclude Include="..\..\src\misc\jd.h" />
+    <ClInclude Include="..\..\src\misc\keller.h" />
+    <ClInclude Include="..\..\src\misc\mc13d.h" />
+    <ClInclude Include="..\..\src\misc\mc21a.h" />
+    <ClInclude Include="..\..\src\misc\misc.h" />
+    <ClInclude Include="..\..\src\misc\okalg.h" />
+    <ClInclude Include="..\..\src\misc\qmd.h" />
+    <ClInclude Include="..\..\src\misc\relax4.h" />
+    <ClInclude Include="..\..\src\misc\rng.h" />
+    <ClInclude Include="..\..\src\misc\triang.h" />
+    <ClInclude Include="..\..\src\misc\wclique.h" />
+    <ClInclude Include="..\..\src\misc\wclique1.h" />
+    <ClInclude Include="..\..\src\prob.h" />
+    <ClInclude Include="..\..\src\proxy\proxy.h" />
+    <ClInclude Include="..\..\src\zlib\crc32.h" />
+    <ClInclude Include="..\..\src\zlib\deflate.h" />
+    <ClInclude Include="..\..\src\zlib\gzguts.h" />
+    <ClInclude Include="..\..\src\zlib\inffast.h" />
+    <ClInclude Include="..\..\src\zlib\inffixed.h" />
+    <ClInclude Include="..\..\src\zlib\inflate.h" />
+    <ClInclude Include="..\..\src\zlib\inftrees.h" />
+    <ClInclude Include="..\..\src\zlib\trees.h" />
+    <ClInclude Include="..\..\src\zlib\zconf.h" />
+    <ClInclude Include="..\..\src\zlib\zio.h" />
+    <ClInclude Include="..\..\src\zlib\zlib.h" />
+    <ClInclude Include="..\..\src\zlib\zutil.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D6975FC7-BE1B-4D89-880B-B895D6261658}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>glpk_4_55</RootNamespace>
+    <ProjectName>glpk_4_55</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release64|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Environment.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Environment.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Environment.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Environment.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Environment.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Environment.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Environment.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release64|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Environment.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(Src)bflib;$(Src)amd;$(Src)proxy;$(Src)zlib;$(Src)misc;$(Src)minisat;$(Src)env;$(Src)colamd;$(Src)cglib;$(Src);$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(Src)bflib;$(Src)amd;$(Src)proxy;$(Src)zlib;$(Src)misc;$(Src)minisat;$(Src)env;$(Src)colamd;$(Src)cglib;$(Src);$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(Src)bflib;$(Src)amd;$(Src)proxy;$(Src)zlib;$(Src)misc;$(Src)minisat;$(Src)env;$(Src)colamd;$(Src)cglib;$(Src);$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(Src)bflib;$(Src)amd;$(Src)proxy;$(Src)zlib;$(Src)misc;$(Src)minisat;$(Src)env;$(Src)colamd;$(Src)cglib;$(Src);$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(Src)bflib;$(Src)amd;$(Src)proxy;$(Src)zlib;$(Src)misc;$(Src)minisat;$(Src)env;$(Src)colamd;$(Src)cglib;$(Src);$(IncludePath);$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(Src)bflib;$(Src)amd;$(Src)proxy;$(Src)zlib;$(Src)misc;$(Src)minisat;$(Src)env;$(Src)colamd;$(Src)cglib;$(Src);$(IncludePath);$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(Src)bflib;$(Src)amd;$(Src)proxy;$(Src)zlib;$(Src)misc;$(Src)minisat;$(Src)env;$(Src)colamd;$(Src)cglib;$(Src);$(IncludePath);$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(Src)bflib;$(Src)amd;$(Src)proxy;$(Src)zlib;$(Src)misc;$(Src)minisat;$(Src)env;$(Src)colamd;$(Src)cglib;$(Src);$(IncludePath);$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;GLPK_VS10_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>$(ProjectDir)..\glpk_4_55.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;GLPK_VS10_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>$(SolutionDir)glpk_4_55.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;GLPK_VS10_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>$(ProjectDir)..\glpk_4_55.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug64|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;GLPK_VS10_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>$(ProjectDir)..\glpk_4_55.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;GLPK_VS10_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>$(ProjectDir)..\glpk_4_55.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release64|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;GLPK_VS10_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>$(SolutionDir)glpk_4_55.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;GLPK_VS10_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>$(ProjectDir)..\glpk_4_55.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;GLPK_VS10_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>$(ProjectDir)..\glpk_4_55.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,690 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\amd">
+      <UniqueIdentifier>{c9d7fe13-2dac-49ba-b746-dcbca02f30fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\bflib">
+      <UniqueIdentifier>{a01a62f9-3f93-4e81-9612-cafd2107807c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\cglib">
+      <UniqueIdentifier>{685547af-4f41-4d73-ac80-626fac2564a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\colamd">
+      <UniqueIdentifier>{47bc2f4f-0101-419e-83c1-afd9f9a3f58c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\env">
+      <UniqueIdentifier>{7c408992-4deb-470b-9a42-ba6ce22992d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\minisat">
+      <UniqueIdentifier>{03845743-6f14-44cb-a320-5fac9455149b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\misc">
+      <UniqueIdentifier>{85a19507-0b4d-4d80-86cd-e3cb38c95e58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\proxy">
+      <UniqueIdentifier>{4d7781d8-f1b1-4148-b1cd-b80dd80baf1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\zlib">
+      <UniqueIdentifier>{eb1f28b7-97f7-470e-a838-bbbf29df31d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\glp">
+      <UniqueIdentifier>{b75e49ac-7e29-4fef-a6d4-dd173d58b797}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\lux.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\avl.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfd.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bfx.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi01.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi02.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi03.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi04.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi05.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi06.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi07.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi08.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi09.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi10.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi11.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi12.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi13.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi14.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi15.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi16.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi17.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi18.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi19.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi20.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpapi21.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpcpx.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpdmx.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpgmp.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glphbm.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpini01.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpini02.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpios01.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpios02.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpios03.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpios04.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpios05.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpios06.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpios07.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpios08.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpios09.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpios10.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpios11.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpios12.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpipm.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpmat.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpmpl01.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpmpl02.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpmpl03.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpmpl04.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpmpl05.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpmpl06.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpmps.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpnet03.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpnet04.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpnet05.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpnpp01.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpnpp02.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpnpp03.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpnpp04.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpnpp05.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpnpp06.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glprgr.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpscl.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpsdf.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpspm.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpspx01.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpspx02.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpsql.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpssx01.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glpssx02.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\glptsp.c">
+      <Filter>Source Files\glp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\amd\amd_valid.c">
+      <Filter>Source Files\amd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\amd\amd_1.c">
+      <Filter>Source Files\amd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\amd\amd_2.c">
+      <Filter>Source Files\amd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\amd\amd_aat.c">
+      <Filter>Source Files\amd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\amd\amd_control.c">
+      <Filter>Source Files\amd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\amd\amd_defaults.c">
+      <Filter>Source Files\amd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\amd\amd_dump.c">
+      <Filter>Source Files\amd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\amd\amd_info.c">
+      <Filter>Source Files\amd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\amd\amd_order.c">
+      <Filter>Source Files\amd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\amd\amd_post_tree.c">
+      <Filter>Source Files\amd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\amd\amd_postorder.c">
+      <Filter>Source Files\amd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\amd\amd_preprocess.c">
+      <Filter>Source Files\amd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bflib\sva.c">
+      <Filter>Source Files\bflib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bflib\btf.c">
+      <Filter>Source Files\bflib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bflib\btfint.c">
+      <Filter>Source Files\bflib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bflib\fhv.c">
+      <Filter>Source Files\bflib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bflib\fhvint.c">
+      <Filter>Source Files\bflib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bflib\ifu.c">
+      <Filter>Source Files\bflib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bflib\luf.c">
+      <Filter>Source Files\bflib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bflib\lufint.c">
+      <Filter>Source Files\bflib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bflib\scf.c">
+      <Filter>Source Files\bflib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bflib\scfint.c">
+      <Filter>Source Files\bflib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bflib\sgf.c">
+      <Filter>Source Files\bflib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cglib\cfg1.c">
+      <Filter>Source Files\cglib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cglib\cfg.c">
+      <Filter>Source Files\cglib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\colamd\colamd.c">
+      <Filter>Source Files\colamd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\env\tls.c">
+      <Filter>Source Files\env</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\env\alloc.c">
+      <Filter>Source Files\env</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\env\dlsup.c">
+      <Filter>Source Files\env</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\env\env.c">
+      <Filter>Source Files\env</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\env\error.c">
+      <Filter>Source Files\env</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\env\stdout.c">
+      <Filter>Source Files\env</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\env\stream.c">
+      <Filter>Source Files\env</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\env\time.c">
+      <Filter>Source Files\env</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\minisat\minisat.c">
+      <Filter>Source Files\minisat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\wclique1.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\bignum.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\dmp.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\ffalg.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\fp2rat.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\gcd.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\jd.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\keller.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\mc13d.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\mc21a.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\okalg.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\qmd.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\relax4.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\rng.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\rng1.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\round2n.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\str2int.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\str2num.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\strspx.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\strtrim.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\triang.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\misc\wclique.c">
+      <Filter>Source Files\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\proxy\proxy1.c">
+      <Filter>Source Files\proxy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\proxy\main.c">
+      <Filter>Source Files\proxy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\proxy\proxy.c">
+      <Filter>Source Files\proxy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\zutil.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\adler32.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\compress.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\crc32.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\deflate.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\gzclose.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\gzlib.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\gzread.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\gzwrite.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\inffast.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\inflate.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\inftrees.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\trees.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\uncompr.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\zlib\zio.c">
+      <Filter>Source Files\zlib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\zlib\crc32.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\deflate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\gzguts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\inffast.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\inffixed.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\inflate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\inftrees.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\trees.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\zconf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\zio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\zlib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\zlib\zutil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\avl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\draft.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\glpgmp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\glphbm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\glpios.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\glpipm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\glpk.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\glpmat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\glpmpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\glpnpp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\glprgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\glpsdf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\glpspm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\glpspx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\glpsql.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\glpssx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\glptsp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\lux.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\prob.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\amd\amd_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\amd\amd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bflib\sva.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bflib\btf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bflib\btfint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bflib\fhv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bflib\fhvint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bflib\ifu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bflib\luf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bflib\lufint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bflib\scf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bflib\scfint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bflib\sgf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\cglib\cfg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\colamd\colamd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\env\stdc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\env\env.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\minisat\minisat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\misc\wclique1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\misc\bignum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\misc\dmp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\misc\ffalg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\misc\jd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\misc\keller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\misc\mc13d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\misc\mc21a.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\misc\misc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\misc\okalg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\misc\qmd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\misc\relax4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\misc\rng.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\misc\triang.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\misc\wclique.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\proxy\proxy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
