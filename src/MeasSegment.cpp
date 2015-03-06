@@ -52,6 +52,7 @@ MeasSegment::MeasSegment(MeasNetwork * parent, int segID)
 , _logstream(_parent->_logstream)
 , _indicesInitialised(false)
 , _principle(-1)
+, _maxCorrection(999)
 { 
 }
 
@@ -62,7 +63,8 @@ MeasSegment::MeasSegment(MeasNetwork * parent, int segID, int principleMeasureme
 , _parent(parent)
 , _logstream(_parent->_logstream)
 , _indicesInitialised(false)
-, _principle(principleMeasurement) 
+, _principle(principleMeasurement)
+, _maxCorrection(999) 
 { 
 }
 /*
@@ -171,6 +173,9 @@ std::pair<double, double> MeasSegment::initLinearisedEstimatorIndices() {
 	_absSumJacobian     = 0;
 	_absSumObserved     = 0;
 
+	initParameterValues();
+	initMeasurementOminusC();
+
 	// for all measurements in segment
 	for (std::map<int, DnaMeasurement* >::iterator mit = _measurements.begin(); mit != _measurements.end(); mit++) {
 		// for all rows in measurement
@@ -210,6 +215,8 @@ MeasNormalEquations MeasSegment::getMeasurementRow(DnaMeasurement * meas) {
 	std::vector< std::pair< int, double > > jrow(100);
 	jrow.clear();
 
+	meas->ComputeOminusC(_segID);
+
 	int rows = meas->getRowCount(_segID);
 	int cols = meas->getColCount(_segID);
     *_logstream<<"For all rows in measurement "<< meas->measID << "..." <<std::endl;
@@ -229,7 +236,9 @@ MeasNormalEquations MeasSegment::getMeasurementRow(DnaMeasurement * meas) {
     			throw std::domain_error("Parameter group does not yet have indices.");
 			}
 			// with pindices we set the row map jrow IF THE PG IS NOT FIXED
+			/* REMOVING FIXEDFORSEGMENT
 			if (!(*pit)->fixedForSegment(_segID)) {
+			*/
     			*_logstream<<"For all columns in parameter group "<< (*pit)->name << "..." <<std::endl;
 				for (int pc = 0; pc < pindices.size(); pc++) {
     				*_logstream<<"Get partial row "<< r << " col " << c << " paramcol " << pc << "... ";
@@ -243,7 +252,7 @@ MeasNormalEquations MeasSegment::getMeasurementRow(DnaMeasurement * meas) {
 					}
     				*_logstream<<"End for (3)" <<std::endl;
 				}
-			}
+			//}
     		*_logstream<<"End for (2)" <<std::endl;
 		}
 		// set the rhs
@@ -288,6 +297,9 @@ int MeasSegment::formulateJacobian() {
 	for (std::map<int, DnaMeasurement* >::iterator mit = _measurements.begin(); mit != _measurements.end(); mit++) {
 		// for all rows in measurement
 		DnaMeasurement * meas = mit->second;
+
+		meas->ComputeOminusC(_segID);
+
 		int rows = meas->getRowCount(_segID);
 		int cols = meas->getColCount(_segID);
     	*_logstream<<"For all rows in measurement "<< meas->measID << "..." <<std::endl;
@@ -300,10 +312,13 @@ int MeasSegment::formulateJacobian() {
     		*_logstream<<"For all parameter groups in measurement "<< meas->measID << " row "<< r <<"..." <<std::endl;
 			for (vector<ParameterGroup*>::iterator pit = meas->_param.begin(); pit != meas->_param.end(); pit++) {
 				vector< int > pindices;
+				/* REMOVING FIXEDFORSEGMENT
 				if ((*pit)->fixedForSegment(_segID)) {
 					// this parameter is fixed.
 					*_logstream<<"Parameter group "<< (*pit)->name << " is fixed to apriori values." << std::endl;
-				} else if ((*pit)->hasIndicesForSegment(_segID)) {
+				} else 
+				*/
+				if ((*pit)->hasIndicesForSegment(_segID)) {
     				*_logstream<<"Parameter group "<< (*pit)->name << " has indices. " <<std::endl;
 					pindices = (*pit)->getIndicesForSegment(_segID);
 				} else {
@@ -314,7 +329,9 @@ int MeasSegment::formulateJacobian() {
 					(*pit)->setIndicesForSegment(_segID,pindices);
 				}
 				// with pindices we set the row map jrow IF THE PG IS NOT FIXED
+				/* REMOVING FIXEDFORSEGMENT
 				if (!(*pit)->fixedForSegment(_segID)) {
+				*/
     				*_logstream<<"For all columns in parameter group "<< (*pit)->name << "..." <<std::endl;
 					for (int pc = 0; pc < pindices.size(); pc++) {
     					*_logstream<<"Get partial row "<< r << " col " << c << " paramcol " << pc << "... ";
@@ -328,7 +345,7 @@ int MeasSegment::formulateJacobian() {
 						}
     					*_logstream<<"End for (3)" <<std::endl;
 					}
-				}
+				//}
     			*_logstream<<"End for (2)" <<std::endl;
 			}
 			_jacobian.push_back(jrow);
@@ -375,4 +392,42 @@ void MeasSegment::clearJacobian()
 {
 	vector< vector< pair<int,double> > > myvec(0);
 	_jacobian.swap(myvec);
+}
+
+void MeasSegment::setCorrections(std::vector<double>& X)
+{
+	_maxCorrection = 0;
+	// set parameters
+	for (map<int,ParameterGroup*>::iterator pit = _parametergroups.begin(); pit != _parametergroups.end(); pit++) {
+		ParameterGroup * param = pit->second;
+		if (!param->hasIndicesForSegment(_segID)) throw domain_error("Malformed parametergroup");
+		vector< int > indices = param->getIndicesForSegment(_segID);
+		vector< double > values = param->getValuesForSegment(_segID);
+		// Calculate the value from the correction and the previous values
+		for (int i=0;i<indices.size();i++) {
+			values[i] += X[indices[i]];
+			_maxCorrection = (_maxCorrection < X[indices[i]]) ? X[indices[i]]:_maxCorrection;
+		}
+		param->setValuesForSegment(_segID, values);
+	}
+	for (map<int,DnaMeasurement*>::iterator mit = _measurements.begin(); mit != _measurements.end(); mit++) {
+		mit->second->calculateForSegment(_segID);
+		//Residual * res = mit->second->getResidualForSegment(_segID);
+	}
+}
+
+void MeasSegment::initParameterValues()
+{
+	// set parameters
+	for (map<int,ParameterGroup*>::iterator pit = _parametergroups.begin(); pit != _parametergroups.end(); pit++) {
+		ParameterGroup * param = pit->second;
+		param->setValuesForSegment(_segID, param->getAprioriValues());
+	}
+}
+
+void MeasSegment::initMeasurementOminusC()
+{
+	for (map<int,DnaMeasurement*>::iterator mit = _measurements.begin(); mit != _measurements.end(); mit++) {
+		mit->second->ComputeOminusC(_segID);
+	}
 }

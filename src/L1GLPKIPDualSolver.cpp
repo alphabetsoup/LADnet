@@ -396,13 +396,9 @@ int L1GLPKIPDualSolver::run() {
     *_logstream << "Jacobian Scale = " << jacobianScale << endl
 	            << "Observed Scale = " << observedScale << endl
 	            << "Parameter Scale = " << parameterScale << endl;
-	/*
-	*_logstream << "X" << endl;
-	*_logstream << X << endl;
-	*_logstream << "E" << endl;
-	*_logstream << E << endl;
-	*/
-    WriteOutputToLog(X,E);
+
+	_seg->setCorrections(X);
+	//WriteOutputToLog(X,E);
 
     *_logstream << "Sum of absolute values" << endl
                 << z << endl;

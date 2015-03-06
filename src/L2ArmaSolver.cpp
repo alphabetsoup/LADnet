@@ -163,10 +163,12 @@ void L2ArmaSolver::WriteOutputToLog(arma::vec& X)
 	// set parameters
 	for (map<int,ParameterGroup*>::iterator pit = _seg->_parametergroups.begin(); pit != _seg->_parametergroups.end(); pit++) {
 		ParameterGroup * param = pit->second;
+		/* REMOVING FIXEDFORSEGMENT
 		if (param->fixedForSegment(_seg->_segID)) {
 			*_logstream << "Skipping assignment of values to parameter " << pit->first << " label="<< pit->second->name << endl; 
 			continue;
 		}
+		*/
 		if (!param->hasIndicesForSegment(_seg->_segID)) throw domain_error("Malformed parametergroup");
 		vector< int > indices = param->getIndicesForSegment(_seg->_segID);
 		vector< double > values;
@@ -215,7 +217,10 @@ int L2ArmaSolver::run() {
 	            << "Observed Scale = " << observedScale << endl
 	            << "Parameter Scale = " << parameterScale << endl;
 
-    WriteOutputToLog(X);
+	//WriteOutputToLog(X);
+
+	std::vector<double> X_vector = conv_to< std::vector<double> >::from(X);
+	_seg->setCorrections(X_vector);
 
 	A.clear();
 	b.clear();

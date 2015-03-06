@@ -76,11 +76,12 @@ class ParameterGroup
     virtual std::vector< std::string > getLabels() = 0;
 
 	virtual int size() = 0; // how many parameters are in this group? e.g. a cartesian coordinate has 3 parameters.
-
+	/*
     bool fixedForSegment(int segID);
     void fixForSegment(int segID);
     void fixForAllSegments();
-    virtual bool isConstrained() = 0;
+    */
+	virtual bool isConstrained() = 0;
     virtual bool isConstrained(int) = 0;
 
 };

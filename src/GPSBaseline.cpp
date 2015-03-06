@@ -255,19 +255,6 @@ int GPSBaseline::typesToString(vector< string >& t) {
 }
 
 /*
- * what do I do here?
- * Need to get
- * a) The indices of X in the results of the adjustment i.e. the parameters that DETERMINE this measurement
- * b) 
-
-int GPSBaseline::setCalculated(int segID, ComputedObservable &x) {
-	X[segID] = x;
-
-    return 1;
-}
- */
-
-/*
  * calculateForSegment()
  * Usage: Called once adjustment has been run for segment segID
  * Calculates the baseline from adjusted parameters.
@@ -295,7 +282,10 @@ int GPSBaseline::calculateForSegment(int segID) {
 
 int GPSBaseline::getColCount(int segID) { 
 	int numUnfixed = 0;
-	for (vector< ParameterGroup* >::iterator pit = _param.begin(); pit != _param.end(); pit++) if (!(*pit)->fixedForSegment(segID)) numUnfixed++;
+	for (vector< ParameterGroup* >::iterator pit = _param.begin(); pit != _param.end(); pit++) 
+		/* REMOVING FIXEDFORSEGMENT
+		if (!(*pit)->fixedForSegment(segID))*/
+		numUnfixed++;
 	return getRowCount(segID) * numUnfixed; 
 }
 int GPSBaseline::getRowCount(int segID) { 
@@ -319,10 +309,12 @@ double GPSBaseline::getPartial(int row, int column, int segID) {
 	                         ) )->str());
 		// if not fixed, check whether this is the param group we are looking for
 		// IT SHOULD BE NOTED that this assumes if a param group is FIXED, it IS NOT counted in the column count for this segment jacobian
+		/* REMOVING FIXEDFORSEGMENT
 		if (!(*pit)->fixedForSegment(segID)) {
+		*/
 			if (column < (*pit)->size()) break;
 			column -= (*pit)->size();
-		}
+		//}
 		pit++;
 		paramno++;
 	}
@@ -353,8 +345,10 @@ double GPSBaseline::getPartial(int row, int column, int segID) {
 	}
 }
 
+// No longer "observed". This calculates the difference between observed and computed.
 double GPSBaseline::getObserved(int row, int segID) {
 	// Assumption a fixed parameter group encompasses whole group
+	/* REMOVING FIXEDFORSEGMENT
 	double fixedOffset[] = {0, 0, 0};
     int paramno = 0;
 	for (vector<ParameterGroup*>::iterator pit = _param.begin(); pit != _param.end(); pit++) {
@@ -365,10 +359,17 @@ double GPSBaseline::getObserved(int row, int segID) {
 		}
 		paramno++;
 	}
-
+	*/
 	
-	double c[] = {0,0,0}; // FIXME 3 components assumed
-	for (int i=0; i<3; i++) c[i] = _components[i] - fixedOffset[i];
+	// TODO move the below to ComputeOminusC()
+	double c[] = {0,0,0}; //  3 components assumed
+
+	vector<ParameterGroup*>::iterator first = _param.begin();
+	vector<ParameterGroup*>::iterator second = first++;
+	vector<double> firstvals = (*first)->getValuesForSegment(segID);
+	vector<double> secondvals = (*second)->getValuesForSegment(segID);
+
+	for (int i=0; i<3; i++) c[i] = _components[i] + (secondvals[i] - firstvals[i]) /*- fixedOffset[i]*/;
 #if defined L1_WEIGHT_SCALED_FULL
 		// multiply the upper triangle cholesky decomposed VCV with the observed components.
 		switch (row) {
@@ -384,6 +385,8 @@ double GPSBaseline::getObserved(int row, int segID) {
 			case 2:
          		return 
 					c[2] * CholDSUpperTri(2,2); 
+			default:
+				throw std::domain_error("GPSBaseline::getObserved()::row can only be an integer in [0,2]");
 		}
 #elif defined L1_WEIGHT_CHOLESKY
         return c[row] * CholDSUpperTri(row,row);
@@ -392,6 +395,9 @@ double GPSBaseline::getObserved(int row, int segID) {
 #endif
 }
 
+void GPSBaseline::ComputeOminusC(int segID)
+{ // do in getObserved()
+}
 
 int GPSBaseline::getBasePoint(double Xc[3]) {
 	// assert that we have two parameters

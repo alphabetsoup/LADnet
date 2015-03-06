@@ -77,9 +77,11 @@ const char * colours[16] = {"00ffff","00eeff","00ddff","00ccff","00bbff","00aaff
 template<class SOLVER>
 void runSolver(MeasSegment * seg, int segID, std::ostream& logs)
 {
-	SOLVER * l1 = new SOLVER(seg, segID, logs);
-    l1->run();
-	delete l1;
+	while (seg->_maxCorrection > 0.001) {
+		SOLVER * l1 = new SOLVER(seg, segID, logs);
+	    l1->run();
+		delete l1;
+	}
 }
 
 int writeKMLHeader(ostream * kmlfile)

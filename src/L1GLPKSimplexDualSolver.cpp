@@ -114,7 +114,9 @@ int L1GLPKSimplexDualSolver::run() {
 	*_logstream << "E" << endl;
 	*_logstream << E << endl;
 
-    WriteOutputToLog(X,E);
+	std::vector<double> X_vector = conv_to< std::vector<double> >::from(X);
+	_seg->setCorrections(X_vector);
+    //WriteOutputToLog(X,E);
 
     *_logstream << "Sum of absolute values" << endl
                 << z << endl;

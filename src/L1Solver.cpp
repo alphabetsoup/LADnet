@@ -52,7 +52,6 @@ L1Solver::L1Solver(MeasSegment * seg, int segID, ostream& logs)
     _net = _seg->_parent;
     _logstream = &logs; // TODO make this the logstream of the segment
 	*_logstream << "Initialised solver" << std::endl;
-    // TODO move A and b memory alloc here
 }
 
 L1Solver::~L1Solver()
@@ -66,10 +65,12 @@ void L1Solver::WriteOutputToLog(vec &X,vec &E)
 	// set parameters
 	for (map<int,ParameterGroup*>::iterator pit = _seg->_parametergroups.begin(); pit != _seg->_parametergroups.end(); pit++) {
 		ParameterGroup * param = pit->second;
+		/* REMOVING FIXEDFORSEGMENT
 		if (param->fixedForSegment(_seg->_segID)) {
 			*_logstream << "Skipping assignment of values to parameter " << pit->first << " label="<< pit->second->name << endl; 
 			continue;
 		}
+		*/
 		if (!param->hasIndicesForSegment(_seg->_segID)) throw domain_error("Malformed parametergroup");
 		vector< int > indices = param->getIndicesForSegment(_seg->_segID);
 		vector< double > values;
@@ -107,10 +108,12 @@ void L1Solver::WriteOutputToLog(std::vector<double>& X,std::vector<double>& E)
 	// set parameters
 	for (map<int,ParameterGroup*>::iterator pit = _seg->_parametergroups.begin(); pit != _seg->_parametergroups.end(); pit++) {
 		ParameterGroup * param = pit->second;
+		/* REMOVING FIXEDFORSEGMENT
 		if (param->fixedForSegment(_seg->_segID)) {
 			*_logstream << "Skipping assignment of values to parameter " << pit->first << " label="<< pit->second->name << endl; 
 			continue;
 		}
+		*/
 		if (!param->hasIndicesForSegment(_seg->_segID)) throw domain_error("Malformed parametergroup");
 		vector< int > indices = param->getIndicesForSegment(_seg->_segID);
 		vector< double > values;

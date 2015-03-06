@@ -151,13 +151,24 @@ void FPoint::scaleVCV(double a, double e) {
 
 void   FPoint::CholeskyDecomposeSVCV() {
 	_chol_decom_vcv = chol(_sVCVi);
-	// set observations vector weighted by chol vcv
-	// no need to init this mat. _chol_components = mat(TotalSize*3);
 
+}
+
+void   FPoint::ComputeOminusC(int segID) {
+	// set observations vector weighted by chol vcv
+	assert(_param.size() == _components.size());
+
+	int stationID = 0;
 	vec rawcomp(TotalSize*3);
-	for (int i=0;i<_components.size();i++)
-		for (int j=0;j<3;j++)
-			rawcomp(i*3+j) = _components[i][j];
+	for(
+		vector<ParameterGroup*>::iterator pit = _param.begin();
+		pit != _param.end();
+		pit++)
+	{
+		vector< double > p = (*pit)->getValuesForSegment(segID);
+		for (int i=0;i<3;i++) rawcomp(stationID*3+i) = _components[stationID][i]-p[i]; // O - C
+		stationID++;
+	}
 
 	_chol_components = _chol_decom_vcv * rawcomp;
 }
@@ -335,7 +346,10 @@ int FPoint::calculateForSegment(int segID) {
 int FPoint::getColCount(int segID) { 
     // FIXME
 	int numUnfixed = 0;
-	for (vector< ParameterGroup* >::iterator pit = _param.begin(); pit != _param.end(); pit++) if (!(*pit)->fixedForSegment(segID)) numUnfixed++;
+	for (vector< ParameterGroup* >::iterator pit = _param.begin(); pit != _param.end(); pit++) 
+		/* /* REMOVING FIXEDFORSEGMENT
+		if (!(*pit)->fixedForSegment(segID)) */
+		numUnfixed++;
 	return 3 * numUnfixed; 
 }
 int FPoint::getRowCount(int segID) { 
@@ -366,11 +380,12 @@ double FPoint::getPartial(int row, int column, int segID) {
 	                         ) )->str());
 		// if not fixed, check whether this is the param group we are looking for
 		// IT SHOULD BE NOTED that this assumes if a param group is FIXED, it IS NOT counted in the column count for this segment jacobian
-		if (!(*pit)->fixedForSegment(segID)) {
+		/* REMOVING FIXEDFORSEGMENT
+		if (!(*pit)->fixedForSegment(segID)) {*/
 			if (rowc < (*pit)->size()) break;
 			rowc -= (*pit)->size();
-		}
-		else fixedrowparams++;
+		/* REMOVING FIXEDFORSEGMENT}
+		else fixedrowparams++;*/
 		pit++;
 	}
 
@@ -382,11 +397,12 @@ double FPoint::getPartial(int row, int column, int segID) {
 	                         ) )->str());
 		// if not fixed, check whether this is the param group we are looking for
 		// IT SHOULD BE NOTED that this assumes if a param group is FIXED, it IS NOT counted in the column count for this segment jacobian
-		if (!(*pit)->fixedForSegment(segID)) {
+		/* REMOVING FIXEDFORSEGMENT
+		if (!(*pit)->fixedForSegment(segID)) {*/
 			if (columnc < (*pit)->size()) break;
 			columnc -= (*pit)->size();
-		}
-		else fixedcolparams++;
+		/* REMOVING FIXEDFORSEGMENT}
+		else fixedcolparams++;*/
 		pit++;
 	}
 
@@ -429,57 +445,17 @@ double FPoint::getObserved(int row, int segID) {
 	                         ) )->str());
 		// if not fixed, check whether this is the param group we are looking for
 		// IT SHOULD BE NOTED that this assumes if a param group is FIXED, it IS NOT counted in the column count for this segment jacobian
-		if (!(*pit)->fixedForSegment(segID)) {
+		/* REMOVING FIXEDFORSEGMENT
+		if (!(*pit)->fixedForSegment(segID)) {*/
 			if (rowc < (*pit)->size()) break;
 			rowc -= (*pit)->size();
-		}
-		else fixedrowparams++;
+		/* REMOVING FIXEDFORSEGMENT}*/
+		//else fixedrowparams++;
 		pit++;
 	}
 	return _chol_components(row + fixedrowparams*3);
 }
-    // FIXME
-	/*
-	// Assumption a fixed parameter group encompasses whole group
-	double fixedOffset[] = {0, 0, 0};
-    int paramno = 0;
-	for (vector<ParameterGroup*>::iterator pit = _param.begin(); pit != _param.end(); pit++) {
-		if ((*pit)->fixedForSegment(segID)) {
-			int sign = (paramno == 0) ? -1 : 1; // FIXME assumes two parameter groups.
-			vector< double > pvals = (*pit)->getAprioriValues();
-			for(int i=0;i<3;i++) fixedOffset[i] += sign * pvals[i]; // FIXME does not check size of params vector, assumes 3.
-		}
-		paramno++;
-	}
-
-	
-	double c[] = {0,0,0}; // FIXME 3 components assumed
-	for (int i=0; i<3; i++) c[i] = _components[i] - fixedOffset[i];
-#if defined L1_WEIGHT_SCALED_FULL
-		// multiply the upper triangle cholesky decomposed VCV with the observed components.
-		switch (row) {
-			case 0:
-         		return 
-					c[0] * CholDSUpperTri(0,0) + 
-					c[1] * CholDSUpperTri(0,1) + 
-					c[2] * CholDSUpperTri(0,2); 
-			case 1:
-         		return 
-					c[1] * CholDSUpperTri(1,1) + 
-					c[2] * CholDSUpperTri(1,2); 
-			case 2:
-         		return 
-					c[2] * CholDSUpperTri(2,2); 
-		}
-#elif defined L1_WEIGHT_CHOLESKY
-        return c[row] * CholDSUpperTri(row,row);
-#else
-		return c[row];
-#endif
-}
-		*/
-
- 
+    
 
 void FPoint::toKMLElement(ostream* kmlfile, int segID, bool principle, KMLSpec * spec) {
 /*

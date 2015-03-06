@@ -87,6 +87,7 @@ class MeasSegment {
 	std::map<int, ParameterGroup* >         _parametercolumns;
 	double _absSumJacobian;
 	double _absSumObserved;
+	double _maxCorrection;
 	int _numJacobianColumns;
 	int _numJacobianRows;
 	bool _indicesInitialised;
@@ -94,6 +95,10 @@ class MeasSegment {
 	std::pair<double, double> initLinearisedEstimatorIndices();
 	MeasNormalEquations getMeasurementRow(unsigned long measID);
 	MeasNormalEquations getMeasurementRow(DnaMeasurement * meas);
+
+	void setCorrections(std::vector<double>& X);
+	void initParameterValues();
+	void initMeasurementOminusC();
 
     // Jacobian Formulation
 	int formulateJacobian();

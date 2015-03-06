@@ -71,24 +71,29 @@ int ParameterGroup::setValuesForSegment(int segID, vector< double > values) {
 
 vector< double > ParameterGroup::getValuesForSegment(int segID) {
 	assert(_values.find(segID) != _values.end());
-	return ((fixedForSegment(segID)) ? _apriori_values : _values[segID]);
+	return /* REMOVING FIXEDFORSEGMENT ((fixedForSegment(segID)) ? _apriori_values :*/ _values[segID];
 }
 
 int ParameterGroup::setIndicesForSegment(int segID, vector< int > indices) {
+	/* REMOVING FIXEDFORSEGMENT
 	if (fixedForSegment(segID)) throw domain_error("Cannot set indicies for this parameter for segment because the parameter is fixed.");
+	*/
     _index[segID] = indices;
+	return 1;
 }
 
 // FIXME this probably doesn't work
 bool ParameterGroup::hasIndicesForSegment(int segID) {
+	/* REMOVING FIXEDFORSEGMENT
 	if (fixedForSegment(segID)) throw domain_error("Parameter cannot have indices for segment because it is fixed");
+	*/
 	return (_index.find(segID) != _index.end());
 }
 
 vector< int > ParameterGroup::getIndicesForSegment(int segID) {
 	return _index[segID];
 }
-
+/*
 bool ParameterGroup::fixedForSegment(int segID) {
 	if (_fixedAllSegs) return true;
 	if (_fixed.find(segID) == _fixed.end()) return false; // _fixed[segID] = false;
@@ -101,3 +106,4 @@ void ParameterGroup::fixForSegment(int segID) {
 void ParameterGroup::fixForAllSegments() {
     _fixedAllSegs = true;
 }
+*/

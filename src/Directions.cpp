@@ -154,7 +154,8 @@ int Directions::getColCount(int segID) {
 	return 0; // fixme
 
 	int numUnfixed = 0;
-	for (vector< ParameterGroup* >::iterator pit = _param.begin(); pit != _param.end(); pit++) if (!(*pit)->fixedForSegment(segID)) numUnfixed++;
+	for (vector< ParameterGroup* >::iterator pit = _param.begin(); pit != _param.end(); pit++) 
+		/*if (!(*pit)->fixedForSegment(segID))*/ numUnfixed++;
 	return getRowCount(segID) * numUnfixed; 
 }
 int Directions::getRowCount(int segID) { 
@@ -178,10 +179,10 @@ double Directions::getPartial(int row, int column, int segID) {
 	                         ) )->str());
 		// if not fixed, check whether this is the param group we are looking for
 		// IT SHOULD BE NOTED that this assumes if a param group is FIXED, it IS NOT counted in the column count for this segment jacobian
-		if (!(*pit)->fixedForSegment(segID)) {
+		//if (!(*pit)->fixedForSegment(segID)) {
 			if (column < (*pit)->size()) break;
 			column -= (*pit)->size();
-		}
+		//}
 		pit++;
 		paramno++;
 	}
@@ -211,11 +212,13 @@ double Directions::getObserved(int row, int segID) {
 	double fixedOffset[] = {0, 0, 0};
     int paramno = 0;
 	for (vector<ParameterGroup*>::iterator pit = _param.begin(); pit != _param.end(); pit++) {
+		/* REMOVING FIXEDFORSEGMENT
 		if ((*pit)->fixedForSegment(segID)) {
 			int sign = (paramno == 0) ? -1 : 1; // FIXME assumes two parameter groups.
 			vector< double > pvals = (*pit)->getAprioriValues();
 			for(int i=0;i<3;i++) fixedOffset[i] += sign * pvals[i]; // FIXME does not check size of params vector, assumes 3.
 		}
+		*/
 		paramno++;
 	}
 
@@ -225,6 +228,9 @@ double Directions::getObserved(int row, int segID) {
 
 	return 0; // FIXME
 }
+
+void Directions::ComputeOminusC(int segID)
+{ }
 
 
 int Directions::getBasePoint(double Xc[3]) {

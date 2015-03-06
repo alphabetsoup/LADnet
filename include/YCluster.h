@@ -67,6 +67,7 @@ class YCluster : public DnaMeasurement {
 	void printCholDecomSVCV(std::ostream *_logstream);
 	void   scaleVCV(double a, double e);
     void   CholeskyDecomposeSVCV();
+	void   ComputeOminusC(int segID);
     void   checkCholSVCV(std::ostream *);
     int calculateForSegment(int segID);
 	int getColCount(int segID);

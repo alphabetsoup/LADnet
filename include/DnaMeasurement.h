@@ -92,6 +92,7 @@ class DnaMeasurement
 
 	virtual void   scaleVCV(double a, double e) = 0;
     virtual void   CholeskyDecomposeSVCV() = 0;
+	virtual void   ComputeOminusC(int segID) = 0;
     virtual void   checkCholSVCV(std::ostream *) = 0;
 
 

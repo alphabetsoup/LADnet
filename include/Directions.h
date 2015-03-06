@@ -83,6 +83,7 @@ class Directions : public DnaMeasurement {
 	void   scaleVCV(double a, double e);
     //void   scaleVCVat(double phi, double lambda, double h, double a, double e);
     void   CholeskyDecomposeSVCV();
+	void   ComputeOminusC(int segID);
     void   checkCholSVCV(std::ostream *);
 
     std::string getLabel();
