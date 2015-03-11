@@ -84,6 +84,7 @@ class FPoint : public DnaMeasurement {
     std::string getStnLabel(int); // get name for point in cluster given point ID.
 	void setPoint(int,Station*,double,double,double);
 	void addPoint(Station*);
+	void reInitAprioriValuesForSegment(int segID);
     int valuesToString(int, std::vector< std::string >&);
     static int namesToString(std::vector< std::string >&);
     static int typesToString(std::vector< std::string >&);
@@ -108,6 +109,8 @@ class FPoint : public DnaMeasurement {
 
 	// find parameter in list
 	bool hasParameter(ParameterGroup* );
+
+	void prepareForSegment(int segID);
 };
 
 #define PId3 1.04719755119659774615214461093

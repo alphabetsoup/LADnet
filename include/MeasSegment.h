@@ -88,6 +88,7 @@ class MeasSegment {
 	double _absSumJacobian;
 	double _absSumObserved;
 	double _maxCorrection;
+	ParameterGroup * _maxCorrectionPG;
 	int _numJacobianColumns;
 	int _numJacobianRows;
 	bool _indicesInitialised;

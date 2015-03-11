@@ -156,3 +156,13 @@ FakesAssemblies/
 *.plg
 # Visual Studio 6 workspace options file
 *.opt
+# output files from LADnet
+*.sgf
+*.log
+*.prj
+*.sbn
+*.shp
+*.sbx
+*.adj
+*.shx
+*.dbf

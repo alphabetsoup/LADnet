@@ -61,7 +61,7 @@
 #include "YClusterResidual.h"
 #include "FPointResidual.h"
 
-#define PROG_VERSION "0.2.1501160a "
+#define PROG_VERSION "0.2.1503110a "
 
 using namespace std;
 using namespace arma;
@@ -77,10 +77,24 @@ const char * colours[16] = {"00ffff","00eeff","00ddff","00ccff","00bbff","00aaff
 template<class SOLVER>
 void runSolver(MeasSegment * seg, int segID, std::ostream& logs)
 {
-	while (seg->_maxCorrection > 0.001) {
+	int iteration=0;
+	while (abs(seg->_maxCorrection) > 0.001) {
 		SOLVER * l1 = new SOLVER(seg, segID, logs);
 	    l1->run();
 		delete l1;
+
+		iteration++;
+		std::cout << "Maximum correction for iteration " << iteration << " is " << seg->_maxCorrection << std::endl;
+		logs      << "Maximum correction for iteration " << iteration << " is " << seg->_maxCorrection << std::endl;
+		if (seg->_maxCorrectionPG) {
+			std::cout << "Maximum correction parameter group " << seg->_maxCorrectionPG->_id << " " << seg->_maxCorrectionPG->name << std::endl;
+			logs      << "Maximum correction parameter group " << seg->_maxCorrectionPG->_id << " " << seg->_maxCorrectionPG->name << std::endl;
+			
+			vector<double> vals = seg->_maxCorrectionPG->getValuesForSegment(seg->_segID);
+			std::cout << "Maximum correction parameter group params: ";
+			for (vector<double>::iterator vit=vals.begin();vit!=vals.end();++vit) std::cout << *vit << ", ";
+			std::cout << std::endl;
+		}
 	}
 }
 
@@ -508,7 +522,7 @@ int main(int argc, const char** argv)
 
 
    if (write_log) {
-     outfile = new fstream((filename+".txt").c_str(), fstream::out);
+     outfile = new fstream((filename+".log").c_str(), fstream::out);
    } else {
 	 outfile = &cnull;
    }
@@ -552,7 +566,7 @@ int main(int argc, const char** argv)
                   std::cout << "Subnetworks created. Time elapsed: " << t->currentSeconds() << std::endl;
   
                   // write out segment files
-                  segfilename = filename+"_seg.txt";
+                  segfilename = filename+"_seg.sgf";
                   fstream * segfile = new fstream(segfilename.c_str(), fstream::out);
                   net->WriteSubnetsTo(segfile);
                   segfile->close();

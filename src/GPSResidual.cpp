@@ -150,19 +150,19 @@ int GPSResidual::namesToString(vector< string >& fn) {
     fn.push_back("StdResX");
     fn.push_back("StdResY");
     fn.push_back("StdResZ");
-    fn.push_back("MaxStdResXYZ");
-    fn.push_back("RMSStdRes");
-    fn.push_back("qee");
-    fn.push_back("qnn");
-    fn.push_back("quu");
-    fn.push_back("Res_e");
-    fn.push_back("Res_n");
-    fn.push_back("Res_u");
-    fn.push_back("StdRes_e");
-    fn.push_back("StdRes_n");
-    fn.push_back("StdRes_u");
-    fn.push_back("MaxStdRes_enu");
-    fn.push_back("RMSStdRes");
+    fn.push_back("Max_SR_XYZ");
+    fn.push_back("RMS_SR");
+    fn.push_back("qEE");
+    fn.push_back("qNN");
+    fn.push_back("qUU");
+    fn.push_back("ResE");
+    fn.push_back("ResN");
+    fn.push_back("ResU");
+    fn.push_back("StdResE");
+    fn.push_back("StdResN");
+    fn.push_back("StdResU");
+    fn.push_back("Max_SR_ENU");
+    fn.push_back("RMS_SR");
     return fn.size();
 }
 

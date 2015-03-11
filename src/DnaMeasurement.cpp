@@ -132,3 +132,7 @@ void DnaMeasurement::closeSHP(SHPHandle hSHP) {
 void DnaMeasurement::closeDBF(DBFHandle hDBF) {
     DBFClose( hDBF );
 }
+
+void DnaMeasurement::prepareForSegment(int segID) {
+	// do nothing here, but define this method anyway.
+}

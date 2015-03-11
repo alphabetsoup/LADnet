@@ -45,6 +45,7 @@ DnaMeasurement(id)
 	_full_raw_vcv = mat(3,3);
 	_sVCV = mat(3,3);
 	_sVCVi = mat(3,3);
+	this->Ignore = false;
 }
 
 FPoint::FPoint(int id, int size) :
@@ -263,6 +264,18 @@ void FPoint::addPoint(Station* s) {
 	TotalSize++;
 	_param.push_back(s);
 }
+
+void FPoint::reInitAprioriValuesForSegment(int segID) {
+	assert(_param.size() > 0);
+	for (int i=0;i<_param.size();++i) {
+		_components[TotalSize] =  _param[i]->getValuesForSegment(segID);
+	}
+}
+
+
+void FPoint::prepareForSegment(int segID) {
+	reInitAprioriValuesForSegment(segID);
+}
 	
 // Single station line
 	
@@ -276,9 +289,9 @@ int FPoint::namesToString(vector< string >& fn) {
    	fn.push_back("X");
    	fn.push_back("Y");
    	fn.push_back("Z");
-   	fn.push_back("SigmaXX");
-   	fn.push_back("SigmaYY");
-   	fn.push_back("SigmaZZ");
+   	fn.push_back("sXX");
+   	fn.push_back("sYY");
+   	fn.push_back("sZZ");
 	// don't print sigmas. We should really write a SINEX per measurement.
 
     return fn.size();

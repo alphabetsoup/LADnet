@@ -180,6 +180,8 @@ std::pair<double, double> MeasSegment::initLinearisedEstimatorIndices() {
 	for (std::map<int, DnaMeasurement* >::iterator mit = _measurements.begin(); mit != _measurements.end(); mit++) {
 		// for all rows in measurement
 		DnaMeasurement * meas = mit->second;
+
+		meas->prepareForSegment(_segID);
 		int rows = meas->getRowCount(_segID);
 		int cols = meas->getColCount(_segID);
     	for (int r = 0; r< rows; r++) {
@@ -397,6 +399,7 @@ void MeasSegment::clearJacobian()
 void MeasSegment::setCorrections(std::vector<double>& X)
 {
 	_maxCorrection = 0;
+	_maxCorrectionPG = NULL;
 	// set parameters
 	for (map<int,ParameterGroup*>::iterator pit = _parametergroups.begin(); pit != _parametergroups.end(); pit++) {
 		ParameterGroup * param = pit->second;
@@ -406,7 +409,11 @@ void MeasSegment::setCorrections(std::vector<double>& X)
 		// Calculate the value from the correction and the previous values
 		for (int i=0;i<indices.size();i++) {
 			values[i] += X[indices[i]];
-			_maxCorrection = (_maxCorrection < X[indices[i]]) ? X[indices[i]]:_maxCorrection;
+			//_maxCorrection = (_maxCorrection < abs(X[indices[i]])) ? abs(X[indices[i]]):_maxCorrection;
+			if (abs(_maxCorrection) < abs(X[indices[i]])) {
+				_maxCorrection = X[indices[i]];
+				_maxCorrectionPG = param;
+			}
 		}
 		param->setValuesForSegment(_segID, values);
 	}

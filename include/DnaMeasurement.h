@@ -126,6 +126,8 @@ class DnaMeasurement
     virtual void toShp(DBFHandle hDBF, SHPHandle hSHP, int segID) = 0;
     virtual DBFHandle createDBF(std::string)=0;
     virtual SHPHandle createSHP(std::string)=0;
+
+	void prepareForSegment(int segID);
 protected:
     arma::mat scale3x3VCVat(double[6],double,double,double,double,double phi, double lambda, double h, double a, double e) ;
 	arma::mat get3x3ScaleMat(double,double,double,double);

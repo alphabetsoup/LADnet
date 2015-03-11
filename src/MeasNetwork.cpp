@@ -777,6 +777,9 @@ void MeasNetwork::PrepareNetwork() {
     numTrees = 0;
     numSpanningMeasurements = 0;
     for (s=0; s<_numMeasurements; s++) {
+		
+		if (_measurements[s]->Ignore && !_include_ignores) continue; // FIXME this is ugly.
+
 		if(_measurements[s]->isType('G')) {
 			vector<ParameterGroup*>::iterator pit = _measurements[s]->_param.begin();
 			while (pit != _measurements[s]->_param.end()) {
@@ -785,6 +788,7 @@ void MeasNetwork::PrepareNetwork() {
 					expandSpanningTree(s,(*pit)->_id);
 					// fix this station!
 					//(*pit)->fixForAllSegments();
+					cout << "Adding anchor Station " << (*pit)->_id << " " << (*pit)->name << endl;
 					fp->addPoint((Station*)(*pit));
 				}
 				pit++;
@@ -797,8 +801,10 @@ void MeasNetwork::PrepareNetwork() {
     for (int q=0;q<_numPoints;q++) {
         if(_parametergroups[q]->isConstrained()) {
             *_logstream << "Station " << _parametergroups[q]->_id << " is constrained" << endl;
+            cout        << "Station " << _parametergroups[q]->_id << " is constrained" << endl;
 		    if (!fp->hasParameter(_parametergroups[q])) {
 				*_logstream << "Adding fixed Station " << _parametergroups[q]->_id << endl;
+				cout        << "Adding fixed Station " << _parametergroups[q]->_id << endl;
 				fp->addPoint((Station*)(_parametergroups[q]));
 			}
         }
@@ -907,6 +913,7 @@ void MeasNetwork::CreateSingleSubnet() {
     measSegments.push_back(MeasSegment(this,segID));
     measSegments[segID]._principle = principleID;
     for (int measID=0;measID<_numMeasurements;measID++){
+		if (_measurements[measID]->Ignore && !_include_ignores) continue;
         try {
               measSegments[segID].addMeasurement(measID);
 			  for(vector<ParameterGroup*>::iterator pit = _measurements[measID]->_param.begin(); pit != _measurements[measID]->_param.end(); pit++) {
@@ -1234,7 +1241,8 @@ void MeasNetwork::expandSpanningTree(int measIndex_, int fromNodeIndex_) {
 		{
 			::DnaMeasurement * meas = _measurements[measIndex];
 			vector<ParameterGroup*>::iterator pit = meas->_param.begin();
-			int FirstIndex = (*(pit++))->_id;
+			int FirstIndex = (*pit)->_id;
+			pit++;
 			int SecondIndex = (*pit)->_id;
 			nodeIndex = SecondIndex;
 			if (fromNodeIndex == nodeIndex) nodeIndex = FirstIndex; // traverse this vector in reverse
@@ -1249,6 +1257,9 @@ void MeasNetwork::expandSpanningTree(int measIndex_, int fromNodeIndex_) {
 		    for (int i=0; i< node->measJoin.size(); i++) {
 		        //expandSpanningTree(node->measJoin[i],nodeIndex);
 				// push all back on the stack
+				
+				if (_measurements[node->measJoin[i]]->Ignore && !_include_ignores) continue; // FIXME this is ugly.
+
 				nodeIndexStack.push_back(NodePair(node->measJoin[i],nodeIndex));
 		    }
 		}

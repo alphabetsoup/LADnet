@@ -37,7 +37,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\src\ComputedObservable.cpp" />
     <ClCompile Include="..\..\..\src\Directions.cpp" />
-    <ClCompile Include="..\..\..\src\DirectionsComputedObservable.cpp" />
+    <ClCompile Include="..\..\..\src\DirectionsComputedObservable.cpp">
+      <MultiProcessorCompilation Condition="'$(Configuration)|$(Platform)'=='Release64|x64'">true</MultiProcessorCompilation>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\DirectionsResidual.cpp" />
     <ClCompile Include="..\..\..\src\DnaMeasurement.cpp" />
     <ClCompile Include="..\..\..\src\DynaML-pimpl.cxx" />

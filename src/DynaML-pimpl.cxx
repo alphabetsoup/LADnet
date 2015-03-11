@@ -357,7 +357,7 @@ post_DnaMeasurement ()
       Second->edgeJoin.push_back(edge(id(),FirstIndex,First));
 	  First->measJoin.push_back(id());
 	  Second->measJoin.push_back(id());
-	  //copy pointer
+	  // copy pointer
 	  _measurement = _bl;
 	  // copy all params
 	  for (int ii=0;ii<_params.size();++ii) _measurement->_param.push_back(_params[ii].second);
@@ -579,10 +579,10 @@ DnaMeasurement (::DnaMeasurement* DnaMeasurement)
   // TODO
   // Add the measurement to the list of measurements
   //FIXME make it always add the measurement, but only ignore in Jacobian formulation.
-  if (DnaMeasurement && (_mn->_include_ignores || !DnaMeasurement->Ignore)) {
-	  _mn->_measurements.push_back(DnaMeasurement);
-	  _mn->_numMeasurements++;
-  }
+  //if (DnaMeasurement && (_mn->_include_ignores || !DnaMeasurement->Ignore)) {'
+  _mn->_measurements.push_back(DnaMeasurement);
+  _mn->_numMeasurements++;
+  //}
 }
 
 void DnaXmlFormat_pimpl::
