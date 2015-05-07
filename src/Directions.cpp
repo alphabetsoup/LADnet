@@ -48,29 +48,29 @@ Directions::Directions(int id, double value) : DnaMeasurement(id) {
 
 Directions::~Directions()
 {
-	// deallocate dynamically allocated observables and residuals
-	for (std::map<int,DirectionsComputedObservable*>::iterator cit = X.begin(); cit != X.end(); cit++) delete cit->second;
-	for (std::map<int,DirectionsResidual*>::iterator           rit = V.begin(); rit != V.end(); rit++) delete rit->second;
+    // deallocate dynamically allocated observables and residuals
+    for (std::map<int,DirectionsComputedObservable*>::iterator cit = X.begin(); cit != X.end(); cit++) delete cit->second;
+    for (std::map<int,DirectionsResidual*>::iterator           rit = V.begin(); rit != V.end(); rit++) delete rit->second;
 }
 
 
 
 void Directions::setRawVCV(double stddev)
 {
-	_StdDev = stddev;
+    _StdDev = stddev;
 }
 double Directions::getRawVCV()
 {
-	return _StdDev;
+    return _StdDev;
 }
 
 void Directions::printRawVCV(ostream *_logstream) {
-		double rawVCV = getRawVCV();
+        double rawVCV = getRawVCV();
 
-		*_logstream << "Measurement " << measID << " label " << getLabel(); 
+        *_logstream << "Measurement " << measID << " label " << getLabel(); 
 
-		*_logstream << "Raw VCV for meas" << measID << " ";
-		*_logstream << rawVCV << endl;
+        *_logstream << "Raw VCV for meas" << measID << " ";
+        *_logstream << rawVCV << endl;
 }
 
 
@@ -79,17 +79,17 @@ void Directions::printSVCV(ostream *_logstream) {
 }
 
 int Directions::valuesToString(vector< string >& fv) {
-	assert(_param.size() >= 2);
+    assert(_param.size() >= 2);
     fv.push_back(i2a(_id));
     fv.push_back(getTypeString());
 
-	vector<ParameterGroup*>::iterator pit = _param.begin();
+    vector<ParameterGroup*>::iterator pit = _param.begin();
     fv.push_back((*pit)->name);
-	pit++;
+    pit++;
     fv.push_back((*pit)->name);
 
     fv.push_back(f2a(_components[0],13)); // requires value!
-	
+    
     fv.push_back(f2a(sqrt(sVCV(0,0)),13));
 
     fv.push_back(Ignore ? "1" : "0");
@@ -130,103 +130,103 @@ int Directions::typesToString(vector< string >& t) {
  * Calculates the baseline from adjusted parameters.
  */
 int Directions::calculateForSegment(int segID) {
-	// calculate using parameters from the segID
-	vector<ParameterGroup*>::iterator pit = _param.begin();
-	vector< double > first = (*pit)->getValuesForSegment(segID);
-	pit++;
-	vector< double > second = (*pit)->getValuesForSegment(segID);
+    // calculate using parameters from the segID
+    vector<ParameterGroup*>::iterator pit = _param.begin();
+    vector< double > first = (*pit)->getValuesForSegment(segID);
+    pit++;
+    vector< double > second = (*pit)->getValuesForSegment(segID);
 
     vector< double > calc;
-	for (int i=0;i<first.size(); i++) calc.push_back(second[i]-first[i]);
-	DirectionsComputedObservable * c = new DirectionsComputedObservable(this, calc); // DYNAMIC
-	X[segID] = c;
+    for (int i=0;i<first.size(); i++) calc.push_back(second[i]-first[i]);
+    DirectionsComputedObservable * c = new DirectionsComputedObservable(this, calc); // DYNAMIC
+    X[segID] = c;
 
     // inevitibly, this is where the residual is computed.
-	vector< double > residual;
-	for (int i=0;i<calc.size(); i++) residual.push_back(_components[i]-calc[i]);
-	DirectionsResidual * v = new DirectionsResidual(this,residual); // DYNAMIC
-	V[segID] = v;
+    vector< double > residual;
+    for (int i=0;i<calc.size(); i++) residual.push_back(_components[i]-calc[i]);
+    DirectionsResidual * v = new DirectionsResidual(this,residual); // DYNAMIC
+    V[segID] = v;
 
-	return 0;
+    return 0;
 }
 
 int Directions::getColCount(int segID) { 
-	return 0; // fixme
+    return 0; // fixme
 
-	int numUnfixed = 0;
-	for (vector< ParameterGroup* >::iterator pit = _param.begin(); pit != _param.end(); pit++) 
-		/*if (!(*pit)->fixedForSegment(segID))*/ numUnfixed++;
-	return getRowCount(segID) * numUnfixed; 
+    int numUnfixed = 0;
+    for (vector< ParameterGroup* >::iterator pit = _param.begin(); pit != _param.end(); pit++) 
+        /*if (!(*pit)->fixedForSegment(segID))*/ numUnfixed++;
+    return getRowCount(segID) * numUnfixed; 
 }
 int Directions::getRowCount(int segID) { 
-	return 0; // FIXME
+    return 0; // FIXME
 }
 
 // indices relative to measurement, not Jacobian
 double Directions::getPartial(int row, int column, int segID) {
-	if (!_param.size()) throw domain_error(static_cast<ostringstream*>( &(ostringstream()
-	                          << "Directions::getParial() No parameters have been set for this Directions."
-	                         ) )->str());
+    if (!_param.size()) throw domain_error(static_cast<ostringstream*>( &(ostringstream()
+                              << "Directions::getParial() No parameters have been set for this Directions."
+                             ) )->str());
 
-	// test validity first FIXME
-	// get parameter index
+    // test validity first FIXME
+    // get parameter index
 
     int paramno = 0;
-	vector<ParameterGroup*>::iterator pit = _param.begin();
-	while (column >= 0) {
-		if (pit == _param.end()) throw domain_error(static_cast<ostringstream*>( &(ostringstream()
-	                          << "Directions::getPartial() Column index out of bounds for this Directions."
-	                         ) )->str());
-		// if not fixed, check whether this is the param group we are looking for
-		// IT SHOULD BE NOTED that this assumes if a param group is FIXED, it IS NOT counted in the column count for this segment jacobian
-		//if (!(*pit)->fixedForSegment(segID)) {
-			if (column < (*pit)->size()) break;
-			column -= (*pit)->size();
-		//}
-		pit++;
-		paramno++;
-	}
+    vector<ParameterGroup*>::iterator pit = _param.begin();
+    while (column >= 0) {
+        if (pit == _param.end()) throw domain_error(static_cast<ostringstream*>( &(ostringstream()
+                              << "Directions::getPartial() Column index out of bounds for this Directions."
+                             ) )->str());
+        // if not fixed, check whether this is the param group we are looking for
+        // IT SHOULD BE NOTED that this assumes if a param group is FIXED, it IS NOT counted in the column count for this segment jacobian
+        //if (!(*pit)->fixedForSegment(segID)) {
+            if (column < (*pit)->size()) break;
+            column -= (*pit)->size();
+        //}
+        pit++;
+        paramno++;
+    }
 
 
     if ((*pit)->hasIndicesForSegment(segID)) {
-		// now we can return the partial derivative
+        // now we can return the partial derivative
 
-		// The below is only needed for non-linear obs that requre apriori coordinates.
-		//vector< double > paramvalues = _param[paramno]->getValuesForSegment(segID);
+        // The below is only needed for non-linear obs that requre apriori coordinates.
+        //vector< double > paramvalues = _param[paramno]->getValuesForSegment(segID);
 
-		// var column is the requested component of this parameter
-		// because we're in a 2 parameterGroup observation, the paramno will determine the sign.
-		int sign = (paramno == 0) ? -1 : 1;
-		// for GPS baselines we return the upper triangle of the cholesky decomposed vcv
+        // var column is the requested component of this parameter
+        // because we're in a 2 parameterGroup observation, the paramno will determine the sign.
+        int sign = (paramno == 0) ? -1 : 1;
+        // for GPS baselines we return the upper triangle of the cholesky decomposed vcv
         return sign * _Value;
-	} else {
-		// throw an exception. Parameter indices should have been created already.
-		throw domain_error(static_cast<ostringstream*>( &(ostringstream()
-	                          << "Directions::getPartial() No parameter indices exist for parameter ID " << (*pit)->_id << " in this Directions."
-	                         ) )->str());
-	}
+    } else {
+        // throw an exception. Parameter indices should have been created already.
+        throw domain_error(static_cast<ostringstream*>( &(ostringstream()
+                              << "Directions::getPartial() No parameter indices exist for parameter ID " << (*pit)->_id << " in this Directions."
+                             ) )->str());
+    }
 }
 
 double Directions::getObserved(int row, int segID) {
-	// Assumption a fixed parameter group encompasses whole group
-	double fixedOffset[] = {0, 0, 0};
+    // Assumption a fixed parameter group encompasses whole group
+    double fixedOffset[] = {0, 0, 0};
     int paramno = 0;
-	for (vector<ParameterGroup*>::iterator pit = _param.begin(); pit != _param.end(); pit++) {
-		/* REMOVING FIXEDFORSEGMENT
-		if ((*pit)->fixedForSegment(segID)) {
-			int sign = (paramno == 0) ? -1 : 1; // FIXME assumes two parameter groups.
-			vector< double > pvals = (*pit)->getAprioriValues();
-			for(int i=0;i<3;i++) fixedOffset[i] += sign * pvals[i]; // FIXME does not check size of params vector, assumes 3.
-		}
-		*/
-		paramno++;
-	}
+    for (vector<ParameterGroup*>::iterator pit = _param.begin(); pit != _param.end(); pit++) {
+        /* REMOVING FIXEDFORSEGMENT
+        if ((*pit)->fixedForSegment(segID)) {
+            int sign = (paramno == 0) ? -1 : 1; // FIXME assumes two parameter groups.
+            vector< double > pvals = (*pit)->getAprioriValues();
+            for(int i=0;i<3;i++) fixedOffset[i] += sign * pvals[i]; // FIXME does not check size of params vector, assumes 3.
+        }
+        */
+        paramno++;
+    }
 
-	
-	double c[] = {0,0,0}; // FIXME 3 components assumed
-	for (int i=0; i<3; i++) c[i] = _components[i] - fixedOffset[i];
+    
+    double c[] = {0,0,0}; // FIXME 3 components assumed
+    for (int i=0; i<3; i++) c[i] = _components[i] - fixedOffset[i];
 
-	return 0; // FIXME
+    return 0; // FIXME
 }
 
 void Directions::ComputeOminusC(int segID)
@@ -234,28 +234,28 @@ void Directions::ComputeOminusC(int segID)
 
 
 int Directions::getBasePoint(double Xc[3]) {
-	// assert that we have two parameters
-	assert(_param.size() >= 2);
-	vector<ParameterGroup*>::iterator pit = _param.begin();
-	vector<double> First  = (*pit)->getAprioriValues(); // segment -1 is apriori
-	pit++;
-	vector<double> Second = (*pit)->getAprioriValues();
-	for (int i=0;i<3;i++) Xc[i]= 0.5*(First[i] + Second[i]);
+    // assert that we have two parameters
+    assert(_param.size() >= 2);
+    vector<ParameterGroup*>::iterator pit = _param.begin();
+    vector<double> First  = (*pit)->getAprioriValues(); // segment -1 is apriori
+    pit++;
+    vector<double> Second = (*pit)->getAprioriValues();
+    for (int i=0;i<3;i++) Xc[i]= 0.5*(First[i] + Second[i]);
 
-	return 0; // FIXME
+    return 0; // FIXME
 }
  
 
 
 void Directions::toKMLElement(ostream* kmlfile, int segID, bool principle, KMLSpec * spec) {
-	std::cout << "Getting stations...";
-	vector<ParameterGroup*>::iterator pit = _param.begin();
-	 Station * firstStation = (Station*)(*pit);
-	 pit++;
-	 Station * secondStation = (Station*)(*pit);
-	std::cout << "Done." << std::endl;
+    std::cout << "Getting stations...";
+    vector<ParameterGroup*>::iterator pit = _param.begin();
+     Station * firstStation = (Station*)(*pit);
+     pit++;
+     Station * secondStation = (Station*)(*pit);
+    std::cout << "Done." << std::endl;
 
-	std::cout << "Getting residuals...";
+    std::cout << "Getting residuals...";
      bool no_res = false;
      DirectionsResidual * res;
      try {
@@ -263,7 +263,7 @@ void Directions::toKMLElement(ostream* kmlfile, int segID, bool principle, KMLSp
      } catch (domain_error e) {
          no_res = true;
      }
-	std::cout << "Done." << std::endl;
+    std::cout << "Done." << std::endl;
 
      *kmlfile << "<Placemark>" << std::endl;
   
@@ -284,7 +284,7 @@ void Directions::toKMLElement(ostream* kmlfile, int segID, bool principle, KMLSp
      else 
      {
        numresfields = res->valuesToString(rfv);
-	   res->namesToString(rfn);
+       res->namesToString(rfn);
 
        int v_label = res->kmlLabelID();
 
@@ -388,20 +388,20 @@ void Directions::toCSVRow(ostream * csvfile, int segID) {
      for (int k=0;k<rfv.size();k++) {
          *csvfile << std::setw(20) << std::setprecision(13) << rfv[k];
      }
-	 // FIXME principle measurement flag???
+     // FIXME principle measurement flag???
      *csvfile  << std::endl;
-	 
+     
 }
 
 void Directions::getCSVHeader(ostream * csvfile) {
     vector< string > mfn, rfn, cfn;
-	namesToString(mfn);
-	// same for residual
-	// if no residuals in this segment, we're out of luck.
-	//if (!V.size()) throw domain_error("Cannot print header: This measurement has no residuals");
-	DirectionsResidual::namesToString(rfn);
-	//if (!V.size()) throw domain_error("Cannot print header: This measurement has no computed observables");
-	DirectionsComputedObservable::namesToString(cfn);
+    namesToString(mfn);
+    // same for residual
+    // if no residuals in this segment, we're out of luck.
+    //if (!V.size()) throw domain_error("Cannot print header: This measurement has no residuals");
+    DirectionsResidual::namesToString(rfn);
+    //if (!V.size()) throw domain_error("Cannot print header: This measurement has no computed observables");
+    DirectionsComputedObservable::namesToString(cfn);
 
 
     // now print both sets side by side
@@ -415,13 +415,13 @@ void Directions::getCSVHeader(ostream * csvfile) {
   
 void Directions::getKMLHeader(ostream * kmlfile) {
     vector< string > mfn, mft, rfn, rft;
-	namesToString(mfn);
-	typesToString(mft);
-	// same for residual
-	// if no residuals in this segment, we're out of luck.
-	DirectionsResidual dummyr;
-	dummyr.namesToString(rfn);
-	dummyr.typesToString(rft);
+    namesToString(mfn);
+    typesToString(mft);
+    // same for residual
+    // if no residuals in this segment, we're out of luck.
+    DirectionsResidual dummyr;
+    dummyr.namesToString(rfn);
+    dummyr.typesToString(rft);
 
     // Write schema header
     *kmlfile
@@ -448,9 +448,9 @@ void Directions::getKMLHeader(ostream * kmlfile) {
 // writes both shapfile and dbf metadata
 void Directions::toShp(DBFHandle hDBF, SHPHandle hSHP, int segID) {
     SHPObject   *psObject;
-    int		nShapeType, nVertices /*nParts, *panParts, i, nVMax*/;
-    double	padfX[2], padfY[2], padfZ[2];//, padfM[2];
-    int		i, iRecord;
+    int        nShapeType, nVertices /*nParts, *panParts, i, nVMax*/;
+    double    padfX[2], padfY[2], padfZ[2];//, padfM[2];
+    int        i, iRecord;
 
     vector<string> values;
     vector<string> types;
@@ -573,18 +573,18 @@ DBFHandle Directions::createDBF(string dbfname) {
 
   
 std::string Directions::getLabel() {
-	return _param[0]->name + " to " + _param[1]->name;
+    return _param[0]->name + " to " + _param[1]->name;
 }
 
 //void Directions::scaleVCV(EllipsoidModel * ellip) {
 void Directions::scaleVCV(double a, double e) {
     // for GPS Baseline, get midpoint
     double Xc[3] ;
-	getBasePoint(Xc);
+    getBasePoint(Xc);
     double Xg[3];
-	convertCartesianToGeodetic(Xc,Xg,a,e);
-	//std::cout << "Basepoint " << Xc[0] << " " << Xc[1] << " " << Xc[2] << std::endl;
-	double rawVCV=getRawVCV();
+    convertCartesianToGeodetic(Xc,Xg,a,e);
+    //std::cout << "Basepoint " << Xc[0] << " " << Xc[1] << " " << Xc[2] << std::endl;
+    double rawVCV=getRawVCV();
     //sVCV = scale3x3VCVat(rawVCV,Vscale,Pscale,Lscale,Hscale,Xg[0],Xg[1], Xg[3], a,e);
     //sVCVi = sVCV.i();
 }
@@ -593,8 +593,8 @@ void Directions::CholeskyDecomposeSVCV()
 {
     CholDS = sqrt(sVCV(0,0));
 #ifdef ZERO_SMALL_VCVS
-	// trim tiny tiny entries for numeric stability
-	if (abs(CholDS) < 1e-12) CholDS=0;
+    // trim tiny tiny entries for numeric stability
+    if (abs(CholDS) < 1e-12) CholDS=0;
 #endif
 
 }
@@ -604,43 +604,43 @@ void Directions::printCholDecomSVCV(std::ostream *_logstream)
 }
 
 void Directions::checkCholSVCV(ostream *_logstream) {
-	// Check for any excessively large or small elements of the VCV
-	// TODO set the thresholds with realistic values.
+    // Check for any excessively large or small elements of the VCV
+    // TODO set the thresholds with realistic values.
 
-		if (abs(CholDS) < 1e-8 && abs(CholDS) > 0)
-			*_logstream << "WARNING: very small Cholesky-decomposed inverse variance " << std::endl;
-		if (abs(CholDS) > 1e6)
-			*_logstream << "WARNING: very large Cholesky-decomposed inverse variance " << std::endl;
+        if (abs(CholDS) < 1e-8 && abs(CholDS) > 0)
+            *_logstream << "WARNING: very small Cholesky-decomposed inverse variance " << std::endl;
+        if (abs(CholDS) > 1e6)
+            *_logstream << "WARNING: very large Cholesky-decomposed inverse variance " << std::endl;
 
 }
 
 
 Residual * Directions::getResidualForSegment(int segID) {
-	assert(V.find(segID) != V.end());
-	return (Residual *)V[segID];
+    assert(V.find(segID) != V.end());
+    return (Residual *)V[segID];
 }
 
 void Directions::useDefaultVCV(double N, double E, double H, double ppm, double a, double e) {
-	// set scales to 1;
-	Vscale = Pscale = Lscale = Hscale = 1;
-	// get base point
+    // set scales to 1;
+    Vscale = Pscale = Lscale = Hscale = 1;
+    // get base point
     double Xc[3] ;
-	getBasePoint(Xc);
+    getBasePoint(Xc);
     double Xg[3];
-	convertCartesianToGeodetic(Xc,Xg,a,e);
+    convertCartesianToGeodetic(Xc,Xg,a,e);
 
-	// formulate
-	double p = Xg[0];
-	double l = Xg[1];
-	mat T = createNEHtoXYZJacobian(p,l);
+    // formulate
+    double p = Xg[0];
+    double l = Xg[1];
+    mat T = createNEHtoXYZJacobian(p,l);
 
-	mat VCV = zeros(3,3);
+    mat VCV = zeros(3,3);
     double ppm_scal = 1e-6 * ppm;// * L2();
-	VCV(0,0) = sqr(E+ppm_scal);
-	VCV(1,1) = sqr(N+ppm_scal);
-	VCV(2,2) = sqr(H+ppm_scal);
+    VCV(0,0) = sqr(E+ppm_scal);
+    VCV(1,1) = sqr(N+ppm_scal);
+    VCV(2,2) = sqr(H+ppm_scal);
 
-	sVCV = T * VCV * T.t();	
+    sVCV = T * VCV * T.t();    
     sVCVi = sVCV.i();
-	setRawVCV(sVCV(0,0));
+    setRawVCV(sVCV(0,0));
 }

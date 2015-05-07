@@ -49,9 +49,9 @@ GPSResidual::GPSResidual(::GPSBaseline * bl, vector<double> tuple) {
 }
 
 void GPSResidual::standardise() {
-	assert(_bl != NULL);
+    assert(_bl != NULL);
     /*
-	mat raw(3,3);
+    mat raw(3,3);
     raw.zeros();
     for (int i=0;i<3;i++) raw(i,i) = sqr(_tuple[i]);
     mat st = _bl->sVCVi * raw * raw ; // * _bl->sVCVi.t();
@@ -59,7 +59,7 @@ void GPSResidual::standardise() {
     // Next version where full Cholesky decomposed VCV is used
     // this will somehow decorrelate the residuals.
     for (int i=0;i<3;i++) _tuple_st[i] = sqrt(st(i,i));
-	*/
+    */
     vec raw(3);
     raw.zeros();
     vec rawsq(3);
@@ -80,28 +80,28 @@ void GPSResidual::standardise() {
     for (int i=0;i<3;i++) _tuple_st[i] = sqrt(abs(st(i)));
     */
     // for (int i=0;i<3;i++) _tuple_st[i] = sqrt(abs(rawsq(i)*_bl->sVCVi(i,i))); // orig
-	for (int i=0;i<3;i++) _tuple_st[i] = sqrt(abs(rawsq(i)/_bl->sVCV(i,i)));
+    for (int i=0;i<3;i++) _tuple_st[i] = sqrt(abs(rawsq(i)/_bl->sVCV(i,i)));
 
-	// get base point
+    // get base point
     double Xc[3] ;
-	_bl->getBasePoint(Xc);
+    _bl->getBasePoint(Xc);
     double Xg[3];
-	convertCartesianToGeodetic(Xc,Xg,GRS80_A,GRS80_eccSq); // FIXME don't use global constants here!
-	// formulate
-	mat T = createXYZtoNEHJacobian(Xg[0],Xg[1]);
-	_rVCV = T * _bl->sVCV * T.t();
+    convertCartesianToGeodetic(Xc,Xg,GRS80_A,GRS80_eccSq); // FIXME don't use global constants here!
+    // formulate
+    mat T = createXYZtoNEHJacobian(Xg[0],Xg[1]);
+    _rVCV = T * _bl->sVCV * T.t();
     mat _rVCVi = _rVCV.i();
 
     for (int i=0;i<3;i++) raw(i) = _tuple[i];
-	// rotate the raw residuals
-	vec rot_raw = T * raw;
+    // rotate the raw residuals
+    vec rot_raw = T * raw;
     vec rot_raw_sq(3);
     rot_raw_sq.zeros();
 
     for (int i=0;i<3;i++) _tuple_ENH[i] = rot_raw(i);
     for (int i=0;i<3;i++) rot_raw_sq(i) = sqr(rot_raw(i));
     /* Same as above re blame shift
-	mat rVCVic = chol(_rVCV.i());
+    mat rVCVic = chol(_rVCV.i());
     mat st_rot = rVCVic * (rot_raw * rot_raw.t()) * rVCVic.t() ;
     for (int i=0;i<3;i++) _tuple_st_ENH[i] = sqrt(st_rot(i,i));
     */
@@ -191,13 +191,13 @@ int GPSResidual::typesToString(vector< string >& t) {
 }
 
 string GPSResidual::printLog() {
-	vector< string > fn;
-	vector< string > fv;
-	int c = namesToString(fn);
-	valuesToString(fv);
+    vector< string > fn;
+    vector< string > fv;
+    int c = namesToString(fn);
+    valuesToString(fv);
 
-	string label = _bl->getLabel();
-	string log = label;
-	for (int i=0;i<c;i++) log += " " + fn[i] + "=" + fv[i] + ";";
-	return log;
+    string label = _bl->getLabel();
+    string log = label;
+    for (int i=0;i<c;i++) log += " " + fn[i] + "=" + fv[i] + ";";
+    return log;
 }

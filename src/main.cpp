@@ -77,25 +77,25 @@ const char * colours[16] = {"00ffff","00eeff","00ddff","00ccff","00bbff","00aaff
 template<class SOLVER>
 void runSolver(MeasSegment * seg, int segID, std::ostream& logs)
 {
-	int iteration=0;
-	while (abs(seg->_maxCorrection) > 0.001) {
-		SOLVER * l1 = new SOLVER(seg, segID, logs);
-	    l1->run();
-		delete l1;
+    int iteration=0;
+    while (abs(seg->_maxCorrection) > 0.001) {
+        SOLVER * l1 = new SOLVER(seg, segID, logs);
+        l1->run();
+        delete l1;
 
-		iteration++;
-		std::cout << "Maximum correction for iteration " << iteration << " is " << seg->_maxCorrection << std::endl;
-		logs      << "Maximum correction for iteration " << iteration << " is " << seg->_maxCorrection << std::endl;
-		if (seg->_maxCorrectionPG) {
-			std::cout << "Maximum correction parameter group " << seg->_maxCorrectionPG->_id << " " << seg->_maxCorrectionPG->name << std::endl;
-			logs      << "Maximum correction parameter group " << seg->_maxCorrectionPG->_id << " " << seg->_maxCorrectionPG->name << std::endl;
-			
-			vector<double> vals = seg->_maxCorrectionPG->getValuesForSegment(seg->_segID);
-			std::cout << "Maximum correction parameter group params: ";
-			for (vector<double>::iterator vit=vals.begin();vit!=vals.end();++vit) std::cout << *vit << ", ";
-			std::cout << std::endl;
-		}
-	}
+        iteration++;
+        std::cout << "Maximum correction for iteration " << iteration << " is " << seg->_maxCorrection << std::endl;
+        logs      << "Maximum correction for iteration " << iteration << " is " << seg->_maxCorrection << std::endl;
+        if (seg->_maxCorrectionPG) {
+            std::cout << "Maximum correction parameter group " << seg->_maxCorrectionPG->_id << " " << seg->_maxCorrectionPG->name << std::endl;
+            logs      << "Maximum correction parameter group " << seg->_maxCorrectionPG->_id << " " << seg->_maxCorrectionPG->name << std::endl;
+            
+            vector<double> vals = seg->_maxCorrectionPG->getValuesForSegment(seg->_segID);
+            std::cout << "Maximum correction parameter group params: ";
+            for (vector<double>::iterator vit=vals.begin();vit!=vals.end();++vit) std::cout << *vit << ", ";
+            std::cout << std::endl;
+        }
+    }
 }
 
 int writeKMLHeader(ostream * kmlfile)
@@ -161,7 +161,7 @@ int writeKMLHeader(ostream * kmlfile)
     vector< string > mfn, mft, rfn, rft;
     // create dummy object for now. No late static binding in C++
     ::GPSBaseline dummy(0);
-	dummy.getKMLHeader(kmlfile);
+    dummy.getKMLHeader(kmlfile);
  
      *kmlfile << "</Schema>" << std::endl;
     return 1;
@@ -180,8 +180,8 @@ int writeKMLSegment(ostream * kmlfile, MeasNetwork * net, int segID, int hOffset
   int precision = (drop_precision) ? 8 : 20;
   *kmlfile << std::setprecision(precision);
   KMLSpec spec = { /*.colours = colours*/
-					{"00ffff","00eeff","00ddff","00ccff","00bbff","00aaff","0099ff","0088ff","0077ff","0066ff","0055ff","0044ff","0033ff","0022ff","0011ff","0000ff"}
-  					, /*.hOffset = */ hOffset, /*.precision =*/ precision };
+                    {"00ffff","00eeff","00ddff","00ccff","00bbff","00aaff","0099ff","0088ff","0077ff","0066ff","0055ff","0044ff","0033ff","0022ff","0011ff","0000ff"}
+                      , /*.hOffset = */ hOffset, /*.precision =*/ precision };
 
   std::cout << "Getting segment " << segID << std::endl;
   MeasSegment * cur_seg = &(net->measSegments[segID]);
@@ -204,22 +204,22 @@ int writeCSVSegment(/*ostream * csvfile*/string fileprefix, MeasNetwork * net, i
   // write each measurement type to its own csv, i.e. one for GPSBaseline, another for ortho levelling, etc.
   for (std::map<int,DnaMeasurement*>::iterator mit = cur_seg->_measurements.begin(); mit != cur_seg->_measurements.end(); mit++) {
      int i = mit->second->measID;                
-	 char meastype = mit->second->getType();
+     char meastype = mit->second->getType();
      if (!csvopen[meastype]) {
-	   fstream * instr = new fstream((fileprefix + "_seg_" + i2a(segID) + "_ob_" + meastype + ".adj").c_str(), fstream::out);
+       fstream * instr = new fstream((fileprefix + "_seg_" + i2a(segID) + "_ob_" + meastype + ".adj").c_str(), fstream::out);
        csvfile.insert(std::pair<char,fstream*>(meastype, instr)); // new fstream
        if (include_header) mit->second->getCSVHeader(csvfile[meastype]);
-	   csvopen[meastype]=true; // FIXME confirm file opened!
-	 }
+       csvopen[meastype]=true; // FIXME confirm file opened!
+     }
 
      mit->second->toCSVRow(csvfile[meastype], segID);
   }
 
   // iterate through all open files and close them
   for (std::map< char, fstream* >::iterator iter = csvfile.begin(); iter != csvfile.end(); iter++) {
-	// closing file for ob type iter->first
-	iter->second->close();
-	delete iter->second;
+    // closing file for ob type iter->first
+    iter->second->close();
+    delete iter->second;
   } 
 
   return 1;
@@ -238,20 +238,20 @@ int writeSHPDBFSegment(string fileprefix, MeasNetwork * net, int segID, int adjI
   // write each measurement type to its own shp/dbf combo, i.e. one for GPSBaseline, another for ortho levelling, etc.
   for (std::map<int,DnaMeasurement*>::iterator mit = cur_seg->_measurements.begin(); mit != cur_seg->_measurements.end(); mit++) {
      int i = mit->second->measID;                
-	 char meastype = mit->second->getType();
+     char meastype = mit->second->getType();
      if (!shpopen[meastype]) {
 
        string dbfname= fileprefix + "_seg_" + i2a(segID) + "_ob_" + meastype + ".dbf";
        string shpname= fileprefix + "_seg_" + i2a(segID) + "_ob_" + meastype + ".shp";
        string projname= fileprefix + "_seg_" + i2a(segID) + "_ob_" + meastype + ".prj";
 
-	   DBFHandle hDBF = mit->second->createDBF(dbfname);
+       DBFHandle hDBF = mit->second->createDBF(dbfname);
        SHPHandle hSHP = mit->second->createSHP(shpname);
 
        dbffile.insert(std::pair<char,DBFHandle>(meastype, hDBF)); // new fstream
        shpfile.insert(std::pair<char,SHPHandle>(meastype, hSHP)); // new fstream
-	   dbfopen[meastype]=true; // FIXME confirm file opened!
-	   shpopen[meastype]=true; // FIXME confirm file opened!
+       dbfopen[meastype]=true; // FIXME confirm file opened!
+       shpopen[meastype]=true; // FIXME confirm file opened!
 
        // write projection file
        fstream * projfile = new fstream(projname.c_str(), fstream::out); // FIXME derive parameters from projection of coordinates. Set this projection as input.
@@ -259,18 +259,18 @@ int writeSHPDBFSegment(string fileprefix, MeasNetwork * net, int segID, int adjI
        *projfile << "GEOGCS[\"GDA94\",DATUM[\"Geocentric_Datum_of_Australia_1994\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],TOWGS84[0,0,0,0,0,0,0],AUTHORITY[\"EPSG\",\"6283\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4283\"]]";
        projfile->close();
        delete projfile;
-	 }
+     }
 
      mit->second->toShp(dbffile[meastype], shpfile[meastype], segID);
   }
 
   // iterate through all open files and close them
   for (std::map< char, DBFHandle >::iterator iter = dbffile.begin(); iter != dbffile.end(); iter++) {
-	// closing file for ob type iter->first
+    // closing file for ob type iter->first
       DnaMeasurement::closeDBF(iter->second);
   } 
   for (std::map< char, SHPHandle >::iterator iter = shpfile.begin(); iter != shpfile.end(); iter++) {
-	// closing file for ob type iter->first
+    // closing file for ob type iter->first
       DnaMeasurement::closeSHP(iter->second);
   } 
 
@@ -506,8 +506,8 @@ int main(int argc, const char** argv)
    }
 
    if (options[LOADSEG]) {
-	   _loadseg = true;
-	   segfilename = options[LOADSEG].arg;
+       _loadseg = true;
+       segfilename = options[LOADSEG].arg;
    }
    
    if (options[L2ARMASOLVE]) {
@@ -524,7 +524,7 @@ int main(int argc, const char** argv)
    if (write_log) {
      outfile = new fstream((filename+".log").c_str(), fstream::out);
    } else {
-	 outfile = &cnull;
+     outfile = &cnull;
    }
    // FIXME disabled kml //kmlfile = new fstream((filename+".kml").c_str(), fstream::out);
    Timer * t = new Timer();
@@ -560,7 +560,7 @@ int main(int argc, const char** argv)
                   std::cout << "Generating subnetworks" << std::endl;
                   t->reset();
                   net->PrepareNetwork();
-    			  net->findCycles();
+                  net->findCycles();
                   *outfile << "Number of cycles: " << net->numCycles << std::endl;
                   net->CreateSubnets(nbhdDepth);
                   std::cout << "Subnetworks created. Time elapsed: " << t->currentSeconds() << std::endl;
@@ -587,21 +587,21 @@ int main(int argc, const char** argv)
                 for(std::vector<MeasSegment>::iterator seg = net->measSegments.begin() ; seg != net->measSegments.end(); ++seg) 
                 {
 #if NO_MEM_MIN_DESIGN // TODO make jacobian output 
-					  // formulate the jacobian of measurements and parameters
-    				  *outfile << "Formulating the design matrix of normal equations... ";
-	   				  fstream * jacofile = new fstream((filename + "_seg_" + i2a(segID) + ".jac").c_str(), fstream::out);
-	   				  fstream * obfile = new fstream((filename + "_seg_" + i2a(segID) + ".ob").c_str(), fstream::out);
-	   				  fstream * stnnamefile = new fstream((filename + "_seg_" + i2a(segID) + ".stn").c_str(), fstream::out);
-    				  int result     = seg->formulateJacobian(jacofile,obfile,stnnamefile); // TODO make formulateJacobian return a result.
-					  jacofile->close();
-					  obfile->close();
-					  stnnamefile->close();
-    				  *outfile << "complete." << std::endl;
+                      // formulate the jacobian of measurements and parameters
+                      *outfile << "Formulating the design matrix of normal equations... ";
+                         fstream * jacofile = new fstream((filename + "_seg_" + i2a(segID) + ".jac").c_str(), fstream::out);
+                         fstream * obfile = new fstream((filename + "_seg_" + i2a(segID) + ".ob").c_str(), fstream::out);
+                         fstream * stnnamefile = new fstream((filename + "_seg_" + i2a(segID) + ".stn").c_str(), fstream::out);
+                      int result     = seg->formulateJacobian(jacofile,obfile,stnnamefile); // TODO make formulateJacobian return a result.
+                      jacofile->close();
+                      obfile->close();
+                      stnnamefile->close();
+                      *outfile << "complete." << std::endl;
 #else
-					  std::pair<double,double> dimensions = seg->initLinearisedEstimatorIndices();
+                      std::pair<double,double> dimensions = seg->initLinearisedEstimatorIndices();
 #endif
-					  //std::cout << "Time elapsed: " << t->currentSeconds() << std::endl;
-					  std::cout << "Initialising estimation algorithm..." << std::endl;
+                      //std::cout << "Time elapsed: " << t->currentSeconds() << std::endl;
+                      std::cout << "Initialising estimation algorithm..." << std::endl;
 
                       t->reset();
                           if (runL1glpkPrimalIPT)
@@ -618,7 +618,7 @@ int main(int argc, const char** argv)
                             l1 = new L1ConvexSolver(&(*seg), segID);
                           else 
                             l1 = new L1SimplexSolver(&(*seg), segID);
-							*/
+                            */
 
 
                       writeCSVSegment(filename,net,segID,0,0,true);
@@ -701,12 +701,12 @@ int main(int argc, const char** argv)
                             runSolver<L1GLPKSimplexDualSolver>(&(*seg), segID,*outfile);
                           else if (runL2Arma)
                             runSolver<L2ArmaSolver>(&(*seg), segID,*outfile);
-								/*
+                                /*
                               else if (runL1convex)
                                 l1 = new L1ConvexSolver(&(*seg), segID);
                               else 
                                 l1 = new L1SimplexSolver(&(*seg), segID);
-								*/
+                                */
     
    /* 
                           // write a separate kml file for this segment
@@ -724,7 +724,7 @@ int main(int argc, const char** argv)
                           //kmlsegfile->close();
                           //delete kmlsegfile;
     */
-						  string filenametest = filename + "_test";
+                          string filenametest = filename + "_test";
                           writeCSVSegment(filenametest,net,segID,testi+1,0,false);
     
     

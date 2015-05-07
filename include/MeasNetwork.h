@@ -64,26 +64,26 @@ public:
 
     public:
     MeasNetwork(const char * xmlmeasfile, 
-	            const char * xmlstnfile, 
-	            const char * xmlstdvcvfile, 
-				std::ostream * logstream, 
-				bool include_ignores);
+                const char * xmlstnfile, 
+                const char * xmlstdvcvfile, 
+                std::ostream * logstream, 
+                bool include_ignores);
 
     ~MeasNetwork();
-	
+    
     int LoadDynaMLMeasFile(
-		        const char * xmlmeasfile, 
-				bool include_ignores);
+                const char * xmlmeasfile, 
+                bool include_ignores);
     int LoadDynaMLStnFile(
-	            const char * xmlstnfile, 
-				bool include_ignores);
+                const char * xmlstnfile, 
+                bool include_ignores);
 
-	int LoadStdVCVFile(const char * xmlstdvcvfile, std::ostream * logstream);
+    int LoadStdVCVFile(const char * xmlstdvcvfile, std::ostream * logstream);
 
-	int MeasNetwork::LoadDynaML_xsd(
-						 const char * xmlmeasfile,
+    int MeasNetwork::LoadDynaML_xsd(
+                         const char * xmlmeasfile,
                          const char * xmlstnfile, 
-						 bool include_ignores) ;
+                         bool include_ignores) ;
 
     void WriteStationNames(const char * outfilename);
     int getPointIndex(const char * name,Station**);
@@ -100,10 +100,10 @@ public:
     // All observations (::DnaMeasurements) refer to indicies of the above array for first and second points
     std::vector< ::DnaMeasurement * > _measurements;
 
-	// Log methods
-	void LogMeasAdjacency();
-	void LogNodeAdjacency();
-	void setMeasVCV();
+    // Log methods
+    void LogMeasAdjacency();
+    void LogNodeAdjacency();
+    void setMeasVCV();
 
     // The following methods are used to segment the network
     void CreateSingleSubnet();
@@ -129,7 +129,7 @@ public:
     int * touchedStations;
     int * stationDegreeSum; // integral of stationDegree wrt station
 
-	bool _include_ignores;
+    bool _include_ignores;
 
     private:
     // the below is the first method of finding spanning trees
@@ -154,7 +154,7 @@ public:
 
     Timer * timer;
 
-	
+    
     // default vcv map
     std::map< char , std::vector< double > > standard_vcv; // four doubles: N E H ppm
 

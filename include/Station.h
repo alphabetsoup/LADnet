@@ -52,7 +52,7 @@ public:
     std::vector<bool> Fixed;
 
     // The below are read directly from the station xml file. Not computed.
-	// Can be used as apriori values
+    // Can be used as apriori values
     std::string LatitudeStr;
     std::string LongitudeStr;
     double Latitude;
@@ -66,11 +66,11 @@ public:
     bool isConstrained(int); // input: index of constrained component. LLH.
     bool isConstrained(); // checks all constraints 
 
-	// The below are deprecated
+    // The below are deprecated
     //double X, Y, Z;
 
-	int size();
-	std::vector<std::string> getLabels();
+    int size();
+    std::vector<std::string> getLabels();
 };
 
 

@@ -35,13 +35,13 @@
 
 class ComputedObservable
 {
-	public:
+    public:
     ComputedObservable();
 
     void setParameterIndices(std::vector< int > ids); // indices in Jacobian
-	void setObIndices(std::vector< int > ids);
+    void setObIndices(std::vector< int > ids);
     std::vector< int > getParameterIndices(); // indices in Jacobian
-	std::vector< int > getObIndices();
+    std::vector< int > getObIndices();
 
     std::vector< int > _paramIndices;
     std::vector< int > _obIndices;

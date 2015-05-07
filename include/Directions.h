@@ -47,18 +47,18 @@ class ParameterGroup;
 
 
 class Directions : public DnaMeasurement {
-	public:
+    public:
     Directions(int);
     Directions(int,double);
-	~Directions();
+    ~Directions();
 
     int FirstIndex;             //      <First>PM69851</First>
     int SecondIndex;            //      <Second>PM170483</Second>
-	int ThirdIndex;
+    int ThirdIndex;
 
-	std::string _Target;
-	double _Value;
-	double _StdDev;
+    std::string _Target;
+    double _Value;
+    double _StdDev;
 
     std::vector< double > _components;
     std::map< int, DirectionsComputedObservable * > X; // This will be populated with calculated measurements from adjustments.
@@ -67,23 +67,23 @@ class Directions : public DnaMeasurement {
     arma::mat sVCV;                   
     arma::mat sVCVi;                  // inverse of the above 
 
-	double CholDS;
+    double CholDS;
 
     int getBasePoint(double Xc[3]);
 
-	/* DnaMeasurement virtual methods defined in this class */
+    /* DnaMeasurement virtual methods defined in this class */
     void printRawVCV(std::ostream *);
     void printSVCV(std::ostream *);
-	void printCholDecomSVCV(std::ostream *_logstream);
+    void printCholDecomSVCV(std::ostream *_logstream);
 
     void   setRawVCV(double);    
     double getRawVCV();    
 
-	/* DnaMeasurement virtual methods defined in this class */
-	void   scaleVCV(double a, double e);
+    /* DnaMeasurement virtual methods defined in this class */
+    void   scaleVCV(double a, double e);
     //void   scaleVCVat(double phi, double lambda, double h, double a, double e);
     void   CholeskyDecomposeSVCV();
-	void   ComputeOminusC(int segID);
+    void   ComputeOminusC(int segID);
     void   checkCholSVCV(std::ostream *);
 
     std::string getLabel();
@@ -93,22 +93,22 @@ class Directions : public DnaMeasurement {
     static int typesToString(std::vector< std::string >&);
 
     int calculateForSegment(int segID);
-	
-	int getColCount(int segID);
-	int getRowCount(int segID);
     
-	double getPartial(int,int,int);
-	double getObserved(int,int);
+    int getColCount(int segID);
+    int getRowCount(int segID);
+    
+    double getPartial(int,int,int);
+    double getObserved(int,int);
 
-	void toKMLElement(std::ostream * kmlfile,int,bool,KMLSpec*);
-	void toCSVRow(std::ostream * csvfile, int segID);
-	void getKMLHeader(std::ostream * csvfile);
-	void getCSVHeader(std::ostream * csvfile);
+    void toKMLElement(std::ostream * kmlfile,int,bool,KMLSpec*);
+    void toCSVRow(std::ostream * csvfile, int segID);
+    void getKMLHeader(std::ostream * csvfile);
+    void getCSVHeader(std::ostream * csvfile);
 
-	Residual * getResidualForSegment(int segID);
+    Residual * getResidualForSegment(int segID);
 
 
-	void useDefaultVCV(double N, double E, double H, double ppm, double a, double e);
+    void useDefaultVCV(double N, double E, double H, double ppm, double a, double e);
 
     /* Shapefile output */
     void toShp(DBFHandle hDBF, SHPHandle hSHP, int segID);

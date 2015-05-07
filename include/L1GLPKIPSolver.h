@@ -58,7 +58,7 @@ class L1GLPKIPSolver : public L1Solver {
     /*
      * Algorithm Variables
      */
-	double jacobianScale, observedScale, parameterScale;
+    double jacobianScale, observedScale, parameterScale;
 
     int _iterations;
 };

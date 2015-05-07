@@ -44,7 +44,7 @@ class Directions;
 
 class DirectionsComputedObservable : public ComputedObservable
 {
-	public:
+    public:
     DirectionsComputedObservable();
     DirectionsComputedObservable(Directions * b, std::vector< double > v);
     Directions * _bl;

@@ -13,7 +13,7 @@
 
 class UsesMeasNetwork
 {
-public:	
+public:    
   void setMeasNetwork(MeasNetwork *);
 protected:
   MeasNetwork * _mn;
@@ -156,14 +156,14 @@ class DnaMeasurement_pimpl: public virtual DnaMeasurement_pskel, public UsesMeas
   virtual ::DnaMeasurement*
   post_DnaMeasurement ();
 protected:
-	::std::auto_ptr<DnaMeasurement_Struct> _m;
-	::std::vector< ::std::pair<int,Station*> > _params;
-	::std::vector<ClusterPoint_Struct> _clusterpoints;
-	::std::vector<GPSBaseline_Struct> _gpsbaselines;
-	::std::vector<Directions_Struct> _directions;
+    ::std::auto_ptr<DnaMeasurement_Struct> _m;
+    ::std::vector< ::std::pair<int,Station*> > _params;
+    ::std::vector<ClusterPoint_Struct> _clusterpoints;
+    ::std::vector<GPSBaseline_Struct> _gpsbaselines;
+    ::std::vector<Directions_Struct> _directions;
 
-	void addStation(const ::std::string& stn_str);
-	unsigned long id();
+    void addStation(const ::std::string& stn_str);
+    unsigned long id();
 };
 
 class DnaStation_pimpl: public virtual DnaStation_pskel, public UsesMeasNetwork
@@ -294,7 +294,7 @@ class GPSCovariance_pimpl: public virtual GPSCovariance_pskel
   post_GPSCovariance ();
 
 protected:
-	::arma::mat33 _pointcovar;
+    ::arma::mat33 _pointcovar;
 };
 
 class PointCovariance_pimpl: public virtual PointCovariance_pskel
@@ -334,7 +334,7 @@ class PointCovariance_pimpl: public virtual PointCovariance_pskel
   post_PointCovariance ();
 
 protected:
-	::arma::mat33 _pointcovar;
+    ::arma::mat33 _pointcovar;
 };
 
 class StationCoord_pimpl: public virtual StationCoord_pskel

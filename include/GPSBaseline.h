@@ -47,10 +47,10 @@ class ParameterGroup;
 
 
 class GPSBaseline : public DnaMeasurement {
-	public:
+    public:
     GPSBaseline(int);
     GPSBaseline(int,double x, double y, double z);
-	~GPSBaseline();
+    ~GPSBaseline();
 
     int FirstIndex;             //      <First>PM69851</First>
     int SecondIndex;            //      <Second>PM170483</Second>
@@ -60,7 +60,7 @@ class GPSBaseline : public DnaMeasurement {
     std::map< int, GPSResidual * > V; // residuals. If this meas is present in multiple adjustments, store each one.
 
 
-	// FIXME TODO deprecate these
+    // FIXME TODO deprecate these
     //double X;           // <X>-18.0964</X>
     //double Y;           // <Y>555.5574</Y>
     //double Z;           // <Z>489.2058</Z>
@@ -79,14 +79,14 @@ class GPSBaseline : public DnaMeasurement {
                         // C = | C[0] C[1] C[2] | 
                         //     | 0    C[3] C[4] | 
                         //     | 0    0    C[5] | 
-	
+    
     arma::mat sVCV;                   // 3x3 input scaled VCV calculated by scaleVCV(Station at)
     arma::mat sVCVi;                  // inverse of the above 
     double CholDS[6];
 
 
     // returns X,Y,Z + testbias
-	// FIXME TODO deprecate these
+    // FIXME TODO deprecate these
     double getX();
     double getY();
     double getZ();
@@ -96,23 +96,23 @@ class GPSBaseline : public DnaMeasurement {
 
     int getBasePoint(double Xc[3]);
 
-	/* DnaMeasurement virtual methods defined in this class */
+    /* DnaMeasurement virtual methods defined in this class */
     void printRawVCV(std::ostream *);
     void printSVCV(std::ostream *);
-	void printCholDecomSVCV(std::ostream *_logstream);
+    void printCholDecomSVCV(std::ostream *_logstream);
 
     double L2();
 
     void   setRawVCV(double rawVCV[6]);    
     void   getRawVCV(double rawVCV[6]);    
     double euclideanDistance();
-	double CholDSUpperTri(int row, int col);
+    double CholDSUpperTri(int row, int col);
 
-	/* DnaMeasurement virtual methods defined in this class */
-	void   scaleVCV(double a, double e);
+    /* DnaMeasurement virtual methods defined in this class */
+    void   scaleVCV(double a, double e);
     //void   scaleVCVat(double phi, double lambda, double h, double a, double e);
     void   CholeskyDecomposeSVCV();
-	void   ComputeOminusC(int segID);
+    void   ComputeOminusC(int segID);
     void   checkCholSVCV(std::ostream *);
 
     std::string getLabel();
@@ -124,22 +124,22 @@ class GPSBaseline : public DnaMeasurement {
     //int setCalculated(ComputedObservable &x);
 
     int calculateForSegment(int segID);
-	
-	int getColCount(int segID);
-	int getRowCount(int segID);
     
-	double getPartial(int,int,int);
-	double getObserved(int,int);
+    int getColCount(int segID);
+    int getRowCount(int segID);
+    
+    double getPartial(int,int,int);
+    double getObserved(int,int);
 
-	void toKMLElement(std::ostream * kmlfile,int,bool,KMLSpec*);
-	void toCSVRow(std::ostream * csvfile, int segID);
-	void getKMLHeader(std::ostream * csvfile);
-	void getCSVHeader(std::ostream * csvfile);
+    void toKMLElement(std::ostream * kmlfile,int,bool,KMLSpec*);
+    void toCSVRow(std::ostream * csvfile, int segID);
+    void getKMLHeader(std::ostream * csvfile);
+    void getCSVHeader(std::ostream * csvfile);
 
-	Residual * getResidualForSegment(int segID);
+    Residual * getResidualForSegment(int segID);
 
 
-	void useDefaultVCV(double N, double E, double H, double ppm, double a, double e);
+    void useDefaultVCV(double N, double E, double H, double ppm, double a, double e);
 
     /* Shapefile output */
     void toShp(DBFHandle hDBF, SHPHandle hSHP, int segID);

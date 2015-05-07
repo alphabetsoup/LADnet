@@ -63,7 +63,7 @@ class L1Solver {
 
     virtual int run() = 0;
     void WriteOutputToLog(arma::vec &X, arma::vec &E);
-	void WriteOutputToLog(std::vector<double>& X,std::vector<double>& E);
+    void WriteOutputToLog(std::vector<double>& X,std::vector<double>& E);
 
     long long M, N;
 

@@ -47,15 +47,15 @@
 #include "EllipsoidModel.hpp"
 
 /* From Geoscience Australia (ga.gov.au)
-Ellipsoid Parameters	GRS80
-Major Semi Axis	6378137
-Inverse Flattening	298.2572221
-Flattening	0.003352811
-Minor Semi Axis	6356752.314
-Eccentricity	0.081819191043
-Eccentricity squared	0.006694380023
-Second Eccentricity	0.082094438152
-Second Eccentricity squared	0.006739496775
+Ellipsoid Parameters    GRS80
+Major Semi Axis    6378137
+Inverse Flattening    298.2572221
+Flattening    0.003352811
+Minor Semi Axis    6356752.314
+Eccentricity    0.081819191043
+Eccentricity squared    0.006694380023
+Second Eccentricity    0.082094438152
+Second Eccentricity squared    0.006739496775
 */
 
 namespace gpstk

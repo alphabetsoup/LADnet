@@ -49,8 +49,8 @@ Station::~Station() {
 int Station::size() { return 3; }
 
 vector<string> Station::getLabels() {
-	const char * l[] = {"X", "Y", "Z"};
-	return std::vector<std::string>(l,l+3);
+    const char * l[] = {"X", "Y", "Z"};
+    return std::vector<std::string>(l,l+3);
 }
 
 void Station::setConstraints(std::string cs) {

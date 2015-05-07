@@ -43,7 +43,7 @@ class Directions;
 
 class DirectionsResidual : public Residual
 {
-	public:
+    public:
     DirectionsResidual();
     DirectionsResidual(Directions * ,std::vector<double>);
     void standardise();
@@ -62,7 +62,7 @@ class DirectionsResidual : public Residual
 
     int kmlLabelID();
 
-	std::string printLog();
+    std::string printLog();
 };
 
 #endif

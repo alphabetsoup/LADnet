@@ -49,17 +49,17 @@ using namespace arma;
 DnaMeasurement::DnaMeasurement(int id)
 {
     _id = id;
-	measID = id;
-	testbias = 0;
+    measID = id;
+    testbias = 0;
 }
 
 DnaMeasurement::~DnaMeasurement()
 {
-	// FIXME had to duplicate code in child classes due to static binding.
-	// deallocate dynamically allocated observables and residuals
-	//for (std::map<int,ComputedObservable*>::iterator cit = X.begin(); cit != X.end(); cit++) delete cit->second;
-	//for (std::map<int,Residual*>::iterator           rit = V.begin(); rit != V.end(); rit++) delete rit->second;
-	;
+    // FIXME had to duplicate code in child classes due to static binding.
+    // deallocate dynamically allocated observables and residuals
+    //for (std::map<int,ComputedObservable*>::iterator cit = X.begin(); cit != X.end(); cit++) delete cit->second;
+    //for (std::map<int,Residual*>::iterator           rit = V.begin(); rit != V.end(); rit++) delete rit->second;
+    ;
 }
 
 
@@ -71,42 +71,42 @@ bool DnaMeasurement::isType(char t) { return (Type==t); }
 
 
 mat DnaMeasurement::get3x3ScaleMat(
-			double Vscale_,
-			double Pscale_,
-			double Lscale_,
-			double Hscale_)
+            double Vscale_,
+            double Pscale_,
+            double Lscale_,
+            double Hscale_)
 {
     mat S_g = mat(3,3);
     S_g.zeros();
     S_g(0,0) = Pscale_ * Vscale_;
     S_g(1,1) = Lscale_ * Vscale_;
     S_g(2,2) = Hscale_ * Vscale_;
-	return S_g;
+    return S_g;
 }
 
 mat DnaMeasurement::scale3x3VCVat(
-			double rawVCV[6], 
-			double Vscale_,
-			double Pscale_,
-			double Lscale_,
-			double Hscale_,
-			double phi, 
-			double lambda, 
-			double h, 
-			double a, 
-			double e) 
+            double rawVCV[6], 
+            double Vscale_,
+            double Pscale_,
+            double Lscale_,
+            double Hscale_,
+            double phi, 
+            double lambda, 
+            double h, 
+            double a, 
+            double e) 
 {
     // at the input station lat/lon/ht
     // we transform the VCV scale matrix to XYZ
     // and then multiply by the XYZ sigma VCV
 
-	arma::mat T = genXYZtoLLHJacobian(phi,lambda,h,a,e);
+    arma::mat T = genXYZtoLLHJacobian(phi,lambda,h,a,e);
 
     // The formula for scaling the VCV in cartesian is T S_g T^-1 VCV_xyz T^-1^T S_g T^T
     arma::mat S_g = get3x3ScaleMat(Vscale_,Pscale_,Lscale_,Hscale_);
 
-	double vcvarr[3][3];
-	symmetric6to3x3(rawVCV,vcvarr);
+    double vcvarr[3][3];
+    symmetric6to3x3(rawVCV,vcvarr);
     arma::mat::fixed<3,3> VCV(*vcvarr); // was (double*)vcvarr
     // FIXME when baseline becomes this, do the scale that way.
     //double rawVCV[6];
@@ -116,13 +116,13 @@ mat DnaMeasurement::scale3x3VCVat(
     sVCV = T * S_g * T.i() * VCV * T.i().t() * S_g * T.t();
 
 #ifdef ZERO_SMALL_VCVS
-	// remove any tiny tiny entries for numerical stability.
-	for (int i=0;i<3;i++) 
-		for (int j=0;j<3;j++)
-			if (abs(sVCV(i,j)) < 1e-18) sVCV(i,j) = 0;
+    // remove any tiny tiny entries for numerical stability.
+    for (int i=0;i<3;i++) 
+        for (int j=0;j<3;j++)
+            if (abs(sVCV(i,j)) < 1e-18) sVCV(i,j) = 0;
 #endif
 
-	return sVCV;
+    return sVCV;
 }
 
 void DnaMeasurement::closeSHP(SHPHandle hSHP) {
@@ -134,5 +134,5 @@ void DnaMeasurement::closeDBF(DBFHandle hDBF) {
 }
 
 void DnaMeasurement::prepareForSegment(int segID) {
-	// do nothing here, but define this method anyway.
+    // do nothing here, but define this method anyway.
 }

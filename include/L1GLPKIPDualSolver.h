@@ -56,11 +56,11 @@ class L1GLPKIPDualSolver : public L1Solver {
     /*
      * Algorithm Variables
      */
-	double jacobianScale, observedScale, parameterScale;
+    double jacobianScale, observedScale, parameterScale;
 
     int _iterations;
 protected:
-	glp_prob * _lp;
+    glp_prob * _lp;
 };
 
 

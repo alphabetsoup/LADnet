@@ -42,66 +42,66 @@ YClusterResidual::YClusterResidual(YCluster * yc) {
 }
 
 void YClusterResidual::standardise() {
-	//std::cerr << "Standardising Y Cluster" << std::endl;
-	assert(_tuples.size() == _yc->TotalSize);
-	//std::cerr << "Standardised Y Cluster" << std::endl;
+    //std::cerr << "Standardising Y Cluster" << std::endl;
+    assert(_tuples.size() == _yc->TotalSize);
+    //std::cerr << "Standardised Y Cluster" << std::endl;
 
-	int dim = _yc->TotalSize*3;
+    int dim = _yc->TotalSize*3;
     mat raw = zeros(dim,dim);
     //raw.zeros();
 
     for (int i=0;i<dim;i++) raw(i,i) = sqr(_tuples[i/3][i%3]);
-	//std::cerr << "Set Y Cluster raw diagonals" << std::endl;
+    //std::cerr << "Set Y Cluster raw diagonals" << std::endl;
 
-	//raw.diag() = vec(_tuples);
+    //raw.diag() = vec(_tuples);
 
     mat st = _yc->_sVCVi * raw;
-	//std::cerr << "Mult Y Cluster raw residuals by sVCVi" << std::endl;
+    //std::cerr << "Mult Y Cluster raw residuals by sVCVi" << std::endl;
     // for now copy out the sqrt(diagonals). 
     // Next version where full Cholesky decomposed VCV is used
     // this will somehow decorrelate the residuals.
-	for (int i=0;i<_yc->TotalSize;i++) {
-		vector< double > stv;
-    	for (int j=0;j<3;j++) {
-			int f = i*3+j;
-			stv.push_back(sqrt(st(f,f)));
-		}
-		_tuples_st[i] = stv;
-	}
-	//std::cerr << "Done with Y Cluster residual" << std::endl;
+    for (int i=0;i<_yc->TotalSize;i++) {
+        vector< double > stv;
+        for (int j=0;j<3;j++) {
+            int f = i*3+j;
+            stv.push_back(sqrt(st(f,f)));
+        }
+        _tuples_st[i] = stv;
+    }
+    //std::cerr << "Done with Y Cluster residual" << std::endl;
 
 }
 
 bool YClusterResidual::assert_complete() {
-	assert(_yc != NULL);
-	assert(_yc->TotalSize == _tuples.size());
+    assert(_yc != NULL);
+    assert(_yc->TotalSize == _tuples.size());
 
-	return true;
+    return true;
 }
 
 void YClusterResidual::setStation(int id, double tuple[3]) {
-	//setStation(id, vector< double >(tuple));
-	vector<double> t(3);
-	for (int i=0;i<3;i++) t[i]=tuple[i];
-	setStation(id, t);
+    //setStation(id, vector< double >(tuple));
+    vector<double> t(3);
+    for (int i=0;i<3;i++) t[i]=tuple[i];
+    setStation(id, t);
 }
 
 void YClusterResidual::setStation(int id, vector< double > tuple) {
-	assert(tuple.size() == 3);
-	_tuples[id] = tuple;
+    assert(tuple.size() == 3);
+    _tuples[id] = tuple;
 }
 
 int YClusterResidual::kmlLabelID() {
     //double v = sqrt(_tuples_st[0]*_tuples_st[0] + _tuples_st[1]*_tuples_st[1] + _tuples_st[2] * _tuples_st[2]);
     //return std::min(v*3,30.0);
-	// FIXME
-	return 0;
+    // FIXME
+    return 0;
 }
 
 
 int YClusterResidual::valuesToString(int o, vector< string >& fv) {
-	assert(o < _yc->TotalSize);
-	//int o = stid*3;
+    assert(o < _yc->TotalSize);
+    //int o = stid*3;
     fv.push_back(f2a(_tuples[o][0],13));
     fv.push_back(f2a(_tuples[o][1],13));
     fv.push_back(f2a(_tuples[o][2],13));
@@ -140,18 +140,18 @@ int YClusterResidual::typesToString(vector< string >& t) {
 }
 
 string YClusterResidual::printLog() {
-	vector< string > fn;
-	int c = namesToString(fn);
+    vector< string > fn;
+    int c = namesToString(fn);
 
-	string log;
+    string log;
 
-	for(int l = 0; l < _yc->TotalSize; l++) {
-		vector< string > fv;
-		valuesToString(l,fv);
-		if (l > 0) log += "\n";
-		log += _yc->getStnLabel(l);
-		for (int i=0;i<c;i++) log += " " + fn[i] + "=" + fv[i] + ";";
-	}
-		
-	return log;
+    for(int l = 0; l < _yc->TotalSize; l++) {
+        vector< string > fv;
+        valuesToString(l,fv);
+        if (l > 0) log += "\n";
+        log += _yc->getStnLabel(l);
+        for (int i=0;i<c;i++) log += " " + fn[i] + "=" + fv[i] + ";";
+    }
+        
+    return log;
 }

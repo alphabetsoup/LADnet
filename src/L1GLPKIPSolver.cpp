@@ -62,30 +62,30 @@ L1GLPKIPSolver::~L1GLPKIPSolver()
 void L1GLPKIPSolver::InitProblem(glp_prob * lp) {
 
     N = 0; // number of parameters
-	M = 0; // number of measurements
+    M = 0; // number of measurements
 
-	double normA   = _seg->_absSumJacobian;
-	double normAsq = normA*normA;
-	double normB   = _seg->_absSumObserved;
-	double normBsq = normB*normB;
-	int numJacCols = N = _seg->_numJacobianColumns;
-	int numJacRows = M = _seg->_jacobian.size();
+    double normA   = _seg->_absSumJacobian;
+    double normAsq = normA*normA;
+    double normB   = _seg->_absSumObserved;
+    double normBsq = normB*normB;
+    int numJacCols = N = _seg->_numJacobianColumns;
+    int numJacRows = M = _seg->_jacobian.size();
     jacobianScale = 1/(2 * normA);
-	observedScale = 1/(4 * normA * normB);
-	parameterScale = 2 * normB;
+    observedScale = 1/(4 * normA * normB);
+    parameterScale = 2 * normB;
 /*
     jacobianScale = 1;
-	observedScale = 1;
-	parameterScale = 1;
-	*/
+    observedScale = 1;
+    parameterScale = 1;
+    */
     // set number of constraints
-	// [A | I | -I] Primal form
+    // [A | I | -I] Primal form
     glp_add_rows(lp, 1+ M);
     glp_add_cols(lp, 1+ N + 2 * M); // one set of unbounded X, two residual variables bounded below by 0
 
-	for (int r = 0; r < numJacRows; r++) {
-		//int mcols = _seg->_jacobian[r].size(); // size of jacobian row
-		//*_logstream << "Row size: " << _seg->_jacobian[r].size() << endl;
+    for (int r = 0; r < numJacRows; r++) {
+        //int mcols = _seg->_jacobian[r].size(); // size of jacobian row
+        //*_logstream << "Row size: " << _seg->_jacobian[r].size() << endl;
         //int ja[1+mcols]; // indices
         //double ar[1+mcols]; // values
         int ja[1+MAXCOLS]; // indices
@@ -93,78 +93,78 @@ void L1GLPKIPSolver::InitProblem(glp_prob * lp) {
 
 
         int aIndex = 1;
-		// get jacobian row and set as the top half of this column (for the dual problem)
+        // get jacobian row and set as the top half of this column (for the dual problem)
 #ifdef PRINT_A_MAT
-		*_logstream << "Setting column " << r+1;
+        *_logstream << "Setting column " << r+1;
 #endif
-		for (std::vector< pair<int,double> >::iterator cit = _seg->_jacobian[r].begin(); cit != _seg->_jacobian[r].end(); cit++) {
-			int column = cit->first;
-			double value = cit->second;
+        for (std::vector< pair<int,double> >::iterator cit = _seg->_jacobian[r].begin(); cit != _seg->_jacobian[r].end(); cit++) {
+            int column = cit->first;
+            double value = cit->second;
 #ifdef PRINT_A_MAT
-			*_logstream << " row=" << column+1 << " value=" << value;
+            *_logstream << " row=" << column+1 << " value=" << value;
 #endif
-			ja[aIndex] = column + 1;
-			ar[aIndex] = value*jacobianScale;
-			aIndex++;
-		}
+            ja[aIndex] = column + 1;
+            ar[aIndex] = value*jacobianScale;
+            aIndex++;
+        }
 #ifdef PRINT_A_MAT
-		*_logstream << endl;
+        *_logstream << endl;
 #endif
-		// for the bottom half of this row use I and -I. Hence the Jacobian ROW NUMBER r + N
-		ar[aIndex] = 1*jacobianScale;
-		ja[aIndex] = N + r + 1; 
-		aIndex++;
+        // for the bottom half of this row use I and -I. Hence the Jacobian ROW NUMBER r + N
+        ar[aIndex] = 1*jacobianScale;
+        ja[aIndex] = N + r + 1; 
+        aIndex++;
 
-		ar[aIndex] = -1*jacobianScale;
-		ja[aIndex] = N + M + r + 1;
+        ar[aIndex] = -1*jacobianScale;
+        ja[aIndex] = N + M + r + 1;
 
         glp_set_mat_row(lp,1+r,aIndex,ja,ar);
 
-	}
+    }
 
-	*_logstream << "Num rows in GLP = " << glp_get_num_rows(lp) << std::endl;
-	*_logstream << "Num cols in GLP = " << glp_get_num_cols(lp) << std::endl;
-	*_logstream << "Num rows in jacobian = " << numJacRows << std::endl;
-	*_logstream << "Num cols in jacobian = " << numJacCols << std::endl;
+    *_logstream << "Num rows in GLP = " << glp_get_num_rows(lp) << std::endl;
+    *_logstream << "Num cols in GLP = " << glp_get_num_cols(lp) << std::endl;
+    *_logstream << "Num rows in jacobian = " << numJacRows << std::endl;
+    *_logstream << "Num cols in jacobian = " << numJacCols << std::endl;
 
     *_logstream << "normAsq " << normAsq << std::endl;
 
 #ifdef PRINT_A_MAT
     *_logstream << "A matrix unscaled is: " << std::endl;
-	// DEBUG
-	for (int rr=0;rr<numJacCols+numJacRows;rr++) {
-		int indices[100];
-		double values[100];
-		int len;
-		len=glp_get_mat_row(lp,rr+1,indices,values);
-		*_logstream << "Row " << rr+1 << " length=" << len << " values:";
-		for (int cc=1;cc<len+1;cc++) *_logstream << " [" << indices[cc] << ", " << values[cc] << "]";
-		*_logstream << endl;
-	}
+    // DEBUG
+    for (int rr=0;rr<numJacCols+numJacRows;rr++) {
+        int indices[100];
+        double values[100];
+        int len;
+        len=glp_get_mat_row(lp,rr+1,indices,values);
+        *_logstream << "Row " << rr+1 << " length=" << len << " values:";
+        for (int cc=1;cc<len+1;cc++) *_logstream << " [" << indices[cc] << ", " << values[cc] << "]";
+        *_logstream << endl;
+    }
 #endif
 
     for (int i=0; i<M; i++)
     {
-		double bnd = _seg->_observed[i] * observedScale;
+        double bnd = _seg->_observed[i] * observedScale;
         glp_set_row_bnds(lp, 1+i  , GLP_FX,  bnd, bnd   ); // B
         //glp_set_row_bnds(lp, 1+i+M, GLP_FX,  -bnd, -bnd  ); // -B
-	}
+    }
     /* Objective function of primal [0...0 1...1] */
     for (int i=0; i<N; i++)
     {
         glp_set_obj_coef(lp, 1+i, 0);
         glp_set_col_bnds(lp, 1+i, GLP_FR, -1e15, 1e15); 
-	}
+    }
     for (int i = N; i < N+2*M; i++) {
         glp_set_obj_coef(lp, 1+i, 1);
         glp_set_col_bnds(lp, 1+i, GLP_LO, 0, 0);
     }
 #ifdef PRINT_A_MAT
     *_logstream << "Objective function is: " << std::endl;
-	// DEBUG
-	for (int rr=0;rr<N+2*M;rr++) {
-		*_logstream << "[" << rr+1 << ", " << glp_get_obj_coef(lp,rr+1) << "]" << endl;
-	}
+    // DEBUG
+    for (int rr=0;rr<N+2*M;rr++) {
+        *_logstream << "[" << rr+1 << ", " << glp_get_obj_coef(lp,rr+1) << "]" << endl;
+    }
 #endif
 
     // make this problem minimisation
@@ -200,7 +200,7 @@ int L1GLPKIPSolver::run() {
     //  *_logstream << "There was an error writing out the problem file" << endl;
 
 
-	*_logstream << "Scaling problem automatically" << endl;
+    *_logstream << "Scaling problem automatically" << endl;
     glp_scale_prob(lp, GLP_SF_AUTO);
     //glp_scale_prob(lp, GLP_SF_SKIP);
 
@@ -246,16 +246,16 @@ int L1GLPKIPSolver::run() {
     E *= parameterScale;
 
     *_logstream << "Jacobian Scale = " << jacobianScale << endl
-	            << "Observed Scale = " << observedScale << endl
-	            << "Parameter Scale = " << parameterScale << endl;
+                << "Observed Scale = " << observedScale << endl
+                << "Parameter Scale = " << parameterScale << endl;
 
-	*_logstream << "X" << endl;
-	*_logstream << X << endl;
-	*_logstream << "E" << endl;
-	*_logstream << E << endl;
+    *_logstream << "X" << endl;
+    *_logstream << X << endl;
+    *_logstream << "E" << endl;
+    *_logstream << E << endl;
 
-	std::vector<double> X_vector = conv_to< std::vector<double> >::from(X);
-	_seg->setCorrections(X_vector);
+    std::vector<double> X_vector = conv_to< std::vector<double> >::from(X);
+    _seg->setCorrections(X_vector);
     //WriteOutputToLog(X,E);
 
     *_logstream << "Sum of absolute values" << endl

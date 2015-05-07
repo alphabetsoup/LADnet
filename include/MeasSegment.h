@@ -72,7 +72,7 @@ class MeasSegment {
     std::map<int, DnaMeasurement *> _measurements;
     std::map<int, ParameterGroup *> _parametergroups;
     std::map<int,int> _assocStationIDs; // This map joins parametergroups to columns in the Jacobian ??? FIXME delete this
-	std::map<int, int> _measurement_row; // measurementID to jacobian row map
+    std::map<int, int> _measurement_row; // measurementID to jacobian row map
     int _principle; // the principle measurement to which this segment is associated.
 
     std::vector<MeasCycle> cycles;
@@ -82,30 +82,30 @@ class MeasSegment {
     DnaMeasurement * getMeasurement(int i);
     int getParameterColumn(int id); // in Jacobian. id=paramID
 
-	std::vector< std::vector< std::pair<int, double > > > _jacobian;    // lhs coeffs of Ax=b
-	std::vector< double >                  _observed;    // rhs of Ax=b
-	std::map<int, ParameterGroup* >         _parametercolumns;
-	double _absSumJacobian;
-	double _absSumObserved;
-	double _maxCorrection;
-	ParameterGroup * _maxCorrectionPG;
-	int _numJacobianColumns;
-	int _numJacobianRows;
-	bool _indicesInitialised;
+    std::vector< std::vector< std::pair<int, double > > > _jacobian;    // lhs coeffs of Ax=b
+    std::vector< double >                  _observed;    // rhs of Ax=b
+    std::map<int, ParameterGroup* >         _parametercolumns;
+    double _absSumJacobian;
+    double _absSumObserved;
+    double _maxCorrection;
+    ParameterGroup * _maxCorrectionPG;
+    int _numJacobianColumns;
+    int _numJacobianRows;
+    bool _indicesInitialised;
 
-	std::pair<double, double> initLinearisedEstimatorIndices();
-	MeasNormalEquations getMeasurementRow(unsigned long measID);
-	MeasNormalEquations getMeasurementRow(DnaMeasurement * meas);
+    std::pair<double, double> initLinearisedEstimatorIndices();
+    MeasNormalEquations getMeasurementRow(unsigned long measID);
+    MeasNormalEquations getMeasurementRow(DnaMeasurement * meas);
 
-	void setCorrections(std::vector<double>& X);
-	void initParameterValues();
-	void initMeasurementOminusC();
+    void setCorrections(std::vector<double>& X);
+    void initParameterValues();
+    void initMeasurementOminusC();
 
     // Jacobian Formulation
-	int formulateJacobian();
-	//std::vector< std::map< int, double > >& getJacobian();
+    int formulateJacobian();
+    //std::vector< std::map< int, double > >& getJacobian();
 
-	int formulateJacobian(std::ostream * jacofile, std::ostream * obfile, std::ostream* stnnames);
-	void clearJacobian();
+    int formulateJacobian(std::ostream * jacofile, std::ostream * obfile, std::ostream* stnnames);
+    void clearJacobian();
 };
 #endif 

@@ -42,61 +42,61 @@ FPointResidual::FPointResidual(FPoint * yc) {
 }
 
 void FPointResidual::standardise() {
-	assert(_tuples.size() == _yc->TotalSize);
+    assert(_tuples.size() == _yc->TotalSize);
 
-	int dim = _yc->TotalSize*3;
+    int dim = _yc->TotalSize*3;
     mat raw = zeros(dim,dim);
     //raw.zeros();
 
     for (int i=0;i<dim;i++) raw(i,i) = sqr(_tuples[i/3][i%3]);
 
-	//raw.diag() = vec(_tuples);
+    //raw.diag() = vec(_tuples);
 
     mat st = _yc->_sVCVi * raw;
     // for now copy out the sqrt(diagonals). 
     // Next version where full Cholesky decomposed VCV is used
     // this will somehow decorrelate the residuals.
-	for (int i=0;i<_yc->TotalSize;i++) {
-		vector< double > stv;
-    	for (int j=0;j<3;j++) {
-			int f = i*3+j;
-			stv.push_back(sqrt(st(f,f)));
-		}
-		_tuples_st[i] = stv;
-	}
+    for (int i=0;i<_yc->TotalSize;i++) {
+        vector< double > stv;
+        for (int j=0;j<3;j++) {
+            int f = i*3+j;
+            stv.push_back(sqrt(st(f,f)));
+        }
+        _tuples_st[i] = stv;
+    }
 
 }
 
 bool FPointResidual::assert_complete() {
-	assert(_yc != NULL);
-	assert(_yc->TotalSize == _tuples.size());
+    assert(_yc != NULL);
+    assert(_yc->TotalSize == _tuples.size());
 
-	return true; // @todo make this use the above result.
+    return true; // @todo make this use the above result.
 }
 
 void FPointResidual::setStation(int id, double tuple[3]) {
-	//setStation(id, vector< double >(tuple));
-	vector<double> t(3);
-	for (int i=0;i<3;i++) t[i]=tuple[i];
-	setStation(id, t);
+    //setStation(id, vector< double >(tuple));
+    vector<double> t(3);
+    for (int i=0;i<3;i++) t[i]=tuple[i];
+    setStation(id, t);
 }
 
 void FPointResidual::setStation(int id, vector< double > tuple) {
-	assert(tuple.size() == 3);
-	_tuples[id] = tuple;
+    assert(tuple.size() == 3);
+    _tuples[id] = tuple;
 }
 
 int FPointResidual::kmlLabelID() {
     //double v = sqrt(_tuples_st[0]*_tuples_st[0] + _tuples_st[1]*_tuples_st[1] + _tuples_st[2] * _tuples_st[2]);
     //return std::min(v*3,30.0);
-	// FIXME
-	return 0;
+    // FIXME
+    return 0;
 }
 
 
 int FPointResidual::valuesToString(int o, vector< string >& fv) {
-	assert(o < _yc->TotalSize);
-	//int o = stid*3;
+    assert(o < _yc->TotalSize);
+    //int o = stid*3;
     fv.push_back(f2a(_tuples[o][0],13));
     fv.push_back(f2a(_tuples[o][1],13));
     fv.push_back(f2a(_tuples[o][2],13));
@@ -135,18 +135,18 @@ int FPointResidual::typesToString(vector< string >& t) {
 }
 
 string FPointResidual::printLog() {
-	vector< string > fn;
-	int c = namesToString(fn);
+    vector< string > fn;
+    int c = namesToString(fn);
 
-	string log;
+    string log;
 
-	for(int l = 0; l < _yc->TotalSize; l++) {
-		vector< string > fv;
-		valuesToString(l,fv);
-		if (l > 0) log += "\n";
-		log += _yc->getStnLabel(l);
-		for (int i=0;i<c;i++) log += " " + fn[i] + "=" + fv[i] + ";";
-	}
-		
-	return log;
+    for(int l = 0; l < _yc->TotalSize; l++) {
+        vector< string > fv;
+        valuesToString(l,fv);
+        if (l > 0) log += "\n";
+        log += _yc->getStnLabel(l);
+        for (int i=0;i<c;i++) log += " " + fn[i] + "=" + fv[i] + ";";
+    }
+        
+    return log;
 }

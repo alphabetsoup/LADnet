@@ -21,9 +21,9 @@ std::string c2a(char c);
 double fabs_c(double a);
 
 struct KMLSpec {
-	const char * colours[16];
-	double hOffset;
-	int precision;
+    const char * colours[16];
+    double hOffset;
+    int precision;
 };
 
 #define trunc(a) ((int)a)

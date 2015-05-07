@@ -43,19 +43,19 @@ class YCluster;
 
 class YClusterResidual : public Residual
 {
-	public:
+    public:
     YClusterResidual(YCluster *);
     void standardise();
 
     YCluster * _yc;
-	
+    
     std::map< int, std::vector< double > > _tuples;       // raw
     std::map< int, std::vector< double > > _tuples_st;    // standardised
 
-	void setStation(int, double[3]);
-	void setStation(int, std::vector< double >);
+    void setStation(int, double[3]);
+    void setStation(int, std::vector< double >);
 
-	bool assert_complete();
+    bool assert_complete();
     
     int valuesToString(int,std::vector< std::string >&);
     static int namesToString(std::vector< std::string >&);
@@ -63,7 +63,7 @@ class YClusterResidual : public Residual
 
     int kmlLabelID();
 
-	std::string printLog();
+    std::string printLog();
 };
 
 #endif

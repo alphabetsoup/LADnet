@@ -57,7 +57,7 @@ void CholeskyDecompose3x3(double A[3][3], double C[6])
     C[3] = sqrt(P[1][1] - sqr(C[1]));
     C[4] = (P[1][2] - C[1]*C[2])/C[3];
     C[5] = sqrt(P[2][2] - sqr(C[2]) - sqr(C[4]));
-	for (int i=0;i<6;i++) if (isnan(C[i])) throw overflow_error("Cholesky decomposition 3x3 failed with NaN result.");
+    for (int i=0;i<6;i++) if (isnan(C[i])) throw overflow_error("Cholesky decomposition 3x3 failed with NaN result.");
 }
 
 int Invert3x3(double A[3][3], double result[3][3])
@@ -89,47 +89,47 @@ void arraycpyd(double * a, double * b, int len) {
 
 std::string f2a(double f, int precision) {
     std::ostringstream strs;
-	if (precision > 0)
-    	strs << std::setprecision(precision) << f;
-	else
-		strs << f;
+    if (precision > 0)
+        strs << std::setprecision(precision) << f;
+    else
+        strs << f;
     return strs.str();
 }
 
 std::string i2a(int i) {
-	std::stringstream strs;
-	std::string s;
-	strs << i;
-	strs >> s;
-	return s;
+    std::stringstream strs;
+    std::string s;
+    strs << i;
+    strs >> s;
+    return s;
 }
 std::string c2a(char c) {
-	std::stringstream ss;
-	std::string s;
-	ss << c;
-	ss >> s;
-	return s;
+    std::stringstream ss;
+    std::string s;
+    ss << c;
+    ss >> s;
+    return s;
 }
 double fabs_c(double a) {
-	return (a>0) ? a : -a;
+    return (a>0) ? a : -a;
 }
 
 void symmetric3x3to6(double sym[3][3], double cond[6]) {
-	cond[0]=sym[0][0];
-	cond[1]=sym[0][1];
-	cond[2]=sym[0][2];
-	cond[3]=sym[1][1];
-	cond[4]=sym[1][2];
-	cond[5]=sym[2][2];
+    cond[0]=sym[0][0];
+    cond[1]=sym[0][1];
+    cond[2]=sym[0][2];
+    cond[3]=sym[1][1];
+    cond[4]=sym[1][2];
+    cond[5]=sym[2][2];
 }
 
 void symmetric6to3x3(double cond[6], double sym[3][3]) {
-	sym[0][0]=cond[0];
-	sym[0][1]=sym[1][0]=cond[1];
-	sym[0][2]=sym[2][0]=cond[2];
-	sym[1][1]=cond[3];
-	sym[1][2]=sym[2][1]=cond[4];
-	sym[2][2]=cond[5];
+    sym[0][0]=cond[0];
+    sym[0][1]=sym[1][0]=cond[1];
+    sym[0][2]=sym[2][0]=cond[2];
+    sym[1][1]=cond[3];
+    sym[1][2]=sym[2][1]=cond[4];
+    sym[2][2]=cond[5];
 }
 
       // Fundamental routine to convert cartesian (ECEF) to geodetic coordinates,
@@ -194,23 +194,23 @@ void symmetric6to3x3(double cond[6], double sym[3][3]) {
    }
 
 void convertGeodeticDMStoDecDeg(double llh[3]) {
-	for (int i=0;i<2;++i) {
-		llh[i] = convertDMStoDecDeg(llh[i]);
-	}
+    for (int i=0;i<2;++i) {
+        llh[i] = convertDMStoDecDeg(llh[i]);
+    }
 }
 double convertDMStoDecDeg(double dms) {
-	long deg = (long)(dms);
-	long min = (long)(100*(dms-deg));
-	double sec = (10000*(dms-deg - (double)(min*0.01)));
-	return sec/3600.0 + (double)min/60.0 + deg;
+    long deg = (long)(dms);
+    long min = (long)(100*(dms-deg));
+    double sec = (10000*(dms-deg - (double)(min*0.01)));
+    return sec/3600.0 + (double)min/60.0 + deg;
 }
 
 mat genXYZtoLLHJacobian(
-			double phi, 
-			double lambda, 
-			double h, 
-			double a, 
-			double e)
+            double phi, 
+            double lambda, 
+            double h, 
+            double a, 
+            double e)
 {
     double e2 = e*e;
     double sinphi2 = sin(phi) * sin(phi);
@@ -262,27 +262,27 @@ mat genXYZtoLLHJacobian(
 
     T(2,2) = sin(phi);
 
-	return T;
+    return T;
 }
 
 // p = latitude; l = longitude
 mat createXYZtoNEHJacobian(double p, double l) {
     mat T = mat(3,3);
-	T(0,0) = -sin(p)*cos(l);
-	T(0,1) = -sin(p)*sin(l);
-	T(0,2) = cos(p);
-	T(1,0) = -sin(l);
-	T(1,1) = cos(l);
-	T(1,2) =  0;
-	T(2,0) = cos(p)*cos(l);
-	T(2,1) = cos(p)*sin(l);
-	T(2,2) = sin(p);
-	return T;
+    T(0,0) = -sin(p)*cos(l);
+    T(0,1) = -sin(p)*sin(l);
+    T(0,2) = cos(p);
+    T(1,0) = -sin(l);
+    T(1,1) = cos(l);
+    T(1,2) =  0;
+    T(2,0) = cos(p)*cos(l);
+    T(2,1) = cos(p)*sin(l);
+    T(2,2) = sin(p);
+    return T;
 }
 
 mat createNEHtoXYZJacobian(double p, double l) {
-	mat T = createXYZtoNEHJacobian( p, l);
-	return T.t();
+    mat T = createXYZtoNEHJacobian( p, l);
+    return T.t();
 }
 
 

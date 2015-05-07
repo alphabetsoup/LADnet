@@ -46,17 +46,17 @@ class L2ArmaSolver : public L1Solver {
 
     int run();
     void InitProblem();
-	void WriteOutputToLog(arma::vec& X);
+    void WriteOutputToLog(arma::vec& X);
 
     /*
      * Algorithm Variables
      */
-	double jacobianScale, observedScale, parameterScale;
+    double jacobianScale, observedScale, parameterScale;
 
     int _iterations;
 protected:
-	arma::mat A;
-	arma::vec b;
+    arma::mat A;
+    arma::vec b;
 };
 
 

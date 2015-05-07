@@ -51,7 +51,7 @@ L1Solver::L1Solver(MeasSegment * seg, int segID, ostream& logs)
     _segID = segID;
     _net = _seg->_parent;
     _logstream = &logs; // TODO make this the logstream of the segment
-	*_logstream << "Initialised solver" << std::endl;
+    *_logstream << "Initialised solver" << std::endl;
 }
 
 L1Solver::~L1Solver()
@@ -62,85 +62,85 @@ L1Solver::~L1Solver()
 void L1Solver::WriteOutputToLog(vec &X,vec &E)
 {
     *_logstream << "The solution vector is:" << std::endl;
-	// set parameters
-	for (map<int,ParameterGroup*>::iterator pit = _seg->_parametergroups.begin(); pit != _seg->_parametergroups.end(); pit++) {
-		ParameterGroup * param = pit->second;
-		/* REMOVING FIXEDFORSEGMENT
-		if (param->fixedForSegment(_seg->_segID)) {
-			*_logstream << "Skipping assignment of values to parameter " << pit->first << " label="<< pit->second->name << endl; 
-			continue;
-		}
-		*/
-		if (!param->hasIndicesForSegment(_seg->_segID)) throw domain_error("Malformed parametergroup");
-		vector< int > indices = param->getIndicesForSegment(_seg->_segID);
-		vector< double > values;
-		for (int i=0;i<indices.size();i++) values.push_back(X(indices[i]));
-		param->setValuesForSegment(_seg->_segID, values);
-		// print it
-		vector<string> labels = param->getLabels(); // should have same number of elements as values TODO assert this
-		for (int i=0;i<values.size();i++) {
-			*_logstream  
+    // set parameters
+    for (map<int,ParameterGroup*>::iterator pit = _seg->_parametergroups.begin(); pit != _seg->_parametergroups.end(); pit++) {
+        ParameterGroup * param = pit->second;
+        /* REMOVING FIXEDFORSEGMENT
+        if (param->fixedForSegment(_seg->_segID)) {
+            *_logstream << "Skipping assignment of values to parameter " << pit->first << " label="<< pit->second->name << endl; 
+            continue;
+        }
+        */
+        if (!param->hasIndicesForSegment(_seg->_segID)) throw domain_error("Malformed parametergroup");
+        vector< int > indices = param->getIndicesForSegment(_seg->_segID);
+        vector< double > values;
+        for (int i=0;i<indices.size();i++) values.push_back(X(indices[i]));
+        param->setValuesForSegment(_seg->_segID, values);
+        // print it
+        vector<string> labels = param->getLabels(); // should have same number of elements as values TODO assert this
+        for (int i=0;i<values.size();i++) {
+            *_logstream  
                        << std::setw(20)    << param->name
                        << std::setw(20)    << labels[i]
                        << std::setw(20)    << std::setprecision(13) << values[i]
-					   << endl;
-		}
-	}
+                       << endl;
+        }
+    }
 
     *_logstream << "The residuals are:" << std::endl;
     *_logstream     << std::setw(50)    << "Description"
                     //<< std::setw(20)    << "Adj Residual"
                     << std::setw(20)    << "O-C Residual"
                     << std::endl;
-	for (map<int,DnaMeasurement*>::iterator mit = _seg->_measurements.begin(); mit != _seg->_measurements.end(); mit++) {
-		mit->second->calculateForSegment(_seg->_segID);
-		// Compare with E?
-		//Residual * res = mit->second->V.at(_seg->_segID);
-		//*logstream << std::setw(50) <<  res->getDescription();
-		Residual * res = mit->second->getResidualForSegment(_seg->_segID);
-		*_logstream << std::setw(50) <<  res->printLog() << std::endl;
-	}
+    for (map<int,DnaMeasurement*>::iterator mit = _seg->_measurements.begin(); mit != _seg->_measurements.end(); mit++) {
+        mit->second->calculateForSegment(_seg->_segID);
+        // Compare with E?
+        //Residual * res = mit->second->V.at(_seg->_segID);
+        //*logstream << std::setw(50) <<  res->getDescription();
+        Residual * res = mit->second->getResidualForSegment(_seg->_segID);
+        *_logstream << std::setw(50) <<  res->printLog() << std::endl;
+    }
 }
 
 void L1Solver::WriteOutputToLog(std::vector<double>& X,std::vector<double>& E)
 {
     *_logstream << "The solution vector is:" << std::endl;
-	// set parameters
-	for (map<int,ParameterGroup*>::iterator pit = _seg->_parametergroups.begin(); pit != _seg->_parametergroups.end(); pit++) {
-		ParameterGroup * param = pit->second;
-		/* REMOVING FIXEDFORSEGMENT
-		if (param->fixedForSegment(_seg->_segID)) {
-			*_logstream << "Skipping assignment of values to parameter " << pit->first << " label="<< pit->second->name << endl; 
-			continue;
-		}
-		*/
-		if (!param->hasIndicesForSegment(_seg->_segID)) throw domain_error("Malformed parametergroup");
-		vector< int > indices = param->getIndicesForSegment(_seg->_segID);
-		vector< double > values;
-		for (int i=0;i<indices.size();i++) values.push_back(X[indices[i]]);
-		param->setValuesForSegment(_seg->_segID, values);
-		// print it
-		vector<string> labels = param->getLabels(); // should have same number of elements as values TODO assert this
-		for (int i=0;i<values.size();i++) {
-			*_logstream  
+    // set parameters
+    for (map<int,ParameterGroup*>::iterator pit = _seg->_parametergroups.begin(); pit != _seg->_parametergroups.end(); pit++) {
+        ParameterGroup * param = pit->second;
+        /* REMOVING FIXEDFORSEGMENT
+        if (param->fixedForSegment(_seg->_segID)) {
+            *_logstream << "Skipping assignment of values to parameter " << pit->first << " label="<< pit->second->name << endl; 
+            continue;
+        }
+        */
+        if (!param->hasIndicesForSegment(_seg->_segID)) throw domain_error("Malformed parametergroup");
+        vector< int > indices = param->getIndicesForSegment(_seg->_segID);
+        vector< double > values;
+        for (int i=0;i<indices.size();i++) values.push_back(X[indices[i]]);
+        param->setValuesForSegment(_seg->_segID, values);
+        // print it
+        vector<string> labels = param->getLabels(); // should have same number of elements as values TODO assert this
+        for (int i=0;i<values.size();i++) {
+            *_logstream  
                        << std::setw(20)    << param->name
                        << std::setw(20)    << labels[i]
                        << std::setw(20)    << std::setprecision(13) << values[i]
-					   << endl;
-		}
-	}
+                       << endl;
+        }
+    }
 
     *_logstream << "The residuals are:" << std::endl;
     *_logstream     << std::setw(50)    << "Description"
                     //<< std::setw(20)    << "Adj Residual"
                     << std::setw(20)    << "O-C Residual"
                     << std::endl;
-	for (map<int,DnaMeasurement*>::iterator mit = _seg->_measurements.begin(); mit != _seg->_measurements.end(); mit++) {
-		mit->second->calculateForSegment(_seg->_segID);
-		// Compare with E?
-		//Residual * res = mit->second->V.at(_seg->_segID);
-		//*logstream << std::setw(50) <<  res->getDescription();
-		Residual * res = mit->second->getResidualForSegment(_seg->_segID);
-		*_logstream << std::setw(50) <<  res->printLog() << std::endl;
-	}
+    for (map<int,DnaMeasurement*>::iterator mit = _seg->_measurements.begin(); mit != _seg->_measurements.end(); mit++) {
+        mit->second->calculateForSegment(_seg->_segID);
+        // Compare with E?
+        //Residual * res = mit->second->V.at(_seg->_segID);
+        //*logstream << std::setw(50) <<  res->getDescription();
+        Residual * res = mit->second->getResidualForSegment(_seg->_segID);
+        *_logstream << std::setw(50) <<  res->printLog() << std::endl;
+    }
 }

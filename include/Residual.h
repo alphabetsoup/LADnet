@@ -39,7 +39,7 @@
 
 class Residual
 {
-	public:
+    public:
     Residual();
 /*    
     virtual int valuesToString(vector< string >& values) = 0;
@@ -47,7 +47,7 @@ class Residual
     virtual int typesToString(vector< string >& types) = 0;
     virtual int kmlLabelID() = 0;
 */
-	virtual std::string printLog() = 0;
+    virtual std::string printLog() = 0;
 };
 
 #endif

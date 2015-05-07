@@ -42,7 +42,7 @@ using namespace arma;
 
 L1GLPKSimplexSolver::L1GLPKSimplexSolver(MeasSegment * seg, int segID, std::ostream& logs) : L1GLPKIPSolver(seg,segID,logs)
 {
-	;
+    ;
 }
 
 int L1GLPKSimplexSolver::run() {
@@ -109,16 +109,16 @@ int L1GLPKSimplexSolver::run() {
     E *= parameterScale;
 
     *_logstream << "Jacobian Scale = " << jacobianScale << endl
-	            << "Observed Scale = " << observedScale << endl
-	            << "Parameter Scale = " << parameterScale << endl;
+                << "Observed Scale = " << observedScale << endl
+                << "Parameter Scale = " << parameterScale << endl;
 
-	*_logstream << "X" << endl;
-	*_logstream << X << endl;
-	*_logstream << "E" << endl;
-	*_logstream << E << endl;
+    *_logstream << "X" << endl;
+    *_logstream << X << endl;
+    *_logstream << "E" << endl;
+    *_logstream << E << endl;
 
-	std::vector<double> X_vector = conv_to< std::vector<double> >::from(X);
-	_seg->setCorrections(X_vector);
+    std::vector<double> X_vector = conv_to< std::vector<double> >::from(X);
+    _seg->setCorrections(X_vector);
     //WriteOutputToLog(X,E);
 
     *_logstream << "Sum of absolute values" << endl

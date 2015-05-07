@@ -40,14 +40,14 @@ FPointComputedObservable::FPointComputedObservable(FPoint * yc) {
 }
 
 bool FPointComputedObservable::assert_complete() {
-	assert(_yc != NULL);
-	assert(_yc->TotalSize == _tuples.size());
+    assert(_yc != NULL);
+    assert(_yc->TotalSize == _tuples.size());
 
-	return true;
+    return true;
 }
 
 int FPointComputedObservable::valuesToString(int id, vector< string >& fv) {
-	assert(id < _tuples.size());
+    assert(id < _tuples.size());
     fv.push_back(f2a(_tuples[id][0],10));
     fv.push_back(f2a(_tuples[id][1],10));
     fv.push_back(f2a(_tuples[id][2],10));
@@ -55,15 +55,15 @@ int FPointComputedObservable::valuesToString(int id, vector< string >& fv) {
 }
 
 void FPointComputedObservable::setStation(int id, double tuple[3]) {
-	//setStation(id, vector< double >(3,tuple));
-	vector<double> t(3);
-	for (int i=0;i<3;i++) t[i]=tuple[i];
-	setStation(id, t);
+    //setStation(id, vector< double >(3,tuple));
+    vector<double> t(3);
+    for (int i=0;i<3;i++) t[i]=tuple[i];
+    setStation(id, t);
 }
 
 void FPointComputedObservable::setStation(int id, vector< double > tuple) {
-	assert(tuple.size() == 3);
-	_tuples[id] = tuple;
+    assert(tuple.size() == 3);
+    _tuples[id] = tuple;
 }
 
 int FPointComputedObservable::namesToString(vector< string >& fn) {

@@ -43,7 +43,7 @@ class GPSBaseline;
 
 class GPSResidual : public Residual
 {
-	public:
+    public:
     GPSResidual();
     GPSResidual(::GPSBaseline * ,std::vector<double>);
     void standardise();
@@ -62,7 +62,7 @@ class GPSResidual : public Residual
 
     int kmlLabelID();
 
-	std::string printLog();
+    std::string printLog();
 };
 
 #endif

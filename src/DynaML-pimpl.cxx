@@ -24,8 +24,8 @@ void UsesMeasNetwork::setMeasNetwork(MeasNetwork * mn)
 void Clusterpoint_pimpl::
 pre ()
 {
-	if (!_mn) throw std::runtime_error("MeasNetwork not set for YCluster Parser.");
-	_y.reset(new ClusterPoint_Struct); // FIXME make nicer way to get ID.
+    if (!_mn) throw std::runtime_error("MeasNetwork not set for YCluster Parser.");
+    _y.reset(new ClusterPoint_Struct); // FIXME make nicer way to get ID.
 }
 
 void Clusterpoint_pimpl::
@@ -114,8 +114,8 @@ post_Clusterpoint ()
 void Directions_pimpl::
 pre ()
 {
-	if (!_mn) throw std::runtime_error("MeasNetwork not set for Directions Parser.");
-	_d.reset(new Directions_Struct); // FIXME make nicer way to get ID.
+    if (!_mn) throw std::runtime_error("MeasNetwork not set for Directions Parser.");
+    _d.reset(new Directions_Struct); // FIXME make nicer way to get ID.
 }
 
 void Directions_pimpl::
@@ -161,11 +161,11 @@ post_Directions ()
 void DnaMeasurement_pimpl::
 pre ()
 {
-	_m.reset(new DnaMeasurement_Struct);
-	_clusterpoints.clear();
-	_gpsbaselines.clear();
-	_directions.clear();
-	_params.clear();
+    _m.reset(new DnaMeasurement_Struct);
+    _clusterpoints.clear();
+    _gpsbaselines.clear();
+    _directions.clear();
+    _params.clear();
 }
 
 void DnaMeasurement_pimpl::
@@ -328,97 +328,97 @@ post_DnaMeasurement ()
   // return ... ;
   switch (_m->_Type[0]) {
     case 'G':
-		{
-	  ::GPSBaseline * _bl = new ::GPSBaseline(id());
-	  if (!_gpsbaselines.size()) throw ::std::domain_error("No GPSBaseline element found.");
-	  // just get the first.
-	  GPSBaseline_Struct * g = &_gpsbaselines.front();
-	  _bl->_components[0] = g->_X;
-	  _bl->_components[1] = g->_Y;
-	  _bl->_components[2] = g->_Z;
-	  double rawvcv[6];
-	  rawvcv[0] = g->_Sigma.XX;
-	  rawvcv[1] = g->_Sigma.XY;
-	  rawvcv[2] = g->_Sigma.XZ;
-	  rawvcv[3] = g->_Sigma.YY;
-	  rawvcv[4] = g->_Sigma.YZ;
-	  rawvcv[5] = g->_Sigma.ZZ;
-	  _bl->setRawVCV(rawvcv);
-	  // ignore point covars
-	  // for GPS baselines only, set edge joins
-	  assert(_params.size() == 2);
-	  Station * First = _params[0].second;
-	  Station * Second = _params[1].second;
-	  unsigned long FirstIndex = _params[0].first;
-	  unsigned long SecondIndex = _params[1].first;
-	  First->stnJoin.push_back(SecondIndex);
+        {
+      ::GPSBaseline * _bl = new ::GPSBaseline(id());
+      if (!_gpsbaselines.size()) throw ::std::domain_error("No GPSBaseline element found.");
+      // just get the first.
+      GPSBaseline_Struct * g = &_gpsbaselines.front();
+      _bl->_components[0] = g->_X;
+      _bl->_components[1] = g->_Y;
+      _bl->_components[2] = g->_Z;
+      double rawvcv[6];
+      rawvcv[0] = g->_Sigma.XX;
+      rawvcv[1] = g->_Sigma.XY;
+      rawvcv[2] = g->_Sigma.XZ;
+      rawvcv[3] = g->_Sigma.YY;
+      rawvcv[4] = g->_Sigma.YZ;
+      rawvcv[5] = g->_Sigma.ZZ;
+      _bl->setRawVCV(rawvcv);
+      // ignore point covars
+      // for GPS baselines only, set edge joins
+      assert(_params.size() == 2);
+      Station * First = _params[0].second;
+      Station * Second = _params[1].second;
+      unsigned long FirstIndex = _params[0].first;
+      unsigned long SecondIndex = _params[1].first;
+      First->stnJoin.push_back(SecondIndex);
       Second->stnJoin.push_back(FirstIndex); //-
       First->edgeJoin.push_back(edge(id(),SecondIndex,Second));
       Second->edgeJoin.push_back(edge(id(),FirstIndex,First));
-	  First->measJoin.push_back(id());
-	  Second->measJoin.push_back(id());
-	  // copy pointer
-	  _measurement = _bl;
-	  // copy all params
-	  for (int ii=0;ii<_params.size();++ii) _measurement->_param.push_back(_params[ii].second);
-		}
-	  break;
-		
-	case 'Y':
-		{
-	  YCluster * _yc = new YCluster(id(), ::std::stod(_m->_Total)); // TODO check against _params.size();
-	  if (!_clusterpoints.size()) throw ::std::domain_error("No ClusterPoint element found.");
-	  // loop through all clusterpoints
-	  int stn_id = 0;
-	  for (::std::vector<ClusterPoint_Struct>::iterator c = _clusterpoints.begin(); c != _clusterpoints.end(); ++c) {
-		  _yc->setPoint(stn_id,_params[stn_id].second,c->_X,c->_Y,c->_Z);
-		  double rawvcv[6];
-		  rawvcv[0] = c->_Sigma.XX;
-		  rawvcv[1] = c->_Sigma.XY;
-		  rawvcv[2] = c->_Sigma.XZ;
-		  rawvcv[3] = c->_Sigma.YY;
-		  rawvcv[4] = c->_Sigma.YZ;
-		  rawvcv[5] = c->_Sigma.ZZ;
-		  _yc->setStationRawVCV(stn_id, rawvcv);
-		  
-		  int to_stn_id = stn_id + 1;
-		  for( int covi=0; covi < c->_point_covar.size(); ++covi)
-		  {
-			_yc->set2StationCovariance(stn_id, to_stn_id, c->_point_covar[covi]);
-			to_stn_id++;
-		  }
-		  stn_id++;
-	  }
-	  _measurement = _yc;
-	  if (_yc->TotalSize != _yc->_param.size()) throw ::std::domain_error("Number of parameter groups does not match specified Total.");
-		}
-	  break;
-	case 'H':
-	case 'A':
-	case 'B':
-	case 'C':
-	case 'E':
-	case 'I':
-	case 'J':
-	case 'K':
-	case 'L':
-	case 'M':
-	case 'P':
-	case 'Q':
-	case 'R':
-	case 'S':
-	case 'V':
-	case 'X':
-	case 'Z':
-	case 'D':
-		return NULL; // do nothing at this stage!
-	  //_measurement.reset(new Directions(id()));
-	  //if (!_directions.size()) throw domain_error("No Directions element found.");
-	  //break;
-	default:
-	  throw ::std::domain_error(
-		  ::std::string("Unsupported measurement type ") + _m->_Type
-	  );
+      First->measJoin.push_back(id());
+      Second->measJoin.push_back(id());
+      // copy pointer
+      _measurement = _bl;
+      // copy all params
+      for (int ii=0;ii<_params.size();++ii) _measurement->_param.push_back(_params[ii].second);
+        }
+      break;
+        
+    case 'Y':
+        {
+      YCluster * _yc = new YCluster(id(), ::std::stod(_m->_Total)); // TODO check against _params.size();
+      if (!_clusterpoints.size()) throw ::std::domain_error("No ClusterPoint element found.");
+      // loop through all clusterpoints
+      int stn_id = 0;
+      for (::std::vector<ClusterPoint_Struct>::iterator c = _clusterpoints.begin(); c != _clusterpoints.end(); ++c) {
+          _yc->setPoint(stn_id,_params[stn_id].second,c->_X,c->_Y,c->_Z);
+          double rawvcv[6];
+          rawvcv[0] = c->_Sigma.XX;
+          rawvcv[1] = c->_Sigma.XY;
+          rawvcv[2] = c->_Sigma.XZ;
+          rawvcv[3] = c->_Sigma.YY;
+          rawvcv[4] = c->_Sigma.YZ;
+          rawvcv[5] = c->_Sigma.ZZ;
+          _yc->setStationRawVCV(stn_id, rawvcv);
+          
+          int to_stn_id = stn_id + 1;
+          for( int covi=0; covi < c->_point_covar.size(); ++covi)
+          {
+            _yc->set2StationCovariance(stn_id, to_stn_id, c->_point_covar[covi]);
+            to_stn_id++;
+          }
+          stn_id++;
+      }
+      _measurement = _yc;
+      if (_yc->TotalSize != _yc->_param.size()) throw ::std::domain_error("Number of parameter groups does not match specified Total.");
+        }
+      break;
+    case 'H':
+    case 'A':
+    case 'B':
+    case 'C':
+    case 'E':
+    case 'I':
+    case 'J':
+    case 'K':
+    case 'L':
+    case 'M':
+    case 'P':
+    case 'Q':
+    case 'R':
+    case 'S':
+    case 'V':
+    case 'X':
+    case 'Z':
+    case 'D':
+        return NULL; // do nothing at this stage!
+      //_measurement.reset(new Directions(id()));
+      //if (!_directions.size()) throw domain_error("No Directions element found.");
+      //break;
+    default:
+      throw ::std::domain_error(
+          ::std::string("Unsupported measurement type ") + _m->_Type
+      );
   }
 
 
@@ -446,18 +446,18 @@ post_DnaMeasurement ()
 // FIXME assumes this station has not already been added to this measurement
 void DnaMeasurement_pimpl::addStation(const ::std::string& stn_str)
 {
-	assert(_mn);
-	Station* P = NULL;
+    assert(_mn);
+    Station* P = NULL;
     int Index  = _mn->getPointIndex(stn_str.c_str(),&P);
     _params.push_back(::std::pair<int,Station*>(Index,P));
-	//P->stnJoin.push_back(??);
-	//P->edgeJoin.push_back(edge(i,??,??));
+    //P->stnJoin.push_back(??);
+    //P->edgeJoin.push_back(edge(i,??,??));
 }
 
 unsigned long DnaMeasurement_pimpl::id()
 {
-	assert(_mn);
-	return _mn->_numMeasurements;
+    assert(_mn);
+    return _mn->_numMeasurements;
 }
 
 // DnaStation_pimpl
@@ -466,8 +466,8 @@ unsigned long DnaMeasurement_pimpl::id()
 void DnaStation_pimpl::
 pre ()
 {
-	if (!_mn) throw std::runtime_error("MeasNetwork not set for Station Parser.");
-	_stn.reset(new Station_Struct);
+    if (!_mn) throw std::runtime_error("MeasNetwork not set for Station Parser.");
+    _stn.reset(new Station_Struct);
 }
 
 void DnaStation_pimpl::
@@ -498,7 +498,7 @@ StationCoord (const ::StationCoord_Struct& StationCoord)
 {
   // TODO
   // Fetch all elements and assign to the station.
-	_stn->_Coord = StationCoord;
+    _stn->_Coord = StationCoord;
 }
 
 void DnaStation_pimpl::
@@ -517,21 +517,21 @@ post_DnaStation ()
   // return ... ;
   Station * stn = NULL;
   int stationID = _mn->getPointIndex(_stn->_Coord._Name.c_str(),&stn);
-	stn->Latitude = _stn->_Coord._XAxis;
-	stn->LatitudeStr = _stn->_Coord._XAxisStr;
-	stn->Longitude = _stn->_Coord._YAxis;
-	stn->LongitudeStr = _stn->_Coord._YAxisStr;
-	stn->Height = _stn->_Coord._Height;
-	stn->name = _stn->_Coord._Name;
-	stn->setConstraints(_stn->_Constraints); // currently assumes ENU
-	// TODO should be done inside station class
-	double Xc[3] = {0,0,0};
-	double Xg[3] = {stn->Latitude,stn->Longitude,stn->Height};
-	//convertGeodeticDMStoDecDeg(Xg); // necessary because station LLH is in DDD.MMSS.SSSS
-	convertGeodeticToCartesian(Xg,Xc,GRS80_A,GRS80_eccSq);
-	::std::vector<double> xyz;
-   	for (int iii=0;iii<3;iii++) xyz.push_back(Xc[iii]);
-	stn->setAprioriValues(xyz); // seg -1 == apriori coordinates
+    stn->Latitude = _stn->_Coord._XAxis;
+    stn->LatitudeStr = _stn->_Coord._XAxisStr;
+    stn->Longitude = _stn->_Coord._YAxis;
+    stn->LongitudeStr = _stn->_Coord._YAxisStr;
+    stn->Height = _stn->_Coord._Height;
+    stn->name = _stn->_Coord._Name;
+    stn->setConstraints(_stn->_Constraints); // currently assumes ENU
+    // TODO should be done inside station class
+    double Xc[3] = {0,0,0};
+    double Xg[3] = {stn->Latitude,stn->Longitude,stn->Height};
+    //convertGeodeticDMStoDecDeg(Xg); // necessary because station LLH is in DDD.MMSS.SSSS
+    convertGeodeticToCartesian(Xg,Xc,GRS80_A,GRS80_eccSq);
+    ::std::vector<double> xyz;
+       for (int iii=0;iii<3;iii++) xyz.push_back(Xc[iii]);
+    stn->setAprioriValues(xyz); // seg -1 == apriori coordinates
     // set station constraints
 
   // return a reference. We won't use it though.
@@ -547,18 +547,18 @@ post_DnaStation ()
 void DnaXmlFormat_pimpl::
 pre ()
 {
-	_loadcounter = 0;
-	// init measurements and stations perhaps?
+    _loadcounter = 0;
+    // init measurements and stations perhaps?
 }
 
 void DnaXmlFormat_pimpl::
 DnaStation (::Station& DnaStation)
 {
   if (_loadcounter == 600) {
-	  _loadcounter = 0;
-	  std::cout << "\b\b\b\b\b     \b\b\b\b\b";
+      _loadcounter = 0;
+      std::cout << "\b\b\b\b\b     \b\b\b\b\b";
   } else if (_loadcounter % 100 == 0) {
-	  std::cout << ".";
+      std::cout << ".";
   }
   _loadcounter++;
   // TODO
@@ -570,10 +570,10 @@ void DnaXmlFormat_pimpl::
 DnaMeasurement (::DnaMeasurement* DnaMeasurement)
 {
   if (_loadcounter == 600) {
-	  _loadcounter = 0;
-	  std::cout << "\b\b\b\b\b     \b\b\b\b\b";
+      _loadcounter = 0;
+      std::cout << "\b\b\b\b\b     \b\b\b\b\b";
   } else if (_loadcounter % 100 == 0) {
-	  std::cout << ".";
+      std::cout << ".";
   }
   _loadcounter++;
   // TODO
@@ -593,7 +593,7 @@ type ()
 void DnaXmlFormat_pimpl::
 post_DnaXmlFormat ()
 {
-	while ((_loadcounter -= 100) > 0) std::cout << "\b \b";
+    while ((_loadcounter -= 100) > 0) std::cout << "\b \b";
 }
 
 // GPSBaseline_pimpl
@@ -602,8 +602,8 @@ post_DnaXmlFormat ()
 void GPSBaseline_pimpl::
 pre ()
 {
-	if (!_mn) throw std::runtime_error("MeasNetwork not set for GPSBaseline Parser.");
-	_bl.reset(new GPSBaseline_Struct);
+    if (!_mn) throw std::runtime_error("MeasNetwork not set for GPSBaseline Parser.");
+    _bl.reset(new GPSBaseline_Struct);
 }
 
 void GPSBaseline_pimpl::
@@ -855,7 +855,7 @@ post_PointCovariance ()
 void StationCoord_pimpl::
 pre ()
 {
-	_stncoord.reset(new StationCoord_Struct);
+    _stncoord.reset(new StationCoord_Struct);
 }
 
 void StationCoord_pimpl::

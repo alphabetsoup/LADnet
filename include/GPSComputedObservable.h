@@ -42,7 +42,7 @@ class GPSBaseline;
 
 class GPSComputedObservable : public ComputedObservable
 {
-	public:
+    public:
     GPSComputedObservable();
     GPSComputedObservable(::GPSBaseline * b, std::vector< double > v);
     ::GPSBaseline * _bl;

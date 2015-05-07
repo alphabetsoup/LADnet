@@ -44,7 +44,7 @@ using namespace arma;
 
 L1GLPKSimplexDualSolver::L1GLPKSimplexDualSolver(MeasSegment * seg, int segID, std::ostream& logs) : L1GLPKIPDualSolver(seg,segID,logs)
 {
-	std::cout << "Running GLPK Simplex solver on dual formulation." << std::endl;
+    std::cout << "Running GLPK Simplex solver on dual formulation." << std::endl;
 
     char segnum[20];
 
@@ -106,16 +106,16 @@ int L1GLPKSimplexDualSolver::run() {
     E *= parameterScale;
 
     *_logstream << "Jacobian Scale = " << jacobianScale << endl
-	            << "Observed Scale = " << observedScale << endl
-	            << "Parameter Scale = " << parameterScale << endl;
+                << "Observed Scale = " << observedScale << endl
+                << "Parameter Scale = " << parameterScale << endl;
 
-	*_logstream << "X" << endl;
-	*_logstream << X << endl;
-	*_logstream << "E" << endl;
-	*_logstream << E << endl;
+    *_logstream << "X" << endl;
+    *_logstream << X << endl;
+    *_logstream << "E" << endl;
+    *_logstream << E << endl;
 
-	std::vector<double> X_vector = conv_to< std::vector<double> >::from(X);
-	_seg->setCorrections(X_vector);
+    std::vector<double> X_vector = conv_to< std::vector<double> >::from(X);
+    _seg->setCorrections(X_vector);
     //WriteOutputToLog(X,E);
 
     *_logstream << "Sum of absolute values" << endl

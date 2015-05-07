@@ -68,28 +68,28 @@ using namespace pugi;
 MeasNetwork::MeasNetwork(const char * xmlmeasfile,
                          const char * xmlstnfile, 
                          const char * xmlstdvcvfile, 
-						 std::ostream * logstream, 
-						 bool include_ignores) 
-						 : _logstream( (logstream) ? logstream : (std::ostream *)(&std::cerr))
+                         std::ostream * logstream, 
+                         bool include_ignores) 
+                         : _logstream( (logstream) ? logstream : (std::ostream *)(&std::cerr))
 {
 //   FIXME delete below. Done in initialisation list.
 //   if (!logstream) _logstream = (std::ostream *)(&std::cerr);
 //    else _logstream = logstream;
 
-	// FIXME make this fail gracefully using return values or exceptions.
-	int vcvload = LoadStdVCVFile(xmlstdvcvfile, logstream);
+    // FIXME make this fail gracefully using return values or exceptions.
+    int vcvload = LoadStdVCVFile(xmlstdvcvfile, logstream);
 
 #if 0
-	int measload = LoadDynaMLMeasFile(xmlmeasfile, include_ignores); 
-	
-	// write adjacency list
-	LogMeasAdjacency();
+    int measload = LoadDynaMLMeasFile(xmlmeasfile, include_ignores); 
+    
+    // write adjacency list
+    LogMeasAdjacency();
 
-	int stnload = LoadDynaMLStnFile(xmlstnfile, include_ignores); 
+    int stnload = LoadDynaMLStnFile(xmlstnfile, include_ignores); 
 #else
-	LoadDynaML_xsd(xmlmeasfile, xmlstnfile, include_ignores); 
+    LoadDynaML_xsd(xmlmeasfile, xmlstnfile, include_ignores); 
 #endif
-	
+    
     *_logstream <<endl <<"_numPoints: " << _numPoints << endl;
     *_logstream <<endl <<"_parametergroups.size(): " << _parametergroups.size() << endl;
     *_logstream <<endl <<"_numMeasurements: " << _numMeasurements << endl;
@@ -100,29 +100,29 @@ MeasNetwork::MeasNetwork(const char * xmlmeasfile,
     *_logstream << "Set station degree sum" << std::endl;
     stationDegreeSum = new int[_numPoints];
 
-	// calculate measurment VCVs
-	setMeasVCV();
+    // calculate measurment VCVs
+    setMeasVCV();
 
     examinedStations = NULL;
     lastExaminedStations = NULL;
     touchedStations = NULL;
     spanningMeasurements = NULL;
 
-	LogNodeAdjacency();
+    LogNodeAdjacency();
 }
 
 MeasNetwork::~MeasNetwork()
 {
-	// deallocate measurements and parametergroups
-	for (std::vector<::DnaMeasurement*>::iterator mit = _measurements.begin(); mit != _measurements.end(); mit++) delete *mit;
-	for (std::vector<::ParameterGroup*>::iterator pit = _parametergroups.begin(); pit != _parametergroups.end(); pit++) delete *pit;
+    // deallocate measurements and parametergroups
+    for (std::vector<::DnaMeasurement*>::iterator mit = _measurements.begin(); mit != _measurements.end(); mit++) delete *mit;
+    for (std::vector<::ParameterGroup*>::iterator pit = _parametergroups.begin(); pit != _parametergroups.end(); pit++) delete *pit;
 }
 
 
 
 int MeasNetwork::LoadDynaML_xsd( const char * xmlmeasfile,
                          const char * xmlstnfile, 
-						 bool include_ignores) 
+                         bool include_ignores) 
 {
   _include_ignores = include_ignores;
   _numPoints = 0;
@@ -143,13 +143,13 @@ int MeasNetwork::LoadDynaML_xsd( const char * xmlmeasfile,
     ::PointCovariance_pimpl PointCovariance_p;
     ::type_pimpl type_p;
 
-	// Set the MeasNetwork for the measurement and station parsers
-	GPSBaseline_p.setMeasNetwork(this);
-	DnaStation_p.setMeasNetwork(this);
-	Directions_p.setMeasNetwork(this);
-	Clusterpoint_p.setMeasNetwork(this);
-	DnaMeasurement_p.setMeasNetwork(this);
-	DnaXmlFormat_p.setMeasNetwork(this);
+    // Set the MeasNetwork for the measurement and station parsers
+    GPSBaseline_p.setMeasNetwork(this);
+    DnaStation_p.setMeasNetwork(this);
+    Directions_p.setMeasNetwork(this);
+    Clusterpoint_p.setMeasNetwork(this);
+    DnaMeasurement_p.setMeasNetwork(this);
+    DnaXmlFormat_p.setMeasNetwork(this);
 
     // Connect the parsers together.
     //
@@ -242,31 +242,31 @@ int MeasNetwork::LoadDynaML_xsd( const char * xmlmeasfile,
     // Parse the XML document.
     //
     ::xml_schema::document doc_p (DnaXmlFormat_p, "DnaXmlFormat");
-	
-	std::cout << "Measurement file: " << xmlmeasfile << "     ";
-	
+    
+    std::cout << "Measurement file: " << xmlmeasfile << "     ";
+    
     DnaXmlFormat_p.pre ();
     doc_p.parse (xmlmeasfile);
     DnaXmlFormat_p.post_DnaXmlFormat ();
 
-	std::cout << " loaded." << std::endl;
+    std::cout << " loaded." << std::endl;
 
-	//
-	// write adjacency list
-	LogMeasAdjacency();
+    //
+    // write adjacency list
+    LogMeasAdjacency();
 
-	std::cout << "Station file: " << xmlstnfile << "     ";
-				 
+    std::cout << "Station file: " << xmlstnfile << "     ";
+                 
     //         << "\nStandard VCV file: " << xmlstdvcvfile << std::endl;
     DnaXmlFormat_p.pre ();
     doc_p.parse (xmlstnfile);
     DnaXmlFormat_p.post_DnaXmlFormat ();
-	
-	std::cout << " loaded." << std::endl;
+    
+    std::cout << " loaded." << std::endl;
 
     // TODO
     //
-	validXML=true;
+    validXML=true;
   }
   catch (const ::xml_schema::exception& e)
   {
@@ -284,7 +284,7 @@ int MeasNetwork::LoadDynaML_xsd( const char * xmlmeasfile,
 
 
 int MeasNetwork::LoadDynaMLMeasFile( const char * xmlmeasfile,
-						 bool include_ignores)
+                         bool include_ignores)
 {
     _numPoints = 0;
 
@@ -301,7 +301,7 @@ int MeasNetwork::LoadDynaMLMeasFile( const char * xmlmeasfile,
     buffer = LoadFileToBuffer(xmlmeasfile,&size);
     pugi::xml_parse_result parse_result = xDoc.load_buffer_inplace(buffer,size,pugi::parse_minimal);
 #else
-	 pugi::xml_parse_result parse_result = xDoc.load_file(xmlmeasfile,pugi::parse_minimal);
+     pugi::xml_parse_result parse_result = xDoc.load_file(xmlmeasfile,pugi::parse_minimal);
 #endif
 
     if (parse_result)
@@ -347,12 +347,12 @@ int MeasNetwork::LoadDynaMLMeasFile( const char * xmlmeasfile,
     for (pugi::xml_node xDnaMeas = xMainNode.child(DNA_MEAS); xDnaMeas; xDnaMeas = xDnaMeas.next_sibling(DNA_MEAS))
     {
         char dna_meas_type = *(xDnaMeas.child("Type").text().get());
-	    const char * ignore_c =  xDnaMeas.child("Ignore").text().get();
+        const char * ignore_c =  xDnaMeas.child("Ignore").text().get();
         bool ignore_b = (ignore_c != NULL && strlen(ignore_c) > 0 && *(ignore_c) == '*') ? true : false;
     
-    	*_logstream << "Importing measurement type " << dna_meas_type << std::endl;
+        *_logstream << "Importing measurement type " << dna_meas_type << std::endl;
 
-	    if (dna_meas_type == 'G' && (include_ignores || !ignore_b)) {
+        if (dna_meas_type == 'G' && (include_ignores || !ignore_b)) {
             //_measurements[i] = new ::DnaMeasurement();
             pugi::xml_node xGPSBaseline = xDnaMeas.child(GPS_BLN);
             double X      = xGPSBaseline.child("X").text().as_double();
@@ -362,13 +362,13 @@ int MeasNetwork::LoadDynaMLMeasFile( const char * xmlmeasfile,
             ::GPSBaseline * gpsmeas = new ::GPSBaseline(i,X,Y,Z);
 
             // first assign indexes to _parametergroups
-			Station * First = NULL;
-			Station * Second = NULL;
+            Station * First = NULL;
+            Station * Second = NULL;
 
             int FirstIndex  = getPointIndex(xDnaMeas.child("First").text().get(),&First);
             int SecondIndex = getPointIndex(xDnaMeas.child("Second").text().get(),&Second);
 
-			// add these stations as parameters to the measurement. ORDER IS IMPORTANT.
+            // add these stations as parameters to the measurement. ORDER IS IMPORTANT.
             gpsmeas->_param.push_back(First);
             gpsmeas->_param.push_back(Second);
 
@@ -390,8 +390,8 @@ int MeasNetwork::LoadDynaMLMeasFile( const char * xmlmeasfile,
             gpsmeas->Lscale = xDnaMeas.child("Lscale").text().as_double();
             gpsmeas->Hscale = xDnaMeas.child("Hscale").text().as_double();
 
-			double rawVCV[6];
-				
+            double rawVCV[6];
+                
             rawVCV[0] = xGPSBaseline.child("SigmaXX").text().as_double();
             rawVCV[1] = xGPSBaseline.child("SigmaXY").text().as_double();
             rawVCV[2] = xGPSBaseline.child("SigmaXZ").text().as_double();
@@ -399,22 +399,22 @@ int MeasNetwork::LoadDynaMLMeasFile( const char * xmlmeasfile,
             rawVCV[4] = xGPSBaseline.child("SigmaYZ").text().as_double();
             rawVCV[5] = xGPSBaseline.child("SigmaZZ").text().as_double();
 
-			// FIXME use correct flag/test for a default vcv for GPS baselines
-				gpsmeas->setRawVCV(rawVCV);
+            // FIXME use correct flag/test for a default vcv for GPS baselines
+                gpsmeas->setRawVCV(rawVCV);
     
-	/*
+    /*
             // run Cholesky decomposition here such that this class is 
             // untouched in the loop to be parallelised
             gpsmeas->CholeskyDecomposeRawSigmas();
             // also run the eigenvalue decomposition
             gpsmeas->diagonalise();
-	*/
-			// set the ID (FIXME do uniqueness check??)
-			gpsmeas->measID = _measurements.size();
+    */
+            // set the ID (FIXME do uniqueness check??)
+            gpsmeas->measID = _measurements.size();
             _measurements.push_back(gpsmeas);
             i++;
-	    }
-	    else if (dna_meas_type == 'Y' && (include_ignores || !ignore_b)) {
+        }
+        else if (dna_meas_type == 'Y' && (include_ignores || !ignore_b)) {
             int totalsize = xDnaMeas.child("Total").text().as_float();
             YCluster * yc = new YCluster(i,totalsize);
             yc->Ignore = ignore_b;
@@ -423,77 +423,77 @@ int MeasNetwork::LoadDynaMLMeasFile( const char * xmlmeasfile,
             yc->Pscale = xDnaMeas.child("Pscale").text().as_double();
             yc->Lscale = xDnaMeas.child("Lscale").text().as_double();
             yc->Hscale = xDnaMeas.child("Hscale").text().as_double();
-			// For some reason, the cluster point name is _outside_ the point xml definition. This needs to be changed.
-			// just get a vector of names
-			//pugi::xml_node xClusterPtNames = xDnaMeas.child("First");
-			vector< string > pt_names;
-			//for(pugi::xml_node_iterator xClusterPtNameIt = xClusterPtNames.begin(); xClusterPtNameIt != xClusterPtNames.end(); xClusterPtNameIt++) {
-    		for (pugi::xml_node xCPName = xDnaMeas.child("First"); xCPName; xCPName = xCPName.next_sibling("First")) {
-				//pt_names.push_back(string(xClusterPtNameIt->text().get()));
-				pt_names.push_back(string(xCPName.text().get()));
-			}
-			// Loop over Clusterpoint records
-			int stnid = 0;
-    		for (pugi::xml_node xClusterPt = xDnaMeas.child(Y_PT); xClusterPt; xClusterPt = xClusterPt.next_sibling(Y_PT))
-			{
-				//if (xClusterPtNameIt == xClusterPtNames.end()) throw domain_error("No name for Y Cluster Point");
-				if (stnid >= pt_names.size()) throw domain_error("No name for Y Cluster Point");
-				// TODO get the station for this cluster point
-				Station * First = NULL;
-				//string namestr = xClusterPtNameIt->text().get();
-				string namestr = pt_names[stnid];
-				*_logstream << "Reading clusterpoint for station " << namestr << endl;
-            	int FirstIndex  = getPointIndex(namestr.c_str(),&First);
-				// TODO assign the XYZ coords for this cluster point
-				yc->setPoint(stnid,
-				             First,
-				             xClusterPt.child("X").text().as_double(),
-				             xClusterPt.child("Y").text().as_double(),
-				             xClusterPt.child("Z").text().as_double());
+            // For some reason, the cluster point name is _outside_ the point xml definition. This needs to be changed.
+            // just get a vector of names
+            //pugi::xml_node xClusterPtNames = xDnaMeas.child("First");
+            vector< string > pt_names;
+            //for(pugi::xml_node_iterator xClusterPtNameIt = xClusterPtNames.begin(); xClusterPtNameIt != xClusterPtNames.end(); xClusterPtNameIt++) {
+            for (pugi::xml_node xCPName = xDnaMeas.child("First"); xCPName; xCPName = xCPName.next_sibling("First")) {
+                //pt_names.push_back(string(xClusterPtNameIt->text().get()));
+                pt_names.push_back(string(xCPName.text().get()));
+            }
+            // Loop over Clusterpoint records
+            int stnid = 0;
+            for (pugi::xml_node xClusterPt = xDnaMeas.child(Y_PT); xClusterPt; xClusterPt = xClusterPt.next_sibling(Y_PT))
+            {
+                //if (xClusterPtNameIt == xClusterPtNames.end()) throw domain_error("No name for Y Cluster Point");
+                if (stnid >= pt_names.size()) throw domain_error("No name for Y Cluster Point");
+                // TODO get the station for this cluster point
+                Station * First = NULL;
+                //string namestr = xClusterPtNameIt->text().get();
+                string namestr = pt_names[stnid];
+                *_logstream << "Reading clusterpoint for station " << namestr << endl;
+                int FirstIndex  = getPointIndex(namestr.c_str(),&First);
+                // TODO assign the XYZ coords for this cluster point
+                yc->setPoint(stnid,
+                             First,
+                             xClusterPt.child("X").text().as_double(),
+                             xClusterPt.child("Y").text().as_double(),
+                             xClusterPt.child("Z").text().as_double());
 
-				// TODO assign the sigmas for this cluster point
-				double rawvcv[6];
-	            rawvcv[0] = xClusterPt.child("SigmaXX").text().as_double();
-	            rawvcv[1] = xClusterPt.child("SigmaXY").text().as_double();
-	            rawvcv[2] = xClusterPt.child("SigmaXZ").text().as_double();
-	            rawvcv[3] = xClusterPt.child("SigmaYY").text().as_double();
-	            rawvcv[4] = xClusterPt.child("SigmaYZ").text().as_double();
-	            rawvcv[5] = xClusterPt.child("SigmaZZ").text().as_double();
-				*_logstream << "Setting rawvcv for stnid " << stnid << endl;
-				yc->setStationRawVCV(stnid, rawvcv);
-				
-				// TODO loop over the pointcovariance records for this cluster point
-				int covstnid = stnid+1;
-    			for (pugi::xml_node xClusterPtCovar = xClusterPt.child(Y_PT_COV); xClusterPtCovar; xClusterPtCovar = xClusterPtCovar.next_sibling(Y_PT_COV))
-				{
-					double covar[3][3];
-	            	covar[0][0] = xClusterPtCovar.child("m11").text().as_double();
-	            	covar[0][1] = xClusterPtCovar.child("m12").text().as_double();
-	            	covar[0][2] = xClusterPtCovar.child("m13").text().as_double();
-	            	covar[1][0] = xClusterPtCovar.child("m21").text().as_double();
-	            	covar[1][1] = xClusterPtCovar.child("m22").text().as_double();
-	            	covar[1][2] = xClusterPtCovar.child("m23").text().as_double();
-	            	covar[2][0] = xClusterPtCovar.child("m31").text().as_double();
-	            	covar[2][1] = xClusterPtCovar.child("m32").text().as_double();
-	            	covar[2][2] = xClusterPtCovar.child("m33").text().as_double();
-					yc->set2StationCovariance(stnid, covstnid, covar);
-					covstnid++;
-				}
-				//xClusterPtName.next_sibling("First");
-				//xClusterPtNameIt++;
-				stnid++;
-			}
-			/*// print covar matrix
-			yc->printRawVCV(_logstream);
-			yc->scaleVCV(
-			yc->printSVCV(_logstream);
-			yc->printCholDecomVCV(_logstream);
-			*/
-			// increment measID counter
-			yc->measID = _measurements.size();
+                // TODO assign the sigmas for this cluster point
+                double rawvcv[6];
+                rawvcv[0] = xClusterPt.child("SigmaXX").text().as_double();
+                rawvcv[1] = xClusterPt.child("SigmaXY").text().as_double();
+                rawvcv[2] = xClusterPt.child("SigmaXZ").text().as_double();
+                rawvcv[3] = xClusterPt.child("SigmaYY").text().as_double();
+                rawvcv[4] = xClusterPt.child("SigmaYZ").text().as_double();
+                rawvcv[5] = xClusterPt.child("SigmaZZ").text().as_double();
+                *_logstream << "Setting rawvcv for stnid " << stnid << endl;
+                yc->setStationRawVCV(stnid, rawvcv);
+                
+                // TODO loop over the pointcovariance records for this cluster point
+                int covstnid = stnid+1;
+                for (pugi::xml_node xClusterPtCovar = xClusterPt.child(Y_PT_COV); xClusterPtCovar; xClusterPtCovar = xClusterPtCovar.next_sibling(Y_PT_COV))
+                {
+                    double covar[3][3];
+                    covar[0][0] = xClusterPtCovar.child("m11").text().as_double();
+                    covar[0][1] = xClusterPtCovar.child("m12").text().as_double();
+                    covar[0][2] = xClusterPtCovar.child("m13").text().as_double();
+                    covar[1][0] = xClusterPtCovar.child("m21").text().as_double();
+                    covar[1][1] = xClusterPtCovar.child("m22").text().as_double();
+                    covar[1][2] = xClusterPtCovar.child("m23").text().as_double();
+                    covar[2][0] = xClusterPtCovar.child("m31").text().as_double();
+                    covar[2][1] = xClusterPtCovar.child("m32").text().as_double();
+                    covar[2][2] = xClusterPtCovar.child("m33").text().as_double();
+                    yc->set2StationCovariance(stnid, covstnid, covar);
+                    covstnid++;
+                }
+                //xClusterPtName.next_sibling("First");
+                //xClusterPtNameIt++;
+                stnid++;
+            }
+            /*// print covar matrix
+            yc->printRawVCV(_logstream);
+            yc->scaleVCV(
+            yc->printSVCV(_logstream);
+            yc->printCholDecomVCV(_logstream);
+            */
+            // increment measID counter
+            yc->measID = _measurements.size();
             _measurements.push_back(yc);
             i++;
-		}
+        }
     }
     FreeBuffer(buffer);
 
@@ -503,12 +503,12 @@ int MeasNetwork::LoadDynaMLMeasFile( const char * xmlmeasfile,
     *_logstream << "Number of objects created: " << _numMeasurements << std::endl;
     *_logstream << "Number of unique station identifiers: " << _numPoints << std::endl;
 
-	return 1;
+    return 1;
 }
-	
+    
 int MeasNetwork::LoadDynaMLStnFile(
                          const char * xmlstnfile, 
-						 bool include_ignores)
+                         bool include_ignores)
 {
     _numPoints = 0;
 
@@ -525,7 +525,7 @@ int MeasNetwork::LoadDynaMLStnFile(
     buffer = LoadFileToBuffer(xmlstnfile,&size);
     pugi::xml_parse_result stn_parse_result = xDoc.load_buffer_inplace(buffer,size,pugi::parse_minimal);
 #else
-	 pugi::xml_parse_result stn_parse_result = xDoc.load_file(xmlstnfile,pugi::parse_minimal);
+     pugi::xml_parse_result stn_parse_result = xDoc.load_file(xmlstnfile,pugi::parse_minimal);
 #endif
 
     if (stn_parse_result)
@@ -559,29 +559,29 @@ int MeasNetwork::LoadDynaMLStnFile(
         //*_logstream << " " << n++;
         // first assign indexes to _parametergroups
         pugi::xml_node xCoord = xDnaStn.child("StationCoord");
-		Station * stn = NULL;
+        Station * stn = NULL;
         int stationID = getPointIndex(xCoord.child("Name").text().get(),&stn);
         // Should we only store if station is in the meas file?
         //if (stationID < _numPoints) {
         string l = string(xCoord.child("XAxis").text().get());
-	  	stn->LatitudeStr = l;
+          stn->LatitudeStr = l;
         stn->Latitude  = dmsStringToDouble(l); 
 
         l = string(xCoord.child("YAxis").text().get());
-	    stn->LongitudeStr = l;
+        stn->LongitudeStr = l;
         stn->Longitude  = dmsStringToDouble(l);
 
         stn->Height = xCoord.child("Height").text().as_double();
 
-	  	//*_logstream << "Declaring GPSTK Position" << endl;
+          //*_logstream << "Declaring GPSTK Position" << endl;
 
         // now convert geodetic to ECEF for adjustment apriori coordinates
-		double Xc[3] = {0,0,0};
-		double Xg[3] = {stn->Latitude,stn->Longitude,stn->Height};
-		convertGeodeticToCartesian(Xg,Xc,GRS80_A,GRS80_eccSq);
-		vector<double> xyz;
-    	for (int iii=0;iii<3;iii++) xyz.push_back(Xc[iii]);
-		stn->setAprioriValues(xyz); // seg -1 == apriori coordinates
+        double Xc[3] = {0,0,0};
+        double Xg[3] = {stn->Latitude,stn->Longitude,stn->Height};
+        convertGeodeticToCartesian(Xg,Xc,GRS80_A,GRS80_eccSq);
+        vector<double> xyz;
+        for (int iii=0;iii<3;iii++) xyz.push_back(Xc[iii]);
+        stn->setAprioriValues(xyz); // seg -1 == apriori coordinates
 
         // set station constraints
         stn->setConstraints(xDnaStn.child("Constraints").text().get()); // currently assumes ENU
@@ -590,39 +590,39 @@ int MeasNetwork::LoadDynaMLStnFile(
     *_logstream <<endl <<"Completed station file load." << endl;
     FreeBuffer(buffer);
 
-	return 1;
+    return 1;
 }
 
 
 void MeasNetwork::setMeasVCV() {
-	*_logstream << "Calculate Measurement sVCV" << std::endl;
-	// This should be in the measurement class
+    *_logstream << "Calculate Measurement sVCV" << std::endl;
+    // This should be in the measurement class
     for (int i=0; i<_numMeasurements; i++) {
-    	*_logstream << "Raw VCV" << std::endl;
-		_measurements[i]->printRawVCV(_logstream);
+        *_logstream << "Raw VCV" << std::endl;
+        _measurements[i]->printRawVCV(_logstream);
 
         std::map< char , vector< double > >::iterator svit =
-			standard_vcv.find(_measurements[i]->Type);
+            standard_vcv.find(_measurements[i]->Type);
 
-		if (!std_vcv_file_loaded || svit == standard_vcv.end()) {
-    		*_logstream << "Scaling VCV" << std::endl;
-        	_measurements[i]->scaleVCV(GRS80_A, GRS80_eccSq);
-		} else {
-    		*_logstream << "Using default VCV" << std::endl;
-			_measurements[i]->useDefaultVCV(
-				svit->second[0],
-				svit->second[1],
-				svit->second[2],
-				svit->second[3],
-				GRS80_A,
-				GRS80_eccSq);
-		}
+        if (!std_vcv_file_loaded || svit == standard_vcv.end()) {
+            *_logstream << "Scaling VCV" << std::endl;
+            _measurements[i]->scaleVCV(GRS80_A, GRS80_eccSq);
+        } else {
+            *_logstream << "Using default VCV" << std::endl;
+            _measurements[i]->useDefaultVCV(
+                svit->second[0],
+                svit->second[1],
+                svit->second[2],
+                svit->second[3],
+                GRS80_A,
+                GRS80_eccSq);
+        }
 
         _measurements[i]->printSVCV(_logstream);
 
-    	*_logstream << "Cholesky decompose VCV" << std::endl;
+        *_logstream << "Cholesky decompose VCV" << std::endl;
         _measurements[i]->CholeskyDecomposeSVCV();
-    	*_logstream << "Printing Cholesky decomposed VCV" << std::endl;
+        *_logstream << "Printing Cholesky decomposed VCV" << std::endl;
 
         _measurements[i]->printCholDecomSVCV(_logstream);
 
@@ -632,16 +632,16 @@ void MeasNetwork::setMeasVCV() {
 
 void MeasNetwork::LogMeasAdjacency()
 {
-	*_logstream << "Station to measurement adjacency list" << std::endl;
+    *_logstream << "Station to measurement adjacency list" << std::endl;
     for (int i=0; i<_numPoints; i++) {
-		Station* stn = (Station*)_parametergroups[i];
+        Station* stn = (Station*)_parametergroups[i];
         *_logstream  << std::setw(7) << i << std::setw(10) << stn->name << " n=" << std::setw(5) << stn->measJoin.size() << " Joins: ";
         for (unsigned int j=0; j<stn->measJoin.size(); j++) *_logstream << std::setw(7) << stn->measJoin[j];
         *_logstream  << std::endl;
     }
     *_logstream << "Station to station adjacency list" << std::endl;
     for (int i=0; i<_numPoints; i++) {
-		Station* stn = (Station*)_parametergroups[i];
+        Station* stn = (Station*)_parametergroups[i];
         *_logstream  << std::setw(7) << i << std::setw(10) << stn->name << " n=" << std::setw(5) << stn->stnJoin.size() << " Joins: ";
         for (unsigned int j=0; j<stn->stnJoin.size(); j++) *_logstream << std::setw(7) << stn->stnJoin[j];
         *_logstream  << std::endl;
@@ -652,7 +652,7 @@ void MeasNetwork::LogNodeAdjacency() {
     *_logstream << "Edge-Node adjacency list" << std::endl;
     for (int i=0; i<_numPoints; i++) {
         // First sort the join list for this node by degree
-		Station * stn = (Station* )_parametergroups[i];
+        Station * stn = (Station* )_parametergroups[i];
         std::sort(stn->edgeJoin.begin(), stn->edgeJoin.end());
         std::reverse(stn->edgeJoin.begin(), stn->edgeJoin.end());
         // populate the array of station degrees for reference in sorting.
@@ -670,7 +670,7 @@ void MeasNetwork::LogNodeAdjacency() {
     *_logstream << "Station degree sum" << std::endl;
     for (int i=0; i<_numPoints; i++) {
         stationDegreeSum[i]=0;//init
-		Station * stn = (Station* )_parametergroups[i];
+        Station * stn = (Station* )_parametergroups[i];
         for (int k=0; k<stn->edgeJoin.size(); k++) {
           stationDegreeSum[i] += stationDegree[stn->edgeJoin[k].stnID];
         }
@@ -768,8 +768,8 @@ void MeasNetwork::PrepareNetwork() {
     // This function creates a list of spanning trees all nodes in the network.
     InitSubnets();
 
-	// lastly, add a "fixed" point measurement for fixing each island to the apriori coordinates with 10m std dev.
-	FPoint * fp = new FPoint(_numMeasurements); 
+    // lastly, add a "fixed" point measurement for fixing each island to the apriori coordinates with 10m std dev.
+    FPoint * fp = new FPoint(_numMeasurements); 
     
     // The below assumes that there are no lonely stations.
     // This assumption is valid because the stations were derived from the measurements
@@ -777,24 +777,24 @@ void MeasNetwork::PrepareNetwork() {
     numTrees = 0;
     numSpanningMeasurements = 0;
     for (s=0; s<_numMeasurements; s++) {
-		
-		if (_measurements[s]->Ignore && !_include_ignores) continue; // FIXME this is ugly.
+        
+        if (_measurements[s]->Ignore && !_include_ignores) continue; // FIXME this is ugly.
 
-		if(_measurements[s]->isType('G')) {
-			vector<ParameterGroup*>::iterator pit = _measurements[s]->_param.begin();
-			while (pit != _measurements[s]->_param.end()) {
-        		if(!examinedStations[(*pit)->_id]) {
-        			numTrees++;
-					expandSpanningTree(s,(*pit)->_id);
-					// fix this station!
-					//(*pit)->fixForAllSegments();
-					cout << "Adding anchor Station " << (*pit)->_id << " " << (*pit)->name << endl;
-					fp->addPoint((Station*)(*pit));
-				}
-				pit++;
-			}
-        	//numTrees--;
-		}
+        if(_measurements[s]->isType('G')) {
+            vector<ParameterGroup*>::iterator pit = _measurements[s]->_param.begin();
+            while (pit != _measurements[s]->_param.end()) {
+                if(!examinedStations[(*pit)->_id]) {
+                    numTrees++;
+                    expandSpanningTree(s,(*pit)->_id);
+                    // fix this station!
+                    //(*pit)->fixForAllSegments();
+                    cout << "Adding anchor Station " << (*pit)->_id << " " << (*pit)->name << endl;
+                    fp->addPoint((Station*)(*pit));
+                }
+                pit++;
+            }
+            //numTrees--;
+        }
     }
     // for some reason, we crash here!
     // Is it a virtual method issue?
@@ -802,26 +802,26 @@ void MeasNetwork::PrepareNetwork() {
         if(_parametergroups[q]->isConstrained()) {
             *_logstream << "Station " << _parametergroups[q]->_id << " is constrained" << endl;
             cout        << "Station " << _parametergroups[q]->_id << " is constrained" << endl;
-		    if (!fp->hasParameter(_parametergroups[q])) {
-				*_logstream << "Adding fixed Station " << _parametergroups[q]->_id << endl;
-				cout        << "Adding fixed Station " << _parametergroups[q]->_id << endl;
-				fp->addPoint((Station*)(_parametergroups[q]));
-			}
+            if (!fp->hasParameter(_parametergroups[q])) {
+                *_logstream << "Adding fixed Station " << _parametergroups[q]->_id << endl;
+                cout        << "Adding fixed Station " << _parametergroups[q]->_id << endl;
+                fp->addPoint((Station*)(_parametergroups[q]));
+            }
         }
     }
 
     *_logstream << "All station constraints have been set." << endl;
 
     if (numTrees > 0) {
-	    fp->setAllVCV(1000);
+        fp->setAllVCV(1000);
 
-	    _measurements.push_back(fp);
-	    _numMeasurements++;
-	    *_logstream << "Number of fixed points: " << fp->TotalSize << endl;
+        _measurements.push_back(fp);
+        _numMeasurements++;
+        *_logstream << "Number of fixed points: " << fp->TotalSize << endl;
     }
     else {
         delete fp;
-	    *_logstream << "Number of fixed points: zero " << endl;
+        *_logstream << "Number of fixed points: zero " << endl;
     }
 
 
@@ -829,17 +829,17 @@ void MeasNetwork::PrepareNetwork() {
     *_logstream << std::endl << "Number of exclusive spanning trees: " << numTrees << std::endl;
     *_logstream << std::endl << "Spanning tree indexes:" << std::endl;
     for (int i=0; i<_numMeasurements; i++){
-			//vector<ParameterGroup*>::iterator pit = _measurements[i]->_param.begin();
+            //vector<ParameterGroup*>::iterator pit = _measurements[i]->_param.begin();
             *_logstream
             << std::setw(15) 
-			<< _measurements[i]->getLabel()
+            << _measurements[i]->getLabel()
             //<< (*(pit++))->name
             //<< std::setw(10) 
             //<< (*(pit++))->name
             << std::setw(10) 
             << spanningMeasurements[i]
             << std::endl;
-	}
+    }
     // proceed to find fundamental cycles by locating the shortest paths between 
     // the first and second indexes of every measurement not in the spanning tree 
     // FIXME this is hard, so I'll try Keith Paton's method of finding elementary cycles
@@ -866,7 +866,7 @@ void MeasNetwork::CreateSubnets(int nbhdDepth) {
     // check for each edge whether it is valid.
     vector<bool> blockedMeas(_numMeasurements,false);
     for (int i=0;i<_numMeasurements; i++) {
-	  int segID = measSegments.size();
+      int segID = measSegments.size();
       measSegments.push_back(MeasSegment(this,segID,i));
       MeasSegment * seg = &(measSegments[measSegments.size()-1]);
       /*init the blocklist*/
@@ -877,7 +877,7 @@ void MeasNetwork::CreateSubnets(int nbhdDepth) {
       }
       else {
         measSegments.pop_back();
-	//delete seg; // do we need to do this?
+    //delete seg; // do we need to do this?
       }
     }
 
@@ -913,15 +913,15 @@ void MeasNetwork::CreateSingleSubnet() {
     measSegments.push_back(MeasSegment(this,segID));
     measSegments[segID]._principle = principleID;
     for (int measID=0;measID<_numMeasurements;measID++){
-		if (_measurements[measID]->Ignore && !_include_ignores) continue;
+        if (_measurements[measID]->Ignore && !_include_ignores) continue;
         try {
               measSegments[segID].addMeasurement(measID);
-			  for(vector<ParameterGroup*>::iterator pit = _measurements[measID]->_param.begin(); pit != _measurements[measID]->_param.end(); pit++) {
-        	      measSegments[segID].addParameterGroup((*(pit))->_id);
-			  }
-	    } catch (domain_error e) {
+              for(vector<ParameterGroup*>::iterator pit = _measurements[measID]->_param.begin(); pit != _measurements[measID]->_param.end(); pit++) {
+                  measSegments[segID].addParameterGroup((*(pit))->_id);
+              }
+        } catch (domain_error e) {
               *_logstream << e.what() << endl;
-	    }
+        }
     }
     //std::cout << "Current number of subnetworks " << measSegments.size() << endl;
 }
@@ -957,22 +957,22 @@ void MeasNetwork::ReadSubnetsFrom(ifstream& seginfile) {
       // now read in all measurements in this segment
       do{
         noteof = getline(seginfile,line);
-	if (line != "EndSeg") {
-	  istringstream ss_measID(line);
-	  if(ss_measID >> measID) {
+    if (line != "EndSeg") {
+      istringstream ss_measID(line);
+      if(ss_measID >> measID) {
             //cout << "Reading measurement " << measID;
             try {
               measSegments[segID].addMeasurement(measID);
-			  vector<ParameterGroup*>::iterator pit = _measurements[measID]->_param.begin();
+              vector<ParameterGroup*>::iterator pit = _measurements[measID]->_param.begin();
               measSegments[segID].addParameterGroup((*(pit++))->_id);
               measSegments[segID].addParameterGroup((*(pit++))->_id);
-	    } catch (domain_error e) {
+        } catch (domain_error e) {
               *_logstream << e.what() << endl;
-	    }
-	    //cout << "... read." << endl;
-	  }
-	}
-	else noteof = NULL;
+        }
+        //cout << "... read." << endl;
+      }
+    }
+    else noteof = NULL;
       }
       while (noteof);
     }
@@ -981,8 +981,8 @@ void MeasNetwork::ReadSubnetsFrom(ifstream& seginfile) {
   for (int i = 0; i < measSegments.size(); i++) {
     cout << "Segment " << i << " has " 
          << measSegments[i]._numMeasurements 
-	 << " measurements and " 
-	 << measSegments[i]._numPoints << " stations" << endl;
+     << " measurements and " 
+     << measSegments[i]._numPoints << " stations" << endl;
   }
   std::cout << "Finished reading subnetworks" << std::endl;
   std::cout << "Current number of subnetworks "
@@ -1028,12 +1028,12 @@ void MeasNetwork::findCycles() {
         //  continue;
         //}
 
-		// ensure backEdge is a GPS measurement
-		if (!_measurements[backEdge]->isType('G')) {
-        	//*_logstream << "Skipping measurement "<< backEdge << std::endl;
-			backEdge++;
-			continue;
-		}
+        // ensure backEdge is a GPS measurement
+        if (!_measurements[backEdge]->isType('G')) {
+            //*_logstream << "Skipping measurement "<< backEdge << std::endl;
+            backEdge++;
+            continue;
+        }
         //*_logstream << "Finding cycle for back edge measurement "<< backEdge << std::endl;
 /*
         #ifdef CYCLE_NAIVE_SEGMENTS
@@ -1042,7 +1042,7 @@ void MeasNetwork::findCycles() {
             measSegments[measSegments.size()-1].cyclesToSegment();
             measSegments.push_back(MeasSegment(this)); // push a new one
         }
-	#endif
+    #endif
 */
         // Add edges to the spanning tree, then use A* to find the cycle.
         // Search all edges since the minimal cycle may not be in the spanning tree + edge
@@ -1056,7 +1056,7 @@ void MeasNetwork::findCycles() {
         SearchNode E;
         SearchNode F;
 
-		vector<ParameterGroup*>::iterator pit = _measurements[backEdge]->_param.begin();
+        vector<ParameterGroup*>::iterator pit = _measurements[backEdge]->_param.begin();
         //*_logstream << "  Check backedge station id = "<< (*pit)->_id << std::endl;
         F.stnID  = (*pit)->_id;
         F.measID = backEdge; 
@@ -1073,15 +1073,15 @@ void MeasNetwork::findCycles() {
         // Add first node to the open set.
         Q.enqueue_open(F);
 
-		pit++; // secondIndex
+        pit++; // secondIndex
 
         // Target the second point.
-		//*_logstream << "  Queue open size = " << Q.open_size() << endl;
+        //*_logstream << "  Queue open size = " << Q.open_size() << endl;
         while (Q.open_size() > 0) {
           E = Q.dequeue_open();
 
           // If we've hit the target
-		  //*_logstream << "  E.stnID == " << E.stnID << ", backEdge->secondMeas->stnID == " << (*pit)->_id << endl;
+          //*_logstream << "  E.stnID == " << E.stnID << ", backEdge->secondMeas->stnID == " << (*pit)->_id << endl;
           if(E.stnID == (*pit)->_id) {
             //*_logstream << "  Cycle found for measurement "<< backEdge << std::endl;
             MeasCycle *  cycle = new MeasCycle();
@@ -1092,14 +1092,14 @@ void MeasNetwork::findCycles() {
               S = S->parent;
             }while (S != NULL);
             printCycle(*cycle);
-	    // Add the cycle to the list
+        // Add the cycle to the list
             _allCycles[backEdge] = *cycle;
 /*
-	    #ifdef CYCLE_NAIVE_SEGMENTS
+        #ifdef CYCLE_NAIVE_SEGMENTS
             // push the cycle into the next meas segment
             measSegments[measSegments.size()-1].cycles.push_back(*cycle);
             measSegments[measSegments.size()-1]._numMeasurements += cycle->size();
-	    #endif
+        #endif
 */
             delete cycle;
             numCycles++;
@@ -1108,14 +1108,14 @@ void MeasNetwork::findCycles() {
           else {
             // keep adding adjacent edges to the current station to the queue
             SearchNode * Ec = Q.enqueue_closed(E);
-			//*_logstream << "  Number of joined measurements to stn " << Ec->stnID << " is " << ((Station*)_parametergroups[Ec->stnID])->measJoin.size() << endl;
+            //*_logstream << "  Number of joined measurements to stn " << Ec->stnID << " is " << ((Station*)_parametergroups[Ec->stnID])->measJoin.size() << endl;
             for (int m = 0; m < ((Station*)_parametergroups[Ec->stnID])->measJoin.size(); m++) {
-			  //*_logstream << "  Examining join " << m << endl;
+              //*_logstream << "  Examining join " << m << endl;
               int measID = ((Station*)_parametergroups[Ec->stnID])->measJoin[m];
               int stnID = ((Station*)_parametergroups[Ec->stnID])->stnJoin[m];
 
-			  // is it anything other than a GPSBaseline?
-			  if (!_measurements[measID]->isType('G')) continue;
+              // is it anything other than a GPSBaseline?
+              if (!_measurements[measID]->isType('G')) continue;
 
               // have we been here before?
               if (blockedMeas[measID]) continue;
@@ -1123,8 +1123,8 @@ void MeasNetwork::findCycles() {
               blockedMeas[measID] = true;
 
               // is the baseline in forward or reverse direction from the stnID standpoint
-			  ::GPSBaseline * meas = (::GPSBaseline * )_measurements[measID];
-			  vector<ParameterGroup*>::iterator pit2 = meas->_param.begin();
+              ::GPSBaseline * meas = (::GPSBaseline * )_measurements[measID];
+              vector<ParameterGroup*>::iterator pit2 = meas->_param.begin();
               int dir = (stnID == (*pit2)->_id) ? 1 : -1; // FirstIndex
               
               SearchNode M;   M.stnID  = stnID;
@@ -1137,18 +1137,18 @@ void MeasNetwork::findCycles() {
                               M.depth  = Ec->depth + 1;
 
               // calculate cost of this node.
-			  ::GPSBaseline * backEdgeMeas = (::GPSBaseline*)_measurements[backEdge]; // All of this typecasting will be my undoing.
+              ::GPSBaseline * backEdgeMeas = (::GPSBaseline*)_measurements[backEdge]; // All of this typecasting will be my undoing.
               M.cost = M.dist + /*distance to target*/
                           sqrt( sqr(M.X - backEdgeMeas->_components[0])
                               + sqr(M.Y - backEdgeMeas->_components[1])
                               + sqr(M.Z - backEdgeMeas->_components[2]));
-			  //*_logstream << "  Enqueueing search node with station ID = " << stnID << " and meas ID = " << measID << " ....." << endl;
+              //*_logstream << "  Enqueueing search node with station ID = " << stnID << " and meas ID = " << measID << " ....." << endl;
               Q.enqueue_open(M); 
-			  //*_logstream << "    Enqueued" << endl;
+              //*_logstream << "    Enqueued" << endl;
             }
           }
         }
-		if (Q.open_size() == 0)
+        if (Q.open_size() == 0)
           *_logstream << "  No cycle found for measurement "<< backEdge << " from " << _measurements[backEdge]->_param[0]->name << " to " << _measurements[backEdge]->_param[1]->name << std::endl;
 
         backEdge++; // end of while loop. Increment back edge counter.
@@ -1168,10 +1168,10 @@ int MeasNetwork::aggregateNeighbourhood(MeasSegment * seg, int measID, vector<bo
 
     // if the current depth is 0, search from both stations. Otherwise, search from the station
     // that doesn't have a neighbourhood in the segment.
-	vector<ParameterGroup*>::iterator pit = _measurements[measID]->_param.begin();
-	int FirstIndex = (*pit)->_id;
-	pit++;
-	int SecondIndex = (*pit)->_id;
+    vector<ParameterGroup*>::iterator pit = _measurements[measID]->_param.begin();
+    int FirstIndex = (*pit)->_id;
+    pit++;
+    int SecondIndex = (*pit)->_id;
     if (fromStnID == -1) fromStnID = FirstIndex;
     int toStnID = (fromStnID == FirstIndex) ? SecondIndex : FirstIndex;
 
@@ -1225,49 +1225,49 @@ struct edgeFunctor {
 void MeasNetwork::expandSpanningTree(int measIndex_, int fromNodeIndex_) {
     // for every connected node to this node, add the connecting edge (measurement) 
     // to the spanning tree and add the station index to the examined stack.
-	// FIXME make for GPSBaseline measurements only!
-	typedef pair< long int, long int > NodePair;
-	std::deque< NodePair > nodeIndexStack(_numMeasurements);
-	// push the first pair on the stack
-	nodeIndexStack.push_back(NodePair(measIndex_, fromNodeIndex_));
+    // FIXME make for GPSBaseline measurements only!
+    typedef pair< long int, long int > NodePair;
+    std::deque< NodePair > nodeIndexStack(_numMeasurements);
+    // push the first pair on the stack
+    nodeIndexStack.push_back(NodePair(measIndex_, fromNodeIndex_));
 
-	while (nodeIndexStack.size()) 
-	{
-		NodePair np = nodeIndexStack.front();
-		int measIndex = np.first;
-		int fromNodeIndex = np.second;
-		int nodeIndex;
-		// put the below in a block to return stack memory
-		{
-			::DnaMeasurement * meas = _measurements[measIndex];
-			vector<ParameterGroup*>::iterator pit = meas->_param.begin();
-			int FirstIndex = (*pit)->_id;
-			pit++;
-			int SecondIndex = (*pit)->_id;
-			nodeIndex = SecondIndex;
-			if (fromNodeIndex == nodeIndex) nodeIndex = FirstIndex; // traverse this vector in reverse
-		}
+    while (nodeIndexStack.size()) 
+    {
+        NodePair np = nodeIndexStack.front();
+        int measIndex = np.first;
+        int fromNodeIndex = np.second;
+        int nodeIndex;
+        // put the below in a block to return stack memory
+        {
+            ::DnaMeasurement * meas = _measurements[measIndex];
+            vector<ParameterGroup*>::iterator pit = meas->_param.begin();
+            int FirstIndex = (*pit)->_id;
+            pit++;
+            int SecondIndex = (*pit)->_id;
+            nodeIndex = SecondIndex;
+            if (fromNodeIndex == nodeIndex) nodeIndex = FirstIndex; // traverse this vector in reverse
+        }
     
-		if (!examinedStations[nodeIndex]) {
-		    examinedStations[nodeIndex] = true;
-		    spanningMeasurements[measIndex] = numTrees; // assign to a tree
-		    numSpanningMeasurements++;
-		    // for all nodes adjacent to nodeIndex, recursively call this function.
-			Station * node = (Station*)_parametergroups[nodeIndex];
-		    for (int i=0; i< node->measJoin.size(); i++) {
-		        //expandSpanningTree(node->measJoin[i],nodeIndex);
-				// push all back on the stack
-				
-				if (_measurements[node->measJoin[i]]->Ignore && !_include_ignores) continue; // FIXME this is ugly.
+        if (!examinedStations[nodeIndex]) {
+            examinedStations[nodeIndex] = true;
+            spanningMeasurements[measIndex] = numTrees; // assign to a tree
+            numSpanningMeasurements++;
+            // for all nodes adjacent to nodeIndex, recursively call this function.
+            Station * node = (Station*)_parametergroups[nodeIndex];
+            for (int i=0; i< node->measJoin.size(); i++) {
+                //expandSpanningTree(node->measJoin[i],nodeIndex);
+                // push all back on the stack
+                
+                if (_measurements[node->measJoin[i]]->Ignore && !_include_ignores) continue; // FIXME this is ugly.
 
-				nodeIndexStack.push_back(NodePair(node->measJoin[i],nodeIndex));
-		    }
-		}
-		else {
-		    spanningMeasurements[measIndex] = -numTrees; // negative to signify not part of the spanning tree(s)
-		}
-		nodeIndexStack.pop_front(); // delete the front element
-	}
+                nodeIndexStack.push_back(NodePair(node->measJoin[i],nodeIndex));
+            }
+        }
+        else {
+            spanningMeasurements[measIndex] = -numTrees; // negative to signify not part of the spanning tree(s)
+        }
+        nodeIndexStack.pop_front(); // delete the front element
+    }
 }
 
 
@@ -1275,22 +1275,22 @@ void MeasNetwork::expandSpanningTree(int measIndex_, int fromNodeIndex_) {
 
 int MeasNetwork::LoadStdVCVFile(const char * xmlstdvcvfile, std::ostream * logstream)
 {
-	pugi::xml_document xDoc;
+    pugi::xml_document xDoc;
     char * buffer;
     long size = 0;
     int n = 0; 
 
     
-	if (xmlstdvcvfile == NULL) {
-		std_vcv_file_loaded = false;
-		return 0;
-	}
+    if (xmlstdvcvfile == NULL) {
+        std_vcv_file_loaded = false;
+        return 0;
+    }
 
-	std_vcv_file_loaded = true;
+    std_vcv_file_loaded = true;
 
-    	*_logstream << "Loading default VCV XML file " << xmlstdvcvfile << std::endl;
+        *_logstream << "Loading default VCV XML file " << xmlstdvcvfile << std::endl;
         buffer = LoadFileToBuffer(xmlstdvcvfile,&size);
-    	*_logstream << "Loaded VCV XML into buffer" << std::endl;
+        *_logstream << "Loaded VCV XML into buffer" << std::endl;
         pugi::xml_parse_result dvcv_parse_result = xDoc.load_buffer_inplace(buffer,size,pugi::parse_minimal);
         
 
@@ -1317,9 +1317,9 @@ int MeasNetwork::LoadStdVCVFile(const char * xmlstdvcvfile, std::ostream * logst
             dv.push_back( xVCVNode.child("PPM").text().as_double());
             standard_vcv.insert( std::pair< char, vector< double > >(vcv_type,dv) );
         }
-	
+    
 
-	return 1;
+    return 1;
 }
 
 void MeasNetwork::WriteStationNames(const char * outfilename)
@@ -1343,9 +1343,9 @@ int MeasNetwork::getPointIndex(const char * name, Station ** st)
   // Otherwise, return i.
   for (int i=_numPoints-1;i>=0;i--)
     if (_parametergroups[i]->name.compare(name) == 0) {
-		*st = (Station*)_parametergroups[i]; // this will probably fail.
-		return i;
-	}
+        *st = (Station*)_parametergroups[i]; // this will probably fail.
+        return i;
+    }
 
   // No entry exists. Add it to the stack and return _numPoints;
   //_parametergroups[_numPoints] = new Station(name);
