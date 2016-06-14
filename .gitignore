@@ -166,3 +166,6 @@ FakesAssemblies/
 *.adj
 *.shx
 *.dbf
+# object files
+*.o
+*.lo
