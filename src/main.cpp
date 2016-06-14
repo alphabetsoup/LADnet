@@ -55,6 +55,7 @@
 #include "L1GLPKIPSolver.h"
 #include "L1GLPKIPDualSolver.h"
 #include "L2ArmaSolver.h"
+#include "L2CGArmaSolver.h"
 #include "optionparser.h"
 #include "Residual.h"
 #include "GPSResidual.h"
@@ -613,7 +614,7 @@ int main(int argc, const char** argv)
                           else if (runL1simplexdualglpk)
                             runSolver<L1GLPKSimplexDualSolver>(&(*seg), segID,*outfile);
                           else if (runL2Arma)
-                            runSolver<L2ArmaSolver>(&(*seg), segID,*outfile);
+                            runSolver<L2CGArmaSolver>(&(*seg), segID,*outfile);
                           /* else if (runL1convex)
                             l1 = new L1ConvexSolver(&(*seg), segID);
                           else 
@@ -642,7 +643,7 @@ int main(int argc, const char** argv)
                       // write a csv file for this segment
 
                       *outfile  
-                                << "L1 adjustment on segment " 
+                                << "Adjustment on segment " 
                                 << std::setw(10) << segID
                                 << " complete. Num Measurements: "
                                 << std::setw(10) << seg->_numMeasurements
@@ -651,7 +652,7 @@ int main(int argc, const char** argv)
                                 << " Time elapsed: " 
                                 << t->currentSeconds() << std::endl;
                       std::cout 
-                                << "L1 adjustment on segment " 
+                                << "Adjustment on segment " 
                                 << std::setw(10) << segID
                                 << " complete. Num Measurements: "
                                 << std::setw(10) << seg->_numMeasurements
@@ -700,7 +701,7 @@ int main(int argc, const char** argv)
                           else if (runL1simplexdualglpk)
                             runSolver<L1GLPKSimplexDualSolver>(&(*seg), segID,*outfile);
                           else if (runL2Arma)
-                            runSolver<L2ArmaSolver>(&(*seg), segID,*outfile);
+                            runSolver<L2CGArmaSolver>(&(*seg), segID,*outfile);
 								/*
                               else if (runL1convex)
                                 l1 = new L1ConvexSolver(&(*seg), segID);
@@ -731,7 +732,7 @@ int main(int argc, const char** argv)
                           // write a csv file for this segment
     
                           *outfile  
-                                    << "L1 adjustment on segment " 
+                                    << "Adjustment on segment " 
                                     << std::setw(10) << segID
                                     << " complete. Num Measurements: "
                                     << std::setw(10) << seg->_numMeasurements
@@ -740,7 +741,7 @@ int main(int argc, const char** argv)
                                     << " Time elapsed: " 
                                     << t->currentSeconds() << std::endl;
                           std::cout 
-                                    << "L1 adjustment on segment " 
+                                    << "Adjustment on segment " 
                                     << std::setw(10) << segID
                                     << " complete. Num Measurements: "
                                     << std::setw(10) << seg->_numMeasurements

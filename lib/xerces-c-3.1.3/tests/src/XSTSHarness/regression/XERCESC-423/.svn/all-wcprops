@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/XSTSHarness/regression/XERCESC-423
+END
+dummy.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/XSTSHarness/regression/XERCESC-423/dummy.xsd
+END
+dummy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/XSTSHarness/regression/XERCESC-423/dummy.xml
+END

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/XSTSHarness/regression/XERCESC-711
+END
+KeyTest.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/XSTSHarness/regression/XERCESC-711/KeyTest.xsd
+END
+KeyTest.xml
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/XSTSHarness/regression/XERCESC-711/KeyTest.xml
+END
+KeyTest2.xml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/XSTSHarness/regression/XERCESC-711/KeyTest2.xml
+END

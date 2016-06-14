@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/IANACharset
+END
+IANACharsetList.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/IANACharset/IANACharsetList.xml
+END
+IANACharset_ErrHandler.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/IANACharset/IANACharset_ErrHandler.hpp
+END
+IANACharset.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/IANACharset/IANACharset.cpp
+END
+charset.dtd
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/IANACharset/charset.dtd
+END

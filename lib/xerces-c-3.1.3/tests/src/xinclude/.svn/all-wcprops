@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/xinclude
+END
+run.bat
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/xinclude/run.bat
+END
+harness.pl
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/xinclude/harness.pl
+END

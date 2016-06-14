@@ -11,6 +11,7 @@
 #include "DynaML-pskel.hxx"
 #include "XMLStructs.h"
 
+
 class UsesMeasNetwork
 {
 public:	
@@ -19,7 +20,7 @@ protected:
   MeasNetwork * _mn;
 };
 
-class Clusterpoint_pimpl: public virtual Clusterpoint_pskel, public UsesMeasNetwork
+class Clusterpoint_pimpl: public EXTPSKEL Clusterpoint_pskel, public UsesMeasNetwork
 {
   public:
   virtual void
@@ -58,10 +59,10 @@ class Clusterpoint_pimpl: public virtual Clusterpoint_pskel, public UsesMeasNetw
   virtual ::ClusterPoint_Struct&
   post_Clusterpoint ();
 protected:
-  ::std::auto_ptr<::ClusterPoint_Struct> _y;
+  ::std::auto_ptr< ::ClusterPoint_Struct> _y;
 };
 
-class Directions_pimpl: public virtual Directions_pskel, public UsesMeasNetwork
+class Directions_pimpl: public EXTPSKEL Directions_pskel, public UsesMeasNetwork
 {
   public:
   virtual void
@@ -85,7 +86,7 @@ protected:
   ::std::auto_ptr<Directions_Struct> _d;
 };
 
-class DnaMeasurement_pimpl: public virtual DnaMeasurement_pskel, public UsesMeasNetwork{
+class DnaMeasurement_pimpl: public EXTPSKEL DnaMeasurement_pskel, public UsesMeasNetwork{
   public:
   virtual void
   pre ();
@@ -166,7 +167,7 @@ protected:
 	unsigned long id();
 };
 
-class DnaStation_pimpl: public virtual DnaStation_pskel, public UsesMeasNetwork
+class DnaStation_pimpl: public EXTPSKEL DnaStation_pskel, public UsesMeasNetwork
 {
   public:
   virtual void
@@ -193,7 +194,7 @@ protected:
   ::std::auto_ptr<Station_Struct> _stn;
 };
 
-class DnaXmlFormat_pimpl: public virtual DnaXmlFormat_pskel, public UsesMeasNetwork
+class DnaXmlFormat_pimpl: public EXTPSKEL DnaXmlFormat_pskel, public UsesMeasNetwork
 {
   public:
   virtual void
@@ -214,7 +215,7 @@ protected:
   int _loadcounter;
 };
 
-class GPSBaseline_pimpl: public virtual GPSBaseline_pskel, public UsesMeasNetwork
+class GPSBaseline_pimpl: public EXTPSKEL GPSBaseline_pskel, public UsesMeasNetwork
 {
   public:
   virtual void
@@ -257,7 +258,7 @@ protected:
   std::auto_ptr<GPSBaseline_Struct> _bl;
 };
 
-class GPSCovariance_pimpl: public virtual GPSCovariance_pskel
+class GPSCovariance_pimpl: public EXTPSKEL GPSCovariance_pskel
 {
   public:
   virtual void
@@ -297,7 +298,7 @@ protected:
 	::arma::mat33 _pointcovar;
 };
 
-class PointCovariance_pimpl: public virtual PointCovariance_pskel
+class PointCovariance_pimpl: public EXTPSKEL PointCovariance_pskel
 {
   public:
   virtual void
@@ -337,7 +338,7 @@ protected:
 	::arma::mat33 _pointcovar;
 };
 
-class StationCoord_pimpl: public virtual StationCoord_pskel
+class StationCoord_pimpl: public EXTPSKEL StationCoord_pskel
 {
   public:
   virtual void
@@ -364,7 +365,7 @@ protected:
   ::std::auto_ptr<StationCoord_Struct> _stncoord;
 };
 
-class type_pimpl: public virtual type_pskel,
+class type_pimpl: public EXTPSKEL type_pskel,
   public ::xml_schema::string_pimpl
 {
   public:

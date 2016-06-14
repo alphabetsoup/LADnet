@@ -14,14 +14,14 @@ struct ClusterPoint_Struct
 {
   double _X, _Y, _Z;
   Symmetric33 _Sigma;
-  ::std::vector<::arma::mat33> _point_covar;
+  ::std::vector< ::arma::mat33> _point_covar;
 };
 
 struct GPSBaseline_Struct
 {
   double _X, _Y, _Z;
   Symmetric33 _Sigma;
-  ::std::vector<::arma::mat33> _point_covar;
+  ::std::vector< ::arma::mat33> _point_covar;
 };
 
 struct Directions_Struct 

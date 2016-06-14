@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/XSTSHarness/regression/XERCESC-1623
+END
+very-simple-2-ns-ppl-nons-t.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/XSTSHarness/regression/XERCESC-1623/very-simple-2-ns-ppl-nons-t.xsd
+END
+need-import-t.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/XSTSHarness/regression/XERCESC-1623/need-import-t.xsd
+END
+need-import-t.xml
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/XSTSHarness/regression/XERCESC-1623/need-import-t.xml
+END

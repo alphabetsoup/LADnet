@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/doc/style/stylesheets
+END
+any2project.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/doc/style/stylesheets/any2project.xsl
+END
+any2header.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/doc/style/stylesheets/any2header.xsl
+END
+book2project.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/doc/style/stylesheets/book2project.xsl
+END
+context2footer.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/doc/style/stylesheets/context2footer.xsl
+END
+document2html.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/doc/style/stylesheets/document2html.xsl
+END
+context2label.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/doc/style/stylesheets/context2label.xsl
+END
+book2group.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/doc/style/stylesheets/book2group.xsl
+END
+changes2document.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/doc/style/stylesheets/changes2document.xsl
+END
+context2section.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/doc/style/stylesheets/context2section.xsl
+END
+faqs2document.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/doc/style/stylesheets/faqs2document.xsl
+END
+directory2project.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/doc/style/stylesheets/directory2project.xsl
+END
+group2document.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/doc/style/stylesheets/group2document.xsl
+END

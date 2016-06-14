@@ -45,6 +45,15 @@
 #error XSD runtime version mismatch
 #endif
 
+#if defined _WIN32 || defined _WIN64 
+#define EXTPSKEL virtual
+#else
+#define EXTPSKEL virtual 
+#endif
+
+//#define PUREVIRTUAL = default
+#define PUREVIRTUAL
+
 #include <xsd/cxx/pre.hxx>
 
 // Forward declarations
@@ -302,37 +311,37 @@ class Clusterpoint_pskel: public ::xml_schema::complex_content
   // Parser callbacks. Override them in your implementation.
   //
   // virtual void
-  // pre ();
+  // pre () PUREVIRTUAL;
 
   virtual void
-  X (const ::std::string&);
+  X (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  Y (const ::std::string&);
+  Y (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  Z (const ::std::string&);
+  Z (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  SigmaXX (const ::std::string&);
+  SigmaXX (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  SigmaXY (const ::std::string&);
+  SigmaXY (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  SigmaXZ (const ::std::string&);
+  SigmaXZ (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  SigmaYY (const ::std::string&);
+  SigmaYY (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  SigmaYZ (const ::std::string&);
+  SigmaYZ (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  SigmaZZ (const ::std::string&);
+  SigmaZZ (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  PointCovariance (const ::arma::mat33&);
+  PointCovariance (const ::arma::mat33&) PUREVIRTUAL;
 
   virtual ::ClusterPoint_Struct&
   post_Clusterpoint () = 0;
@@ -485,10 +494,10 @@ class Clusterpoint_pskel: public ::xml_schema::complex_content
   ::xsd::cxx::parser::pod_stack v_state_stack_;
 
   virtual void
-  _pre_e_validate ();
+  _pre_e_validate () PUREVIRTUAL;
 
   virtual void
-  _post_e_validate ();
+  _post_e_validate () PUREVIRTUAL;
 
   void
   sequence_0 (unsigned long& state,
@@ -505,19 +514,19 @@ class Directions_pskel: public ::xml_schema::complex_content
   // Parser callbacks. Override them in your implementation.
   //
   // virtual void
-  // pre ();
+  // pre () PUREVIRTUAL;
 
   virtual void
-  Ignore (const ::std::string&);
+  Ignore (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  Target (const ::std::string&);
+  Target (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  Value (const ::std::string&);
+  Value (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  StdDev (const ::std::string&);
+  StdDev (const ::std::string&) PUREVIRTUAL;
 
   virtual ::Directions_Struct&
   post_Directions () = 0;
@@ -615,10 +624,10 @@ class Directions_pskel: public ::xml_schema::complex_content
   ::xsd::cxx::parser::pod_stack v_state_stack_;
 
   virtual void
-  _pre_e_validate ();
+  _pre_e_validate () PUREVIRTUAL;
 
   virtual void
-  _post_e_validate ();
+  _post_e_validate () PUREVIRTUAL;
 
   void
   sequence_0 (unsigned long& state,
@@ -635,70 +644,70 @@ class DnaMeasurement_pskel: public ::xml_schema::complex_content
   // Parser callbacks. Override them in your implementation.
   //
   // virtual void
-  // pre ();
+  // pre () PUREVIRTUAL;
 
   virtual void
-  Type (const ::std::string&);
+  Type (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  Ignore (const ::std::string&);
+  Ignore (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  First (const ::std::string&);
+  First (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  Second (const ::std::string&);
+  Second (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  Third (const ::std::string&);
+  Third (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  Value (const ::std::string&);
+  Value (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  StdDev (const ::std::string&);
+  StdDev (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  InstHeight (const ::std::string&);
+  InstHeight (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  TargHeight (const ::std::string&);
+  TargHeight (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  Total (const ::std::string&);
+  Total (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  Directions (::Directions_Struct&);
+  Directions (::Directions_Struct&) PUREVIRTUAL;
 
   virtual void
-  Vscale (const ::std::string&);
+  Vscale (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  GPSBaseline (::GPSBaseline_Struct&);
+  GPSBaseline (::GPSBaseline_Struct&) PUREVIRTUAL;
 
   virtual void
-  Hscale (const ::std::string&);
+  Hscale (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  Lscale (const ::std::string&);
+  Lscale (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  Pscale (const ::std::string&);
+  Pscale (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  Clusterpoint (::ClusterPoint_Struct&);
+  Clusterpoint (::ClusterPoint_Struct&) PUREVIRTUAL;
 
   virtual void
-  Coords (const ::std::string&);
+  Coords (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  Source (const ::std::string&);
+  Source (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  ReferenceFrame (const ::std::string&);
+  ReferenceFrame (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  MeasuredDate (const ::std::string&);
+  MeasuredDate (const ::std::string&) PUREVIRTUAL;
 
   virtual ::DnaMeasurement*
   post_DnaMeasurement () = 0;
@@ -951,10 +960,10 @@ class DnaMeasurement_pskel: public ::xml_schema::complex_content
   ::xsd::cxx::parser::pod_stack v_state_stack_;
 
   virtual void
-  _pre_e_validate ();
+  _pre_e_validate () PUREVIRTUAL;
 
   virtual void
-  _post_e_validate ();
+  _post_e_validate () PUREVIRTUAL;
 
   void
   choice_0 (unsigned long& state,
@@ -974,19 +983,19 @@ class DnaStation_pskel: public ::xml_schema::complex_content
   // pre ();
 
   virtual void
-  Name (const ::std::string&);
+  Name (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  Constraints (const ::std::string&);
+  Constraints (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  Type (const ::std::string&);
+  Type (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  StationCoord (const ::StationCoord_Struct&);
+  StationCoord (const ::StationCoord_Struct&) PUREVIRTUAL;
 
   virtual void
-  Description (const ::std::string&);
+  Description (const ::std::string&) PUREVIRTUAL;
 
   virtual ::Station&
   post_DnaStation () = 0;
@@ -1089,10 +1098,10 @@ class DnaStation_pskel: public ::xml_schema::complex_content
   ::xsd::cxx::parser::pod_stack v_state_stack_;
 
   virtual void
-  _pre_e_validate ();
+  _pre_e_validate () PUREVIRTUAL;
 
   virtual void
-  _post_e_validate ();
+  _post_e_validate () PUREVIRTUAL;
 
   void
   sequence_0 (unsigned long& state,
@@ -1112,16 +1121,16 @@ class DnaXmlFormat_pskel: public ::xml_schema::complex_content
   // pre ();
 
   virtual void
-  DnaStation (::Station&);
+  DnaStation (::Station&) PUREVIRTUAL;
 
   virtual void
-  DnaMeasurement (::DnaMeasurement*);
+  DnaMeasurement (::DnaMeasurement*) PUREVIRTUAL;
 
   virtual void
-  type ();
+  type () PUREVIRTUAL;
 
   virtual void
-  post_DnaXmlFormat ();
+  post_DnaXmlFormat () PUREVIRTUAL;
 
   // Parser construction API.
   //
@@ -1197,10 +1206,10 @@ class DnaXmlFormat_pskel: public ::xml_schema::complex_content
   ::xsd::cxx::parser::pod_stack v_state_stack_;
 
   virtual void
-  _pre_e_validate ();
+  _pre_e_validate () PUREVIRTUAL;
 
   virtual void
-  _post_e_validate ();
+  _post_e_validate () PUREVIRTUAL;
 
   void
   choice_0 (unsigned long& state,
@@ -1220,10 +1229,10 @@ class DnaXmlFormat_pskel: public ::xml_schema::complex_content
   ::xsd::cxx::parser::pod_stack v_state_attr_stack_;
 
   virtual void
-  _pre_a_validate ();
+  _pre_a_validate () PUREVIRTUAL;
 
   virtual void
-  _post_a_validate ();
+  _post_a_validate () PUREVIRTUAL;
 };
 
 class GPSBaseline_pskel: public ::xml_schema::complex_content
@@ -1232,37 +1241,37 @@ class GPSBaseline_pskel: public ::xml_schema::complex_content
   // Parser callbacks. Override them in your implementation.
   //
   // virtual void
-  // pre ();
+  // pre () PUREVIRTUAL;
 
   virtual void
-  X (const ::std::string&);
+  X (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  Y (const ::std::string&);
+  Y (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  Z (const ::std::string&);
+  Z (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  SigmaXX (const ::std::string&);
+  SigmaXX (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  SigmaXY (const ::std::string&);
+  SigmaXY (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  SigmaXZ (const ::std::string&);
+  SigmaXZ (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  SigmaYY (const ::std::string&);
+  SigmaYY (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  SigmaYZ (const ::std::string&);
+  SigmaYZ (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  SigmaZZ (const ::std::string&);
+  SigmaZZ (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  GPSCovariance (const ::arma::mat33&);
+  GPSCovariance (const ::arma::mat33&) PUREVIRTUAL;
 
   virtual ::GPSBaseline_Struct&
   post_GPSBaseline () = 0;
@@ -1415,10 +1424,10 @@ class GPSBaseline_pskel: public ::xml_schema::complex_content
   ::xsd::cxx::parser::pod_stack v_state_stack_;
 
   virtual void
-  _pre_e_validate ();
+  _pre_e_validate () PUREVIRTUAL;
 
   virtual void
-  _post_e_validate ();
+  _post_e_validate () PUREVIRTUAL;
 
   void
   sequence_0 (unsigned long& state,
@@ -1435,34 +1444,34 @@ class GPSCovariance_pskel: public ::xml_schema::complex_content
   // Parser callbacks. Override them in your implementation.
   //
   // virtual void
-  // pre ();
+  // pre () PUREVIRTUAL;
 
   virtual void
-  m11 (const ::std::string&);
+  m11 (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  m12 (const ::std::string&);
+  m12 (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  m13 (const ::std::string&);
+  m13 (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  m21 (const ::std::string&);
+  m21 (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  m22 (const ::std::string&);
+  m22 (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  m23 (const ::std::string&);
+  m23 (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  m31 (const ::std::string&);
+  m31 (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  m32 (const ::std::string&);
+  m32 (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  m33 (const ::std::string&);
+  m33 (const ::std::string&) PUREVIRTUAL;
 
   virtual ::arma::mat33
   post_GPSCovariance () = 0;
@@ -1610,10 +1619,10 @@ class GPSCovariance_pskel: public ::xml_schema::complex_content
   ::xsd::cxx::parser::pod_stack v_state_stack_;
 
   virtual void
-  _pre_e_validate ();
+  _pre_e_validate () PUREVIRTUAL;
 
   virtual void
-  _post_e_validate ();
+  _post_e_validate () PUREVIRTUAL;
 
   void
   sequence_0 (unsigned long& state,
@@ -1630,34 +1639,34 @@ class PointCovariance_pskel: public ::xml_schema::complex_content
   // Parser callbacks. Override them in your implementation.
   //
   // virtual void
-  // pre ();
+  // pre () PUREVIRTUAL;
 
   virtual void
-  m11 (const ::std::string&);
+  m11 (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  m12 (const ::std::string&);
+  m12 (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  m13 (const ::std::string&);
+  m13 (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  m21 (const ::std::string&);
+  m21 (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  m22 (const ::std::string&);
+  m22 (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  m23 (const ::std::string&);
+  m23 (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  m31 (const ::std::string&);
+  m31 (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  m32 (const ::std::string&);
+  m32 (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  m33 (const ::std::string&);
+  m33 (const ::std::string&) PUREVIRTUAL;
 
   virtual ::arma::mat33
   post_PointCovariance () = 0;
@@ -1805,10 +1814,10 @@ class PointCovariance_pskel: public ::xml_schema::complex_content
   ::xsd::cxx::parser::pod_stack v_state_stack_;
 
   virtual void
-  _pre_e_validate ();
+  _pre_e_validate () PUREVIRTUAL;
 
   virtual void
-  _post_e_validate ();
+  _post_e_validate () PUREVIRTUAL;
 
   void
   sequence_0 (unsigned long& state,
@@ -1828,19 +1837,19 @@ class StationCoord_pskel: public ::xml_schema::complex_content
   // pre ();
 
   virtual void
-  Name (const ::std::string&);
+  Name (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  XAxis (const ::std::string&);
+  XAxis (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  YAxis (const ::std::string&);
+  YAxis (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  Height (const ::std::string&);
+  Height (const ::std::string&) PUREVIRTUAL;
 
   virtual void
-  HemisphereZone (const ::std::string&);
+  HemisphereZone (const ::std::string&) PUREVIRTUAL;
 
   virtual ::StationCoord_Struct
   post_StationCoord () = 0;
@@ -1948,10 +1957,10 @@ class StationCoord_pskel: public ::xml_schema::complex_content
   ::xsd::cxx::parser::pod_stack v_state_stack_;
 
   virtual void
-  _pre_e_validate ();
+  _pre_e_validate () PUREVIRTUAL;
 
   virtual void
-  _post_e_validate ();
+  _post_e_validate () PUREVIRTUAL;
 
   void
   sequence_0 (unsigned long& state,
@@ -1962,16 +1971,16 @@ class StationCoord_pskel: public ::xml_schema::complex_content
               bool start);
 };
 
-class type_pskel: public virtual ::xml_schema::string_pskel
+class type_pskel: public EXTPSKEL ::xml_schema::string_pskel
 {
   public:
   // Parser callbacks. Override them in your implementation.
   //
   // virtual void
-  // pre ();
+  // pre () PUREVIRTUAL;
 
   virtual void
-  post_type ();
+  post_type () PUREVIRTUAL;
 
   public:
   static const char*

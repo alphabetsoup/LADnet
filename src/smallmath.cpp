@@ -12,8 +12,23 @@ using namespace std;
 using namespace arma;
 
 #if defined _WIN32 || defined _WIN64
-int isnan(double x) { return x != x; }
+int isnan_(double x) { return x != x; }
 int isinf(double x) { return !isnan(x) && isnan(x - x); }
+#else
+int isnan_(double x) { return std::isnan(x); }
+#endif
+
+#if 1
+// FIXME stod is c++11
+double stod_(::std::string l)
+{
+    return ::std::stod(l);
+}
+#else
+double stod(::std::string l)
+{
+    return atof(l.c_str());
+}
 #endif
 
 double sqr(double a) { return a * a; }
@@ -30,7 +45,7 @@ double dmsStringToDouble(::std::string l) {
 }
 */
 double dmsStringToDouble(::std::string l) {
-  return convertDMStoDecDeg(::std::stod(l));
+  return convertDMStoDecDeg(stod_(l));
 }
 
 void CholeskyDecompose3x3(double A[3][3], double C[6])
@@ -57,7 +72,7 @@ void CholeskyDecompose3x3(double A[3][3], double C[6])
     C[3] = sqrt(P[1][1] - sqr(C[1]));
     C[4] = (P[1][2] - C[1]*C[2])/C[3];
     C[5] = sqrt(P[2][2] - sqr(C[2]) - sqr(C[4]));
-	for (int i=0;i<6;i++) if (isnan(C[i])) throw overflow_error("Cholesky decomposition 3x3 failed with NaN result.");
+	for (int i=0;i<6;i++) if (isnan_(C[i])) throw overflow_error("Cholesky decomposition 3x3 failed with NaN result.");
 }
 
 int Invert3x3(double A[3][3], double result[3][3])

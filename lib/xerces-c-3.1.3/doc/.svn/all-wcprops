@@ -1,0 +1,287 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/repos/asf/!svn/ver/1725759/xerces/c/branches/xerces-3.1/doc
+END
+faq-contributing.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/faq-contributing.xml
+END
+mailing-lists.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/mailing-lists.xml
+END
+psviwriter.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/psviwriter.xml
+END
+program-sax2.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/program-sax2.xml
+END
+program-dom.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/program-dom.xml
+END
+applications.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/asf/!svn/ver/1667096/xerces/c/branches/xerces-3.1/doc/applications.xml
+END
+sax2count.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/sax2count.xml
+END
+faq-other.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/faq-other.xml
+END
+senumval.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/senumval.xml
+END
+pparse.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/pparse.xml
+END
+migration_archive.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/asf/!svn/ver/1725759/xerces/c/branches/xerces-3.1/doc/migration_archive.xml
+END
+domprint.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/domprint.xml
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/build.xml
+END
+program-sax.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/program-sax.xml
+END
+releases.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/asf/!svn/ver/1725759/xerces/c/branches/xerces-3.1/doc/releases.xml
+END
+samples.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/samples.xml
+END
+install.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/install.xml
+END
+enumval.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/enumval.xml
+END
+program.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/program.xml
+END
+download.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/asf/!svn/ver/1668699/xerces/c/branches/xerces-3.1/doc/download.xml
+END
+saxprint.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/saxprint.xml
+END
+memparse.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/memparse.xml
+END
+program-others.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/program-others.xml
+END
+xinclude.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/xinclude.xml
+END
+stdinparse.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/stdinparse.xml
+END
+releases_plan.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repos/asf/!svn/ver/1668110/xerces/c/branches/xerces-3.1/doc/releases_plan.xml
+END
+source-repository.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/source-repository.xml
+END
+faq-parse.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/faq-parse.xml
+END
+apidocs.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/apidocs.xml
+END
+xerces-c_book.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repos/asf/!svn/ver/1667563/xerces/c/branches/xerces-3.1/doc/xerces-c_book.xml
+END
+Doxyfile
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/repos/asf/!svn/ver/1725759/xerces/c/branches/xerces-3.1/doc/Doxyfile
+END
+feedback.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/feedback.xml
+END
+bug-report.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/bug-report.xml
+END
+domcount.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/domcount.xml
+END
+charter.xml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/charter.xml
+END
+migration.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/asf/!svn/ver/1725759/xerces/c/branches/xerces-3.1/doc/migration.xml
+END
+createdoc.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/createdoc.xml
+END
+sax2print.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/sax2print.xml
+END
+readme.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/asf/!svn/ver/1667084/xerces/c/branches/xerces-3.1/doc/readme.xml
+END
+scmprint.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/scmprint.xml
+END
+schema.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/schema.xml
+END
+redirect.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/redirect.xml
+END
+saxcount.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/saxcount.xml
+END
+releases_archive.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repos/asf/!svn/ver/1727980/xerces/c/branches/xerces-3.1/doc/releases_archive.xml
+END
+faq-build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/faq-build.xml
+END
+secadv.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repos/asf/!svn/ver/1668110/xerces/c/branches/xerces-3.1/doc/secadv.xml
+END
+faq-distrib.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/repos/asf/!svn/ver/1667071/xerces/c/branches/xerces-3.1/doc/faq-distrib.xml
+END

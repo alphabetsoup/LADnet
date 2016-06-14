@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/NLS/Xlat
+END
+Xlat_MsgCatalog.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/NLS/Xlat/Xlat_MsgCatalog.hpp
+END
+Xlat_ICUResourceBundle.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/NLS/Xlat/Xlat_ICUResourceBundle.hpp
+END
+Xlat_Win32RC.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/NLS/Xlat/Xlat_Win32RC.cpp
+END
+Xlat_Formatter.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/NLS/Xlat/Xlat_Formatter.hpp
+END
+Xlat_Types.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/NLS/Xlat/Xlat_Types.hpp
+END
+Xlat_CppSrc.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/NLS/Xlat/Xlat_CppSrc.cpp
+END
+Xlat_ErrHandler.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/NLS/Xlat/Xlat_ErrHandler.hpp
+END
+Xlat_Win32RC.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/NLS/Xlat/Xlat_Win32RC.hpp
+END
+Xlat_CppSrc.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/NLS/Xlat/Xlat_CppSrc.hpp
+END
+Xlat.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/NLS/Xlat/Xlat.cpp
+END
+Xlat_MsgCatalog.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/NLS/Xlat/Xlat_MsgCatalog.cpp
+END
+Xlat_ICUResourceBundle.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/NLS/Xlat/Xlat_ICUResourceBundle.cpp
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/NLS/Xlat/Makefile
+END
+Xlat.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tools/NLS/Xlat/Xlat.hpp
+END

@@ -78,9 +78,9 @@ public:
 	            const char * xmlstnfile, 
 				bool include_ignores);
 
-	int LoadStdVCVFile(const char * xmlstdvcvfile, std::ostream * logstream);
+    int LoadStdVCVFile(const char * xmlstdvcvfile, std::ostream * logstream);
 
-	int MeasNetwork::LoadDynaML_xsd(
+    int LoadDynaML_xsd(
 						 const char * xmlmeasfile,
                          const char * xmlstnfile, 
 						 bool include_ignores) ;

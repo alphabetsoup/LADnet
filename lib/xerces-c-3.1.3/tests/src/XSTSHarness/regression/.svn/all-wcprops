@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/repos/asf/!svn/ver/1002320/xerces/c/branches/xerces-3.1/tests/src/XSTSHarness/regression
+END
+AnnotatedTSSchema.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/XSTSHarness/regression/AnnotatedTSSchema.xsd
+END
+Xerces.testSet
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/repos/asf/!svn/ver/1002320/xerces/c/branches/xerces-3.1/tests/src/XSTSHarness/regression/Xerces.testSet
+END

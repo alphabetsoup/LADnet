@@ -41,6 +41,7 @@
 #include "DynaML-pskel.hxx"
 
 #include "XMLStructs.h"
+#include "global.h"
 
 // Clusterpoint_pskel
 //

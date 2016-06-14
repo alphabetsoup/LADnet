@@ -1,0 +1,155 @@
+10
+
+dir
+1727979
+https://svn.apache.org/repos/asf/xerces/c/branches/xerces-3.1/projects/Win32/VC8/xerces-all
+https://svn.apache.org/repos/asf
+
+
+
+2015-02-28T01:14:14.047272Z
+1662875
+scantor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+13f79535-47bb-0310-9956-ffa450edef68
+
+XSTSHarness
+dir
+
+EncodingTest
+dir
+
+SAX2Count
+dir
+
+DOMCount
+dir
+
+SEnumVal
+dir
+
+xerces-all.sln
+file
+
+
+
+
+2016-02-01T17:44:38.000000Z
+1a44045868de339732c78c895eb9cf07
+2015-02-28T01:14:14.047272Z
+1662875
+scantor
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+75373
+
+InitTermTest
+dir
+
+RangeTest
+dir
+
+SCMPrint
+dir
+
+XSerializerTest
+dir
+
+SAXCount
+dir
+
+EnumVal
+dir
+
+ThreadTest
+dir
+
+all
+dir
+
+StdInParse
+dir
+
+DOMMemTest
+dir
+
+DOMTest
+dir
+
+XercesLib
+dir
+
+DOMNormalizerTest
+dir
+
+XSValueTest
+dir
+
+SAX2Print
+dir
+
+PParse
+dir
+
+DOMPrint
+dir
+
+DOMTypeInfoTest
+dir
+
+Redirect
+dir
+
+CreateDOMDocument
+dir
+
+DOMTraversalTest
+dir
+
+SAXPrint
+dir
+
+MemParse
+dir
+
+XInclude
+dir
+
+MemHandlerTest
+dir
+
+PSVIWriter
+dir
+

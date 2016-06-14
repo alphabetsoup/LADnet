@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/XSTSHarness/regression/XERCESC-1659/test-3
+END
+test-users.xml
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/XSTSHarness/regression/XERCESC-1659/test-3/test-users.xml
+END
+derived-user-config.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/XSTSHarness/regression/XERCESC-1659/test-3/derived-user-config.xsd
+END
+test-user-config.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/XSTSHarness/regression/XERCESC-1659/test-3/test-user-config.xsd
+END
+test-users.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/repos/asf/!svn/ver/905265/xerces/c/branches/xerces-3.1/tests/src/XSTSHarness/regression/XERCESC-1659/test-3/test-users.xsd
+END

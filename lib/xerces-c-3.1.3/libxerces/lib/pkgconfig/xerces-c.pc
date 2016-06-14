@@ -1,0 +1,11 @@
+prefix=/nas/users/u68659/unix/ladnet/LADnet/lib/xerces-c-3.1.3/libxerces
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: Xerces-C++
+Description: Validating XML parser library for C++
+Version: 3.1.3
+Libs: -L${libdir} -lxerces-c
+Libs.private: -lcurl  
+Cflags: -I${includedir}

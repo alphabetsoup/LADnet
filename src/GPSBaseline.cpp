@@ -770,8 +770,8 @@ void GPSBaseline::scaleVCV(double a, double e) {
 	//std::cout << "Basepoint " << Xc[0] << " " << Xc[1] << " " << Xc[2] << std::endl;
 	double rawVCV[6];
 	getRawVCV(rawVCV);
-    sVCV = scale3x3VCVat(rawVCV,Vscale,Pscale,Lscale,Hscale,Xg[0],Xg[1], Xg[3], a,e);
-    sVCVi = sVCV.i();
+	sVCV = scale3x3VCVat(rawVCV,Vscale,Pscale,Lscale,Hscale,Xg[0],Xg[1], Xg[3], a,e);
+	sVCVi = sVCV.i();
 }
 
 void GPSBaseline::CholeskyDecomposeSVCV()
