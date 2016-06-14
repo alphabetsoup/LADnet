@@ -200,7 +200,12 @@ bool L2CGArmaSolver::CGSolve(vec& x, sp_mat& A__, vec& b__)
 	vec p=r;
 	double rsold=dot(r,r);
 
-	int size_b = b_.n_rows;
+	std::cout << "RS OLD = " << rsold << std::endl;
+
+	int size_b = b__.n_rows;
+
+	double toler = max(1e-3,sqrt(rsold * 1e-10));
+	std::cout << "Tolerance = " << toler << std::endl;
 
 	for (int i=0; i< size_b; ++i)
 	{
@@ -210,9 +215,10 @@ bool L2CGArmaSolver::CGSolve(vec& x, sp_mat& A__, vec& b__)
 		x+=alpha*p;
 		r-=alpha*A_p;
 		double rsnew=dot(r,r);
-		if (sqrt(rsnew)<1e-10)
+		if (sqrt(rsnew)<toler) // FIXME change this figure for precision. Prev was 1e-10
 		{
 			*_logstream << "Converged after " << _iterations << " iterations" << endl;
+			std::cout << "Converged after " << _iterations << " iterations" << endl;
 			return 1;
 		}
 		

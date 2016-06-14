@@ -169,3 +169,5 @@ FakesAssemblies/
 # object files
 *.o
 *.lo
+# svn repos in xerces
+*/.svn/*

@@ -8,6 +8,7 @@
 
 
 CXX=g++
+#CXX=mpicc
 #CXX=g++-4.2
 ## Under MacOS you may have an old compiler as default (e.g. GCC 4.0).
 ## However, GCC 4.2 or later is available and preferable due to better
@@ -16,72 +17,62 @@ CXX=g++
 #CXX=CC
 ## When using the Sun Studio compiler
 
-LIB_PATH= ../Libraries/
-BUILD_PATH= ../
+LIB_PATH= ./lib/
+INCLUDE_PATH= ./include/
+SRC_PATH= ./src/
+BUILD_PATH= ./
 
-# New version of Armadillo. Keep the old versions in the repo to test against.
-ARMA_INCLUDE_FLAG_UNIX = -I/usr/include #-L/usr/lib/libblas -L/usr/lib/lapack -L/usr/share/doc
-ARMA_INCLUDE_FLAG_WIN = -I$(LIB_PATH)armadillo-3.930.1/include/
+##Environments
+# Home unix
+#ARMA_LIB_UNIX=-L/opt/OpenBLAS/lib -L/usr/lib/lapack -L/usr/share/doc -lm -llapack -lopenblas -larmadillo
 #ARMA_LIB_UNIX=-L/usr/lib/atlas-base/atlas -L/usr/lib/lapack -L/usr/share/doc -llapack_atlas -lcblas -lm -llapack -lblas -larmadillo
-ARMA_LIB_UNIX=-L/opt/OpenBLAS/lib -L/usr/lib/lapack -L/usr/share/doc -lm -llapack -lopenblas -larmadillo
 #ARMA_LIB_UNIX=-L/usr/lib/libblas -L/usr/lib/lapack -L/usr/share/doc -lm -llapack -lblas -larmadillo
-ARMA_LIB_UNIX_STATIC=-L/usr/lib -L/usr/share/doc -L/usr/lib/atlas-base -L/usr/lib/atlas-base/atlas -larmadillo_static -lm -llapack -lblas -latlas
+#ARMA_INCLUDE_FLAG_UNIX = -I/usr/include #-L/usr/lib/libblas -L/usr/lib/lapack -L/usr/share/doc
+# New version of Armadillo. Keep the old versions in the repo to test against.
 #ARMA_LIB_UNIX_STATIC=-L/usr/lib -L/usr/share/doc -L/usr/lib/atlas-base -L/usr/lib/atlas-base/atlas -larmadillo_static -lm -llapack -llapack_atlas -lcblas -latlas
-ARMA_LIB_WIN=-L $(LIB_PATH)lib_win64/ -lblas -llapack -L$(LIB_PATH)armadillo-3.930.1/ -larmadillo.dll
+#GLPK_LIB_FLAG_UNIX=-L/usr/local/lib/libglpk.so.35 -lglpk -lm
+#GLPK_INCLUDE_FLAG_UNIX = -I$(LIB_PATH)glpk-4.52/src
 
+# Windows MinGW
+ARMA_INCLUDE_FLAG_WIN = -I$(LIB_PATH)armadillo-3.930.1/include/
+ARMA_LIB_WIN=-L $(LIB_PATH)lib_win64/ -lblas -llapack -L$(LIB_PATH)armadillo-3.930.1/ -larmadillo.dll
 # library dlls sourced from http://icl.cs.utk.edu/lapack-for-windows/lapack/#libraries_mingw
 ARMA_LIB_WIN32=-L $(LIB_PATH)lib_win32/ -lblas -llapack -L$(LIB_PATH)armadillo-3.930.1_32/ -larmadillo.dll
-
-GEOML_LIB_UNIX=-L $(LIB_PATH)geodesyml/ -L/opt/xerces-c/lib/ -lgeodesyml -lxerces-c
-GEOML_INCLUDE_UNIX=-I $(LIB_PATH)geodesyml/ -I/opt/xerces-c/include
-
 #ARMA_INCLUDE_FLAG = -I $(LIB_PATH)armadillo-3.6.0/include
 SHAPELIB_LIB_WIN=-L $(LIB_PATH)shapelib-1.3.0/ -lshp
 SHAPELIB_INCLUDE_WIN=-I$(LIB_PATH)shapelib-1.3.0/
-
-SHAPELIB_LIB_UNIX=-L $(LIB_PATH)shapelib-1.3.0/ -lshp
-SHAPELIB_INCLUDE_UNIX=-I$(LIB_PATH)shapelib-1.3.0/
-
-
-## If you've installed Armadillo's headers manually, 
-## you may need to tell the compiler where they are.
-## For example, change ../include to /usr/local/include
-## and uncomment the above line.
-
-
-XML_PATH =  $(LIB_PATH)pugixml/src/
-XML_INCLUDE_FLAG = -DXML_NO_WIDE_CHAR -I$(XML_PATH)
-
-#GPSTK_INCLUDE_PATH=$(LIB_PATH)gpstk-2.2.linux.x86_64/include/gpstk/
-#GPSTK_LIB_FLAG=-L$(LIB_PATH)gpstk-2.2.linux.x86_64/lib/libgpstk.so
-
-GPSTK_INCLUDE_PATH_UNIX=-I/usr/local/include/gpstk
-GPSTK_LIB_FLAG_UNIX=-lgpstk
-
-#GPSTK_INCLUDE_PATH_WIN=-I"C:/Program Files/GPS Toolkit/include/gpstk/"
-#REGEX_INCLUDE=-I"C:/Program Files/GnuWin32/include/"
-#GPSTK_LIB_FLAG_WIN=-L"C:/Program Files/GPS Toolkit/lib" -lgpstk
-
-GPSTK_INCLUDE_PATH_WIN=-I$(LIB_PATH)"gpstk_w64/include/gpstk/"
-GPSTK_LIB_FLAG_WIN=-L$(LIB_PATH)"gpstk_w64/lib/" -lgpstk
-REGEX_INCLUDE=-I$(LIB_PATH)"libregex_w64/include"
-REGEX_LIB=-L$(LIB_PATH)"libregex_w64/lib" -lregex.dll
-
-#GLPK_LIB_FLAG=-lglpk -lm
-GLPK_LIB_FLAG_UNIX=-L/usr/local/lib/libglpk.so.35 -lglpk -lm
-GLPK_INCLUDE_FLAG_UNIX = -I$(LIB_PATH)glpk-4.52/src
-
 #GLPK_LIB_FLAG_WIN=-L$(LIB_PATH)winglpk-4.52/glpk-4.52/w64 -lglpk_4_52
 #GLPK_INCLUDE_FLAG_WIN = -I$(LIB_PATH)winglpk-4.52/glpk-4.52/src
-
 GLPK_LIB_FLAG_WIN=-L$(LIB_PATH)glpk_w64/lib -lglpk
 GLPK_INCLUDE_FLAG_WIN = -I$(LIB_PATH)glpk_w64/include
 
-UNIX_INCLUDE_FLAGS = $(XML_INCLUDE_FLAG) $(GLPK_INCLUDE_FLAG_UNIX) $(ARMA_INCLUDE_FLAG_UNIX) $(SHAPELIB_INCLUDE_UNIX) $(GEOML_INCLUDE_UNIX)
-WIN_INCLUDE_FLAGS = $(ARMA_INCLUDE_FLAG_WIN) $(XML_INCLUDE_FLAG) $(REGEX_INCLUDE) $(GLPK_INCLUDE_FLAG_WIN) $(SHAPELIB_INCLUDE_WIN) #$(GPSTK_INCLUDE_PATH_WIN) 
+# Cluster Red Hat Unix
+#
+ARMA_LIB_UNIX=-L/lib64/ -lm -llapack -lblas
+ARMA_INCLUDE_FLAG_UNIX = -I$(LIB_PATH)armadillo/include/ -L/lib64/
+ARMA_LIB_UNIX_STATIC=-L/usr/lib -L/usr/share/doc -L/usr/lib/atlas-base -L/usr/lib/atlas-base/atlas -larmadillo_static -lm -llapack -lblas -latlas
+SHAPELIB_LIB_UNIX=-L $(LIB_PATH)shapelib-1.3.0/ -lshp
+SHAPELIB_INCLUDE_UNIX=-I$(LIB_PATH)shapelib-1.3.0/
+#GLPK_LIB_FLAG=-lglpk -lm
+GLPK_LIB_FLAG_UNIX=-L$(LIB_PATH)glpk-4.55/lib/ -lglpk -lm
+GLPK_INCLUDE_FLAG_UNIX = -I$(LIB_PATH)glpk-4.55/src
+XSD_INCLUDE_UNIX= -I$(LIB_PATH)libxsd/ -I$(LIB_PATH)xerces-c-3.1.3/src/
+XSD_LIB_UNIX= -L$(LIB_PATH)xerces-c-3.1.3/libxerces/lib/ -lxerces-c-3.1
 
-LIBSOURCES= ./smallmath.cpp ./ComputedObservable.cpp ./ParameterGroup.cpp  ./DnaMeasurement.cpp ./Residual.cpp ./GPSComputedObservable.cpp ./GPSBaseline.cpp  ./Station.cpp ./GPSResidual.cpp ./SearchQueue.cpp  ./MeasCycle.cpp  ./timer.cpp ./edge.cpp ./MeasSegment.cpp  ./MeasNetwork.cpp  $(XML_PATH)pugixml.cpp ./L1Solver.cpp ./L1GLPKIPSolver.cpp  ./main.cpp ./L1GLPKSimplexDualSolver.cpp ./L1GLPKIPDualSolver.cpp ./L1GLPKSimplexSolver.cpp ./YClusterComputedObservable.cpp ./YClusterResidual.cpp ./YCluster.cpp ./FPointComputedObservable.cpp ./FPointResidual.cpp ./FPoint.cpp 
-# ./L1SimplexSolver.cpp ./L1ConvexSolver.cpp 
+
+PUGI_SRC_UNIX= $(LIB_PATH)pugixml/src/
+
+
+UNIX_INCLUDE_FLAGS = -I$(INCLUDE_PATH) $(GLPK_INCLUDE_FLAG_UNIX) $(ARMA_INCLUDE_FLAG_UNIX) $(SHAPELIB_INCLUDE_UNIX) $(XSD_INCLUDE_UNIX) -I$(PUGI_SRC_UNIX)
+WIN_INCLUDE_FLAGS = -I$(INCLUDE_PATH) $(ARMA_INCLUDE_FLAG_WIN) $(GLPK_INCLUDE_FLAG_WIN) $(SHAPELIB_INCLUDE_WIN) 
+
+LIBSOURCES= $(SRC_PATH)smallmath.cpp $(SRC_PATH)ComputedObservable.cpp $(SRC_PATH)ParameterGroup.cpp  $(SRC_PATH)DnaMeasurement.cpp $(SRC_PATH)Residual.cpp $(SRC_PATH)GPSComputedObservable.cpp $(SRC_PATH)GPSBaseline.cpp  $(SRC_PATH)Station.cpp $(SRC_PATH)GPSResidual.cpp $(SRC_PATH)SearchQueue.cpp  $(SRC_PATH)MeasCycle.cpp  $(SRC_PATH)timer.cpp $(SRC_PATH)edge.cpp $(SRC_PATH)MeasSegment.cpp  $(SRC_PATH)MeasNetwork.cpp  $(SRC_PATH)L1Solver.cpp $(SRC_PATH)L1GLPKIPSolver.cpp  $(SRC_PATH)main.cpp $(SRC_PATH)L1GLPKSimplexDualSolver.cpp $(SRC_PATH)L1GLPKIPDualSolver.cpp $(SRC_PATH)L1GLPKSimplexSolver.cpp $(SRC_PATH)YClusterComputedObservable.cpp $(SRC_PATH)YClusterResidual.cpp $(SRC_PATH)YCluster.cpp $(SRC_PATH)FPointComputedObservable.cpp $(SRC_PATH)FPointResidual.cpp $(SRC_PATH)FPoint.cpp \
+$(SRC_PATH)L2CGArmaSolver.cpp \
+$(SRC_PATH)L2ArmaSolver.cpp \
+$(SRC_PATH)DynaML-pimpl.cxx \
+$(SRC_PATH)DynaML-pskel.cxx \
+$(PUGI_SRC_UNIX)pugixml.cpp
+# $(SRC_PATH)L1SimplexSolver.cpp $(SRC_PATH)L1ConvexSolver.cpp 
 
 BOOST_INCLUDE_FLAG = -I /usr/include
 ## If you have Boost libraries, change /usr/include
@@ -109,7 +100,7 @@ BOOST_INCLUDE_FLAG = -I /usr/include
 ## When using the Sun Studio compiler
 
 
-LIB_FLAGS_UNIX = $(ARMA_LIB_UNIX) $(GLPK_LIB_FLAG_UNIX) $(SHAPELIB_LIB_UNIX) $(GEOML_LIB_UNIX)
+LIB_FLAGS_UNIX = $(ARMA_LIB_UNIX) $(GLPK_LIB_FLAG_UNIX) $(SHAPELIB_LIB_UNIX) $(XSD_LIB_UNIX)
 LIB_FLAGS_UNIX_STATIC = $(ARMA_LIB_UNIX_STATIC) $(GLPK_LIB_FLAG_UNIX) $(SHAPELIB_LIB_UNIX)
 LIB_FLAGS_WIN = $(GLPK_LIB_FLAG_WIN) $(REGEX_LIB) $(ARMA_LIB_WIN) $(SHAPELIB_LIB_WIN) #$(GPSTK_LIB_FLAG_WIN) 
 ## NOTE: on Ubuntu and Debian based systems you may need to add 
@@ -155,7 +146,7 @@ OPT = -O2  -Wall -w -g
 #
 #
 
-UNIXCXXFLAGS = -g $(UNIX_INCLUDE_FLAGS) $(BOOST_INCLUDE_FLAG) $(DEBUG) $(FINAL) 
+UNIXCXXFLAGS = -g $(UNIX_INCLUDE_FLAGS) $(BOOST_INCLUDE_FLAG) $(DEBUG) $(FINAL) -std=c++11
 
 WINCXXFLAGS = $(WIN_INCLUDE_FLAGS) $(DEBUG) $(FINAL) 
 
