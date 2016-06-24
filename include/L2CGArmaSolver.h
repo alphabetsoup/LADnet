@@ -57,6 +57,7 @@ class L2CGArmaSolver : public L1Solver {
 
     
     bool CGSolve(arma::vec& , arma::sp_mat& , arma::vec& );
+    bool CGLSSolve(arma::vec& , arma::sp_mat& , arma::vec& );
 protected:
 	arma::sp_mat A;
 	arma::vec b;

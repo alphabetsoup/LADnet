@@ -169,9 +169,9 @@ int MeasSegment::addParameterGroup(int stnID) {
 
 std::pair<double, double> MeasSegment::initLinearisedEstimatorIndices() {
 	_numJacobianColumns  = 0;
-	_numJacobianRows     = 0;
-	_absSumJacobian     = 0;
-	_absSumObserved     = 0;
+	_numJacobianRows	 = 0;
+	_absSumJacobian	 = 0;
+	_absSumObserved	 = 0;
 
 	initParameterValues();
 	initMeasurementOminusC();
@@ -184,15 +184,15 @@ std::pair<double, double> MeasSegment::initLinearisedEstimatorIndices() {
 		meas->prepareForSegment(_segID);
 		int rows = meas->getRowCount(_segID);
 		int cols = meas->getColCount(_segID);
-    	for (int r = 0; r< rows; r++) {
+		for (int r = 0; r< rows; r++) {
 			int c = 0;
-    		for (vector<ParameterGroup*>::iterator pit = meas->_param.begin(); pit != meas->_param.end(); pit++) {
+			for (vector<ParameterGroup*>::iterator pit = meas->_param.begin(); pit != meas->_param.end(); pit++) {
 				vector< int > pindices;
 				if ((*pit)->hasIndicesForSegment(_segID)) {
-    				pindices = (*pit)->getIndicesForSegment(_segID);
+					pindices = (*pit)->getIndicesForSegment(_segID);
 				} else {
-    				for (int pc = 0; pc < (*pit)->size(); pc++) pindices.push_back(_numJacobianColumns++); // post increment
-    				(*pit)->setIndicesForSegment(_segID,pindices);
+					for (int pc = 0; pc < (*pit)->size(); pc++) pindices.push_back(_numJacobianColumns++); // post increment
+					(*pit)->setIndicesForSegment(_segID,pindices);
 				}
 				double val = meas->getPartial(r,c++,_segID);
 				_absSumJacobian += abs(val);

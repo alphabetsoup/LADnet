@@ -580,7 +580,8 @@ DnaMeasurement (::DnaMeasurement* DnaMeasurement)
 	_loadcounter++;
 	// Add the measurement to the list of measurements
 	//FIXME make it always add the measurement, but only ignore in Jacobian formulation.
-	if (DnaMeasurement && (_mn->_include_ignores || !DnaMeasurement->Ignore)) {
+	//if (DnaMeasurement && (_mn->_include_ignores || !DnaMeasurement->Ignore)) {
+	if (DnaMeasurement) {
 		_mn->_measurements.push_back(DnaMeasurement);
 		_mn->_numMeasurements++;
 	}

@@ -39,6 +39,8 @@
 #include "MeasNetwork.h"
 #include "MeasSegment.h"
 #include <armadillo>
+#include <iostream>
+#include <iomanip>
 
 
 using namespace std;
@@ -190,10 +192,66 @@ void L2CGArmaSolver::WriteOutputToLog(arma::vec& X)
 	}
 }
 
+bool L2CGArmaSolver::CGLSSolve(vec& x, sp_mat& A_, vec& b_)
+{
+	*_logstream << "Compute r" << endl;
+	vec r=b_-A_*x;
+	*_logstream << "Compute p" << endl;
+	vec p=A_.t()*r;
+	vec s(p);
+	double gamma_old=dot(s,s); // gamma
+	double gamma_new;
+
+	std::cout << "Gamma OLD = " << gamma_old << std::endl;
+
+	unsigned long size_b = b_.n_rows;
+	// TODO remove the below
+	size_b *= size_b;
+
+	double toler = (gamma_old > 1) ? max(1e-3,sqrt(gamma_old * 1e-10)) :
+	                             gamma_old * 0.1;
+
+	std::cout << "Tolerance = " << toler << std::endl;
+
+	std::cout << "                              "
+	          << "                              ";
+
+	vec q(A_.n_rows);
+	double alpha;
+
+	for (unsigned long i=0; i< size_b; ++i)
+	{
+		_iterations++;
+		q=A_*p;
+		alpha=gamma_old/(dot(q,q));
+		x+=alpha*p;
+		r-=alpha*q;
+		s=A_.t()*r;
+		gamma_new=dot(s,s);
+		std::cout << "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b"
+		          << "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b" 
+		          << std::setw(30) << _iterations
+		          << std::setw(30) << gamma_new;
+		if (sqrt(gamma_new)<toler) // FIXME change this figure for precision. Prev was 1e-10
+		{
+			*_logstream << "Converged after " << _iterations << " iterations" << endl;
+			std::cout << std::endl << "Converged after " << _iterations << " iterations" << endl;
+			return 1;
+		}
+		
+		p=s+(gamma_new/gamma_old)*p;
+		gamma_old=gamma_new;
+	}
+	std::cout << "Gamma NEW = " << gamma_new << std::endl;
+	return 0;
+}
+
 bool L2CGArmaSolver::CGSolve(vec& x, sp_mat& A__, vec& b__)
 {
 	sp_mat A_=A__.t()*A__;
 	vec b_ = A__.t()*b__;
+	//sp_mat A_=A__.t();
+	//vec b_ = b__;
 	*_logstream << "Compute r" << endl;
 	vec r=b_-A_*x;
 	*_logstream << "Compute p" << endl;
@@ -239,7 +297,7 @@ int L2CGArmaSolver::run() {
 	arma::vec X(N, fill::zeros);
 	
 	//Solver not working!
-	bool result = CGSolve(X,A,b);
+	bool result = CGLSSolve(X,A,b);
 	if (!result) {
 		*_logstream << "Conjugate Gradient did not converge." << endl;
 		return 0;

@@ -92,30 +92,32 @@ int L1GLPKSimplexDualSolver::run() {
     }
 
     double z; // obj fn value
-    vec X(N); // for now, make it N+M size
-    vec E(M); // reduced cost of row prime auxiliary vars
+    std::vector<double> X(N); // Parameter values 
+    std::vector<double> E(M); // reduced cost of row prime auxiliary vars
     
     z = glp_ipt_obj_val(_lp);
 
     for (int i=0;i<N;i++)
-        X(i) = glp_get_row_dual(_lp, i+1);
+        X[i] = glp_get_row_dual(_lp, i+1) * parameterScale;
     for (int i=0;i<M;i++)
-        E(i) = glp_get_row_dual(_lp, i+1+N);
+        E[i] = glp_get_row_dual(_lp, i+1+N) * parameterScale;
 
-    X *= parameterScale;
-    E *= parameterScale;
+    //X *= parameterScale;
+    //E *= parameterScale;
 
     *_logstream << "Jacobian Scale = " << jacobianScale << endl
 	            << "Observed Scale = " << observedScale << endl
 	            << "Parameter Scale = " << parameterScale << endl;
 
-	*_logstream << "X" << endl;
+	/*
+  	*_logstream << "X" << endl;
 	*_logstream << X << endl;
 	*_logstream << "E" << endl;
 	*_logstream << E << endl;
+	*/
 
-	std::vector<double> X_vector = conv_to< std::vector<double> >::from(X);
-	_seg->setCorrections(X_vector);
+	//std::vector<double> X_vector = conv_to< std::vector<double> >::from(X);
+	_seg->setCorrections(X);
     //WriteOutputToLog(X,E);
 
     *_logstream << "Sum of absolute values" << endl

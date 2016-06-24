@@ -96,7 +96,7 @@ void FPoint::setAllVCV(double d) {
                             Xg[1]//_param[i]->Longitude
                             );
             mat enh_vcv = zeros<mat>(3,3);
-            for(int j=0;j<3;j++) enh_vcv(j,j) = _param[i]->isConstrained(j) ? 0.00001 : d;
+            for(int j=0;j<3;j++) enh_vcv(j,j) = _param[i]->isConstrained(j) ? 0.0001 : d;
             // set the raw VCV for this station
             _full_raw_vcv.submat(i3,i3,i3+2,i3+2) = rotate * enh_vcv * rotate.t();
         }

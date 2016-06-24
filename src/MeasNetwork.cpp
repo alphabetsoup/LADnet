@@ -843,7 +843,7 @@ void MeasNetwork::PrepareNetwork() {
 	*_logstream << "All station constraints have been set." << endl;
 
 	if (numTrees > 0) {
-		fp->setAllVCV(1000);
+		fp->setAllVCV(100);
 
 		_measurements.push_back(fp);
 		_numMeasurements++;
